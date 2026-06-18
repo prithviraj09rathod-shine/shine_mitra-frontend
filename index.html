@@ -117,15 +117,17 @@
   }
   .chip:hover{background:var(--purple-50);border-color:var(--purple-400);color:var(--purple-800)}
   .msgs{display:flex;flex-direction:column;gap:16px;margin-bottom:16px}
-  .msg{display:flex;gap:10px;align-items:flex-end}
+  .msg{display:flex;gap:10px;align-items:flex-start}
   .msg.user{flex-direction:row-reverse}
   .msg-avatar{
     width:32px;height:32px;border-radius:50%;background:var(--purple-50);
     display:flex;align-items:center;justify-content:center;font-size:17px;
-    flex-shrink:0;border:1px solid var(--purple-100);
+    flex-shrink:0;border:1px solid var(--purple-100);margin-top:2px;
   }
+  .msg-col{display:flex;flex-direction:column;gap:6px;max-width:80%}
+  .msg.user .msg-col{align-items:flex-end}
   .bubble{
-    max-width:80%;padding:12px 15px;border-radius:18px 18px 18px 4px;
+    padding:12px 15px;border-radius:18px 18px 18px 4px;
     font-size:14px;line-height:1.65;color:var(--text-primary);
     background:var(--bg-card);border:1px solid var(--border-light);
     box-shadow:var(--shadow-sm);
@@ -134,16 +136,23 @@
     border-radius:18px 18px 4px 18px;background:var(--purple-600);
     color:#fff;border:none;box-shadow:0 2px 8px rgba(83,74,183,.25);
   }
-  .wisdom-pull{
-    margin-top:10px;padding:10px 14px;
-    border-left:3px solid var(--purple-400);background:var(--purple-50);
-    border-radius:0 8px 8px 0;font-size:13px;color:var(--purple-900);
-    font-family:var(--font-serif);font-style:italic;line-height:1.55;
+
+  /* ── CHAT MOOD VISUAL ── */
+  .chat-visual{
+    border-radius:var(--radius-md);overflow:hidden;
+    border:1px solid var(--border-light);box-shadow:var(--shadow-sm);
+    background:var(--bg-card);
   }
-  .wisdom-src{
-    font-size:11px;color:var(--purple-600);font-style:normal;
-    font-weight:600;margin-top:5px;display:block;font-family:var(--font-sans);
+  .chat-visual img{
+    width:100%;height:130px;object-fit:cover;display:block;
+    transition:transform .3s ease;
   }
+  .chat-visual:hover img{transform:scale(1.03)}
+  .chat-visual-label{
+    padding:6px 10px;font-size:11px;color:var(--text-hint);
+    font-style:italic;line-height:1.4;display:flex;align-items:center;gap:4px;
+  }
+
   .typing-indicator{
     display:flex;gap:4px;align-items:center;padding:12px 16px;
     background:var(--bg-card);border-radius:18px 18px 18px 4px;
@@ -184,12 +193,21 @@
     transition:all .15s;font-family:var(--font-sans);
   }
   .sf-btn.active{background:var(--purple-50);color:var(--purple-800);border-color:var(--purple-400)}
+
   .story-grid{display:flex;flex-direction:column;gap:10px}
+
+  /* Story card with image */
   .story-card{
     background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--radius-lg);
-    padding:16px;cursor:pointer;transition:all .18s;box-shadow:var(--shadow-sm);
+    cursor:pointer;transition:all .18s;box-shadow:var(--shadow-sm);overflow:hidden;
   }
   .story-card:hover{border-color:var(--purple-200);box-shadow:var(--shadow-md);transform:translateY(-1px)}
+  .story-card-img{
+    width:100%;height:140px;object-fit:cover;display:block;
+    transition:transform .3s ease;
+  }
+  .story-card:hover .story-card-img{transform:scale(1.03)}
+  .story-card-body{padding:14px 16px 16px}
   .story-tags{display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap}
   .stag{font-size:11px;padding:3px 9px;border-radius:var(--radius-full);background:var(--purple-50);color:var(--purple-800);font-weight:500}
   .stag.hist{background:var(--amber-50);color:var(--amber-600)}
@@ -197,12 +215,21 @@
   .story-title-text{font-size:15px;font-weight:600;color:var(--text-primary);margin-bottom:5px;font-family:var(--font-serif)}
   .story-preview-text{font-size:13px;color:var(--text-secondary);line-height:1.5}
   .story-read{font-size:12px;color:var(--purple-600);margin-top:8px;font-weight:500}
-  .story-detail{background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--radius-lg);padding:20px;margin-top:4px}
+
+  /* Story detail */
+  .story-detail{
+    background:var(--bg-card);border:1px solid var(--border-light);
+    border-radius:var(--radius-lg);margin-top:4px;overflow:hidden;
+  }
+  .story-hero{
+    width:100%;height:200px;object-fit:cover;display:block;
+  }
+  .story-detail-body{padding:18px 20px 20px}
   .back-btn{
     display:flex;align-items:center;gap:5px;font-size:13px;color:var(--purple-600);
     border:none;background:none;cursor:pointer;padding:0 0 14px;font-family:var(--font-sans);
   }
-  .story-detail h2{font-family:var(--font-serif);font-size:20px;font-weight:500;color:var(--text-primary);margin-bottom:6px;line-height:1.3}
+  .story-detail-body h2{font-family:var(--font-serif);font-size:20px;font-weight:500;color:var(--text-primary);margin-bottom:6px;line-height:1.3}
   .story-source{font-size:12px;color:var(--text-hint);margin-bottom:14px;font-weight:500;text-transform:uppercase;letter-spacing:.06em}
   .story-body-text{font-size:14px;color:var(--text-primary);line-height:1.75;white-space:pre-line;font-family:var(--font-serif)}
   .moral-box{
@@ -212,6 +239,34 @@
   .moral-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--green-600);margin-bottom:4px}
   .moral-text{font-size:14px;color:var(--green-800);line-height:1.55;font-family:var(--font-serif);font-style:italic}
 
+  /* Story video section */
+  .video-section{margin-top:16px}
+  .video-section-label{
+    font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;
+    color:var(--text-hint);margin-bottom:8px;
+  }
+  .video-embed{
+    border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--border-light);
+    aspect-ratio:16/9;background:#000;
+  }
+  .video-embed iframe{width:100%;height:100%;border:none;display:block}
+  .yt-search-btn{
+    display:flex;align-items:center;gap:10px;
+    width:100%;padding:13px 16px;
+    background:var(--bg-card);border:1px solid var(--border-mid);
+    border-radius:var(--radius-md);cursor:pointer;
+    font-size:13px;font-weight:500;color:var(--text-secondary);
+    transition:all .15s;font-family:var(--font-sans);text-decoration:none;
+  }
+  .yt-search-btn:hover{background:var(--purple-50);border-color:var(--purple-400);color:var(--purple-800)}
+  .yt-icon{
+    width:32px;height:32px;border-radius:6px;background:#FF0000;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .yt-icon svg{fill:#fff;width:16px;height:16px}
+  .yt-btn-text strong{display:block;font-size:13px;color:var(--text-primary)}
+  .yt-btn-text span{font-size:11px;color:var(--text-hint)}
+
   /* ── WISDOM QUOTES ── */
   .w-filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
   .wf{
@@ -220,25 +275,80 @@
     transition:all .15s;font-family:var(--font-sans);
   }
   .wf.active{background:var(--purple-50);color:var(--purple-800);border-color:var(--purple-400)}
+
   .w-list{display:flex;flex-direction:column;gap:10px}
+
+  /* Quote cards — visual by category */
   .w-item{
-    background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--radius-lg);
-    padding:16px;box-shadow:var(--shadow-sm);
+    border-radius:var(--radius-lg);padding:20px 18px 16px;
+    box-shadow:var(--shadow-sm);position:relative;overflow:hidden;
+    transition:transform .18s,box-shadow .18s;border:1px solid transparent;
+    background:var(--bg-card);
   }
+  .w-item:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+  .w-item::before{
+    content:'\201C';position:absolute;top:-10px;right:12px;
+    font-size:100px;font-family:Georgia,'Lora',serif;line-height:1;
+    opacity:0;
+  }
+  /* Gita — purple */
+  .w-item.cat-gita{
+    background:linear-gradient(135deg,var(--bg-card) 55%,var(--purple-50));
+    border-color:var(--purple-100);border-left:4px solid var(--purple-400);
+  }
+  .w-item.cat-gita::before{color:var(--purple-400);opacity:.15}
+  /* History — amber */
+  .w-item.cat-history{
+    background:linear-gradient(135deg,var(--bg-card) 55%,var(--amber-50));
+    border-color:#E8C87A;border-left:4px solid var(--amber-200);
+  }
+  .w-item.cat-history::before{color:var(--amber-200);opacity:.18}
+  /* Philosophy — teal */
+  .w-item.cat-philosophy{
+    background:linear-gradient(135deg,var(--bg-card) 55%,var(--teal-50));
+    border-color:#8DD4BE;border-left:4px solid var(--teal-600);
+  }
+  .w-item.cat-philosophy::before{color:var(--teal-600);opacity:.13}
+  /* Psychology — green */
+  .w-item.cat-psychology{
+    background:linear-gradient(135deg,var(--bg-card) 55%,var(--green-50));
+    border-color:#A8C87A;border-left:4px solid var(--green-600);
+  }
+  .w-item.cat-psychology::before{color:var(--green-600);opacity:.13}
+
+  .w-tradition-badge{
+    display:inline-block;font-size:10px;font-weight:600;letter-spacing:.07em;
+    text-transform:uppercase;padding:2px 8px;border-radius:var(--radius-full);
+    margin-bottom:10px;
+  }
+  .cat-gita .w-tradition-badge{background:var(--purple-100);color:var(--purple-800)}
+  .cat-history .w-tradition-badge{background:var(--amber-50);color:var(--amber-600)}
+  .cat-philosophy .w-tradition-badge{background:var(--teal-50);color:var(--teal-600)}
+  .cat-psychology .w-tradition-badge{background:var(--green-50);color:var(--green-600)}
+
   .w-text{
     font-family:var(--font-serif);font-size:15px;color:var(--text-primary);
-    line-height:1.65;font-style:italic;margin-bottom:8px;
+    line-height:1.65;font-style:italic;margin-bottom:10px;position:relative;z-index:1;
   }
   .w-source{font-size:12px;color:var(--purple-600);font-weight:600;font-family:var(--font-sans)}
-  .w-tradition{font-size:11px;color:var(--text-hint);margin-top:2px;font-family:var(--font-sans)}
+  .cat-history .w-source{color:var(--amber-600)}
+  .cat-philosophy .w-source{color:var(--teal-600)}
+  .cat-psychology .w-source{color:var(--green-600)}
 
   /* ── RESPONSIVE ── */
   @media(max-width:480px){
     .brand{font-size:34px}
     .age-btn{padding:10px 18px;font-size:13px}
-    .bubble{max-width:88%;font-size:13px}
+    .bubble{font-size:13px}
     .panel{padding:12px}
     .topbar{padding:11px 14px}
+    .story-hero{height:160px}
+    .chat-visual img{height:110px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .story-card:hover .story-card-img,
+    .chat-visual:hover img{transform:none}
+    .w-item:hover{transform:none}
   }
 </style>
 </head>
@@ -306,17 +416,16 @@
     <div class="w-filters" id="wFilters"></div>
     <div class="w-list" id="wList"></div>
   </div>
-</div>
+
+</div><!-- #main -->
 
 </div><!-- #app -->
 
 <script>
 // ── CONFIG ──────────────────────────────────────────────────────────────────
-// Change this to your deployed backend URL after deployment
-// During local development it calls localhost:3001
 const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
   ? 'http://localhost:3001'
-  : 'https://mitra-backend-inky.vercel.app';  // ← Replace after deploying backend
+  : 'https://mitra-backend-inky.vercel.app';
 
 // ── STATE ────────────────────────────────────────────────────────────────────
 let ageGroup = null, ageName = '', ageEmoji = '';
@@ -324,13 +433,42 @@ let chatHistory = [];
 let storyFilter = 'all';
 let wisdomFilter = 'all';
 
+// ── MOOD → IMAGES ─────────────────────────────────────────────────────────────
+// Free Unsplash photos matched to emotional themes.
+// Add/swap IDs freely — format: https://images.unsplash.com/photo-{ID}
+const MOOD_IMAGES = {
+  calm: [
+    { id:'1506905925346-21bda4d32df4', caption:'A calm place for your thoughts' },
+    { id:'1501854140801-50d01698950b', caption:'Still water, still mind' }
+  ],
+  courage: [
+    { id:'1464822759023-fed622ff2c3b', caption:'Every great journey begins with one step' },
+    { id:'1454496522488-7a8e488e8606', caption:'The path ahead belongs to you' }
+  ],
+  hope: [
+    { id:'1470252649378-9c29740c9fa8', caption:'After every night, the sun rises' },
+    { id:'1500534314209-a25ddb2bd429', caption:'Light always finds a way through' }
+  ],
+  wisdom: [
+    { id:'1481627834876-b7833e8f5570', caption:'Wisdom lives inside you — waiting' },
+    { id:'1434030216411-0b793f4b6935', caption:'Every question is the beginning of a story' }
+  ],
+  strength: [
+    { id:'1439853949212-36089a09c5f3', caption:'You are stronger than this moment' },
+    { id:'1447752875215-b2761acb3c5d', caption:'Roots hold even through the storm' }
+  ],
+  growth: [
+    { id:'1416879595882-3373a0480b5b', caption:'Even small things grow into something beautiful' },
+    { id:'1502082553048-f009b5469d50', caption:'Every day is a new beginning' }
+  ]
+};
+
 // ── AGE SELECTION ─────────────────────────────────────────────────────────────
 function selectAge(g, n, e) {
   ageGroup = g; ageName = n; ageEmoji = e;
   document.querySelectorAll('.age-btn').forEach(b => b.classList.remove('selected'));
   event.currentTarget.classList.add('selected');
-  const sb = document.getElementById('startBtn');
-  sb.classList.add('ready');
+  document.getElementById('startBtn').classList.add('ready');
 }
 
 function enterApp() {
@@ -346,7 +484,7 @@ function enterApp() {
   buildChips();
   buildStories();
   buildWisdom();
-  addMsg('mitra', welcomeMsg());
+  addMsg('mitra', welcomeMsg(), null);
 }
 
 function goSplash() {
@@ -382,19 +520,41 @@ function buildChips() {
 }
 
 // ── CHAT ──────────────────────────────────────────────────────────────────────
-function addMsg(role, text) {
+function addMsg(role, text, mood) {
   const c = document.getElementById('msgs');
   const wrap = document.createElement('div');
-  wrap.className = 'msg ' + role;
+  wrap.className = 'msg ' + (role === 'user' ? 'user' : 'mitra');
+
   const av = document.createElement('div');
   av.className = 'msg-avatar';
   av.textContent = role === 'user' ? (ageEmoji || '👤') : '🪔';
+
+  const col = document.createElement('div');
+  col.className = 'msg-col';
+
   const bub = document.createElement('div');
   bub.className = 'bubble';
-  // Detect and style quoted wisdom lines (lines starting with ")
-  const html = text.replace(/\n/g, '<br>');
-  bub.innerHTML = html;
-  wrap.appendChild(av); wrap.appendChild(bub);
+  bub.innerHTML = text.replace(/\n/g, '<br>');
+  col.appendChild(bub);
+
+  // Mood visual — only for Mitra replies that have a mood (not welcome message)
+  if (role === 'mitra' && mood && MOOD_IMAGES[mood]) {
+    const opts = MOOD_IMAGES[mood];
+    const pick = opts[Math.floor(Math.random() * opts.length)];
+    const vis = document.createElement('div');
+    vis.className = 'chat-visual';
+    vis.innerHTML = `
+      <img
+        src="https://images.unsplash.com/photo-${pick.id}?auto=format&fit=crop&w=440&h=130&q=75"
+        loading="lazy"
+        alt=""
+        onerror="this.closest('.chat-visual').remove()">
+      <div class="chat-visual-label">✦ ${pick.caption}</div>`;
+    col.appendChild(vis);
+  }
+
+  wrap.appendChild(av);
+  wrap.appendChild(col);
   c.appendChild(wrap);
   wrap.scrollIntoView({ behavior: 'smooth', block: 'end' });
 }
@@ -433,7 +593,7 @@ async function sendMsg() {
   document.getElementById('sendBtn').disabled = true;
   const errEl = document.getElementById('chatErr');
   errEl.style.display = 'none';
-  addMsg('user', txt);
+  addMsg('user', txt, null);
   chatHistory.push({ role: 'user', content: txt });
   showTyping();
 
@@ -457,7 +617,7 @@ async function sendMsg() {
     const data = await res.json();
     hideTyping();
     chatHistory.push({ role: 'assistant', content: data.reply });
-    addMsg('mitra', data.reply);
+    addMsg('mitra', data.reply, data.mood || 'growth');  // mood from backend
   } catch (err) {
     hideTyping();
     errEl.textContent = err.message || 'Mitra is unavailable. Please try again.';
@@ -479,11 +639,17 @@ function switchTab(t) {
 }
 
 // ── STORIES ───────────────────────────────────────────────────────────────────
+// imageUnsplash: Unsplash photo ID — free, no API key needed for direct embeds
+// videoId: YouTube video ID — set this to embed a specific video inline
+// videoSearch: fallback YouTube search query if no videoId set
 const STORIES = [
   {
     id:'eklavya', title:'Eklavya — the disciple who taught himself',
     source:'Mahabharata', theme:'failure', tradition:'epic',
     tags:['Mahabharata','Self-belief','Failure'],
+    imageUnsplash:'1448375240586-882707db888b',  // forest path at dawn
+    videoId:'',  // Set a YouTube video ID here to embed inline, e.g. 'dQw4w9WgXcQ'
+    videoSearch:'Eklavya story animated English children moral story',
     preview:'A boy refused by the greatest teacher became greater than all his students.',
     body:`Eklavya, a young tribal boy, walked days to reach Dronacharya — the finest teacher in the land. He wanted to learn archery more than anything in the world.
 
@@ -504,6 +670,9 @@ Even after that sacrifice, Eklavya remained extraordinary.`,
     id:'rama', title:'Rama\'s exile — dignity in the darkest moment',
     source:'Valmiki Ramayana', theme:'family', tradition:'epic',
     tags:['Ramayana','Family','Character'],
+    imageUnsplash:'1506905925346-21bda4d32df4',  // serene mountain landscape
+    videoId:'',
+    videoSearch:'Rama exile story Ramayana animated children English moral',
     preview:'A prince lost his crown, his home and his freedom — and never lost himself.',
     body:`On the very eve of his coronation, Prince Rama was told he would be exiled to the forest for fourteen years. Not because of any crime — but because of a promise his father had made to his stepmother Kaikeyi long ago.
 
@@ -526,6 +695,9 @@ We still light those lamps every year. We call it Diwali.`,
     id:'yudhishthira', title:'Yudhishthira\'s final test — truth above heaven',
     source:'Mahabharata', theme:'right-wrong', tradition:'epic',
     tags:['Mahabharata','Integrity','Right vs Wrong'],
+    imageUnsplash:'1419242902214-272b3f66ee7a',  // starry night sky
+    videoId:'',
+    videoSearch:'Yudhishthira Mahabharata final test heaven dog animated story',
     preview:'Even at the gates of heaven, one man refused to abandon truth.',
     body:`After the Kurukshetra war, the Pandavas began their final journey. One by one, each brother fell — even mighty Bhima, even noble Arjuna — because of their own hidden flaws.
 
@@ -546,6 +718,9 @@ He entered heaven — with full honors — as the only person to do so with his 
     id:'gandhi', title:'Gandhi\'s train — the night that changed the world',
     source:'Historical — South Africa, 1893', theme:'bullying', tradition:'history',
     tags:['Gandhi','Bullying','Dignity'],
+    imageUnsplash:'1469474968028-56623f02e42e',  // open road — the long journey ahead
+    videoId:'',
+    videoSearch:'Gandhi train Pietermaritzburg story animated children English moral',
     preview:'A young lawyer was thrown off a train. He chose dignity over anger — and changed history.',
     body:`In 1893, a young Indian lawyer named Mohandas Gandhi bought a first-class train ticket in South Africa. He had every legal right to sit there. He was dressed properly and carried his ticket.
 
@@ -568,6 +743,9 @@ Gandhi said decades later: "That night in Pietermaritzburg was the most creative
     id:'kalam', title:'Kalam\'s rejection — the door that led to the stars',
     source:'Historical — India, 1950s', theme:'failure', tradition:'history',
     tags:['APJ Kalam','Failure','Purpose'],
+    imageUnsplash:'1462331940025-496dfbfc7564',  // stars and cosmos — his real destiny
+    videoId:'',
+    videoSearch:'APJ Abdul Kalam story animated English children inspiration wings of fire',
     preview:'India\'s future President was rejected from the Air Force. He was meant for something far greater.',
     body:`A young man from Rameswaram — the son of a boat-owner who ferried pilgrims for a living — dreamed of becoming a fighter pilot. He studied hard, passed his exams, and reached the final selection interview for the Indian Air Force.
 
@@ -588,6 +766,9 @@ The Air Force rejection was the best thing that ever happened to him.`,
     id:'lincoln', title:'Lincoln\'s failures — twelve steps to greatness',
     source:'Historical — USA, 1831–1860', theme:'failure', tradition:'history',
     tags:['Lincoln','Failure','Persistence'],
+    imageUnsplash:'1507003211169-0a1dd7228f2d',  // lone tree — standing through everything
+    videoId:'',
+    videoSearch:'Abraham Lincoln failure success story animated English children motivation',
     preview:'He failed at business twice, lost eight elections, had a nervous breakdown — then became America\'s greatest President.',
     body:`1831: Abraham Lincoln failed in business.
 1832: He ran for the Illinois legislature — and lost.
@@ -641,12 +822,19 @@ function renderStoryGrid() {
   filtered.forEach(s => {
     const card = document.createElement('div');
     card.className = 'story-card';
-    card.innerHTML = `
-      <div class="story-tags">${s.tags.map((t,i) => `<span class="stag${i===1?' hist':i===2?' sci':''}">${t}</span>`).join('')}</div>
-      <div class="story-title-text">${s.title}</div>
-      <div class="story-preview-text">${s.preview}</div>
-      <div class="story-read">Read the full story →</div>`;
     card.onclick = () => showStory(s.id);
+    card.innerHTML = `
+      <img class="story-card-img"
+        src="https://images.unsplash.com/photo-${s.imageUnsplash}?auto=format&fit=crop&w=680&h=140&q=75"
+        loading="lazy"
+        alt="${s.title}"
+        onerror="this.style.display='none'">
+      <div class="story-card-body">
+        <div class="story-tags">${s.tags.map((t,i)=>`<span class="stag${i===1?' hist':i===2?' sci':''}">${t}</span>`).join('')}</div>
+        <div class="story-title-text">${s.title}</div>
+        <div class="story-preview-text">${s.preview}</div>
+        <div class="story-read">Read the full story →</div>
+      </div>`;
     g.appendChild(card);
   });
 }
@@ -657,16 +845,66 @@ function showStory(id) {
   document.getElementById('storyList').style.display = 'none';
   const dv = document.getElementById('storyDetail');
   dv.style.display = 'block';
+
+  // Build video section
+  let videoHtml = '';
+  if (s.videoId) {
+    // Embed specific YouTube video if ID is provided
+    videoHtml = `
+      <div class="video-section">
+        <div class="video-section-label">📺 Watch the story</div>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/${s.videoId}?rel=0&modestbranding=1"
+            title="${s.title} — video"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>`;
+  } else if (s.videoSearch) {
+    // Fallback: YouTube search button
+    const query = encodeURIComponent(s.videoSearch);
+    videoHtml = `
+      <div class="video-section">
+        <div class="video-section-label">📺 Watch related videos</div>
+        <a class="yt-search-btn"
+          href="https://www.youtube.com/results?search_query=${query}"
+          target="_blank" rel="noopener noreferrer">
+          <div class="yt-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/>
+            </svg>
+          </div>
+          <div class="yt-btn-text">
+            <strong>Find on YouTube</strong>
+            <span>Watch animated stories about ${s.tags[0]}</span>
+          </div>
+          <span style="margin-left:auto;color:var(--text-hint);font-size:18px">→</span>
+        </a>
+      </div>`;
+  }
+
   dv.innerHTML = `
-    <button class="back-btn" onclick="closeStory()">&#8592; All stories</button>
     <div class="story-detail">
-      <div class="story-tags">${s.tags.map((t,i) => `<span class="stag${i===1?' hist':''}">${t}</span>`).join('')}</div>
-      <h2>${s.title}</h2>
-      <div class="story-source">${s.source}</div>
-      <div class="story-body-text">${s.body}</div>
-      <div class="moral-box">
-        <div class="moral-label">The lesson</div>
-        <div class="moral-text">${s.moral}</div>
+      <div class="story-detail-body" style="padding-top:14px">
+        <button class="back-btn" onclick="closeStory()">&#8592; All stories</button>
+      </div>
+      <img class="story-hero"
+        src="https://images.unsplash.com/photo-${s.imageUnsplash}?auto=format&fit=crop&w=680&h=200&q=80"
+        alt="${s.title}"
+        loading="lazy"
+        onerror="this.style.display='none'">
+      <div class="story-detail-body">
+        <div class="story-tags" style="margin-top:14px">${s.tags.map((t,i)=>`<span class="stag${i===1?' hist':''}">${t}</span>`).join('')}</div>
+        <h2>${s.title}</h2>
+        <div class="story-source">${s.source}</div>
+        <div class="story-body-text">${s.body}</div>
+        <div class="moral-box">
+          <div class="moral-label">The lesson</div>
+          <div class="moral-text">${s.moral}</div>
+        </div>
+        ${videoHtml}
       </div>
     </div>`;
   dv.scrollIntoView({ behavior: 'smooth' });
@@ -682,7 +920,7 @@ const WISDOM = [
   {q:'You have the right to perform your duty, but never to the fruits of your actions.',src:'Bhagavad Gita 2.47',trad:'Bhagavad Gita',cat:'gita'},
   {q:'The soul is never born nor dies. It is unborn, eternal, ever-existing and primeval.',src:'Bhagavad Gita 2.20',trad:'Bhagavad Gita',cat:'gita'},
   {q:'Let a person raise himself by his own efforts. Let him not degrade himself — for the self alone is the friend of the self, and the self alone is the enemy.',src:'Bhagavad Gita 6.5',trad:'Bhagavad Gita',cat:'gita'},
-  {q:'In the middle of every difficulty lies opportunity.',src:'Albert Einstein',trad:'Modern thought',cat:'philosophy'},
+  {q:'In the middle of every difficulty lies opportunity.',src:'Albert Einstein',trad:'Philosophy',cat:'philosophy'},
   {q:'Be the change you wish to see in the world.',src:'Mahatma Gandhi',trad:'Historical',cat:'history'},
   {q:'Failure is a prerequisite to great success. If you want to succeed faster, double your rate of failure.',src:'APJ Abdul Kalam',trad:'Historical',cat:'history'},
   {q:'Between stimulus and response there is a space. In that space is our power to choose our response. In our response lies our growth and our freedom.',src:'Viktor Frankl, Man\'s Search for Meaning',trad:'Psychology',cat:'psychology'},
@@ -697,7 +935,18 @@ const WISDOM = [
   {q:'Even the darkest night will end and the sun will rise.',src:'Victor Hugo, Les Misérables',trad:'Philosophy',cat:'philosophy'},
 ];
 
-const W_CATS = [{k:'all',l:'All'},{k:'gita',l:'Bhagavad Gita'},{k:'history',l:'Historical'},{k:'philosophy',l:'Philosophy'},{k:'psychology',l:'Psychology'}];
+const W_CATS = [
+  {k:'all',l:'All'},
+  {k:'gita',l:'Bhagavad Gita'},
+  {k:'history',l:'Historical'},
+  {k:'philosophy',l:'Philosophy'},
+  {k:'psychology',l:'Psychology'}
+];
+
+// Badge label per category
+const CAT_LABELS = {
+  gita:'Bhagavad Gita', history:'Historical', philosophy:'Philosophy', psychology:'Psychology'
+};
 
 function buildWisdom() {
   const fEl = document.getElementById('wFilters');
@@ -722,10 +971,11 @@ function renderWisdom() {
   l.innerHTML = '';
   WISDOM.filter(w => wisdomFilter === 'all' || w.cat === wisdomFilter).forEach(w => {
     const d = document.createElement('div');
-    d.className = 'w-item';
-    d.innerHTML = `<div class="w-text">"${w.q}"</div>
-      <div class="w-source">— ${w.src}</div>
-      <div class="w-tradition">${w.trad}</div>`;
+    d.className = `w-item cat-${w.cat}`;
+    d.innerHTML = `
+      <div class="w-tradition-badge">${CAT_LABELS[w.cat] || w.trad}</div>
+      <div class="w-text">"${w.q}"</div>
+      <div class="w-source">— ${w.src}</div>`;
     l.appendChild(d);
   });
 }
