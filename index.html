@@ -383,10 +383,13 @@ body{font-family:var(--font-sans);background:var(--bg-page);color:var(--text-pri
   margin:18px 0 10px;font-family:var(--font-serif)}
 .sm-occasion-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
 .sm-occasion-card{background:var(--bg-card);border:1px solid var(--border-light);
-  border-radius:var(--radius-lg);padding:16px 12px;text-align:center;cursor:pointer;
+  border-radius:var(--radius-lg);overflow:hidden;text-align:center;cursor:pointer;
   transition:all .18s;box-shadow:var(--shadow-sm)}
 .sm-occasion-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:#F3A8CC}
-.sm-occasion-emoji{font-size:26px;margin-bottom:6px;display:block}
+.sm-occasion-img{width:100%;height:80px;object-fit:cover;display:block;transition:transform .3s}
+.sm-occasion-card:hover .sm-occasion-img{transform:scale(1.05)}
+.sm-occasion-body{padding:10px 8px 14px}
+.sm-occasion-emoji{font-size:22px;margin-bottom:4px;display:block}
 .sm-occasion-label{font-size:12.5px;font-weight:600;color:var(--text-primary)}
 
 .sm-detail{background:var(--bg-card);border:1px solid var(--border-light);
@@ -426,6 +429,31 @@ body{font-family:var(--font-sans);background:var(--bg-page);color:var(--text-pri
   background:var(--bg-page);border-radius:var(--radius-md);border:1px dashed var(--border-mid)}
 .sm-accessory-prompt button{display:block;margin:8px auto 0;font-size:12px;font-weight:600;
   color:#DB2777;border:none;background:none;cursor:pointer;text-decoration:underline}
+
+/* Style video guide cards */
+.sm-video-channels{display:flex;flex-direction:column;gap:12px}
+.sm-video-card{background:var(--bg-card);border:1px solid var(--border-light);
+  border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm)}
+.sm-video-card-header{display:flex;align-items:center;gap:10px;padding:13px 14px;
+  background:linear-gradient(135deg,var(--bg-card),#FDF2F8);border-bottom:1px solid var(--border-light)}
+.sm-video-card-emoji{font-size:22px;flex-shrink:0}
+.sm-video-card-title{font-size:13.5px;font-weight:600;color:var(--text-primary);font-family:var(--font-serif)}
+.sm-video-card-creator{font-size:11px;color:var(--text-hint)}
+.sm-video-embeds{display:flex;gap:8px;padding:12px 14px 6px;overflow-x:auto;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none}
+.sm-video-embeds::-webkit-scrollbar{display:none}
+.sm-video-embed-wrap{flex-shrink:0;width:130px;border-radius:var(--radius-sm);
+  overflow:hidden;aspect-ratio:9/16;background:#000}
+.sm-video-embed-wrap iframe{width:100%;height:100%;border:none;display:block}
+.sm-video-card-footer{padding:6px 14px 14px}
+.sm-channel-link{display:flex;align-items:center;gap:8px;padding:9px 12px;
+  background:var(--bg-page);border:1px solid var(--border-mid);border-radius:var(--radius-md);
+  font-size:12px;font-weight:500;color:var(--text-secondary);text-decoration:none;
+  transition:all .15s}
+.sm-channel-link:hover{background:var(--purple-50);border-color:#DB2777;color:#9D174D}
+.sm-channel-link-icon{width:24px;height:24px;border-radius:6px;background:#FF0000;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sm-channel-link-icon svg{fill:#fff;width:12px;height:12px}
 
 /* ── RESPONSIVE ── */
 @media(max-width:480px){
@@ -541,6 +569,9 @@ body{font-family:var(--font-sans);background:var(--bg-page);color:var(--text-pri
     <div id="smOccasionList">
       <div class="sm-section-label">Browse by occasion</div>
       <div class="sm-occasion-grid" id="smOccasionGrid"></div>
+
+      <div class="sm-section-label">📺 Watch real styling demos</div>
+      <div class="sm-video-channels" id="smVideoChannels"></div>
     </div>
 
     <!-- Occasion detail -->
@@ -1092,7 +1123,7 @@ const BODY_SHAPES_MEN = [
 // Occasion definitions. Each has curated outfit ideas for women & men,
 // plus an accessory "mood" used to phrase the accessories section.
 const OCCASIONS = [
-  { id:'formal', emoji:'💼', label:'Formal Wear', accMood:'polished, understated pieces',
+  { id:'formal', emoji:'💼', label:'Formal Wear', accMood:'polished, understated pieces', img:'1593032465175-481ac7f401a0',
     women:[ {emoji:'👗',name:'Structured Saree & Blouse',desc:'A crisp cotton or silk saree with a tailored, fitted blouse.'},
              {emoji:'👔',name:'Kurta with Tailored Trousers',desc:'A straight-cut kurta paired with cigarette or straight trousers.'},
              {emoji:'🧥',name:'Formal Pantsuit with Dupatta',desc:'A structured pantsuit accented with a light dupatta for an Indo-formal look.'},
@@ -1101,7 +1132,7 @@ const OCCASIONS = [
           {emoji:'👔',name:'Formal Shirt & Trousers',desc:'Crisp formal shirt tucked into tailored trousers, minimal accessories.'},
           {emoji:'🧥',name:'Bandhgala Jacket',desc:'A structured Indian bandhgala — sharp and formal for events.'},
           {emoji:'👕',name:'Blazer with Chinos',desc:'Smart-casual blazer over a shirt with tailored chinos.'} ] },
-  { id:'traditional', emoji:'🪔', label:'Traditional Wear', accMood:'rich, heritage gold and temple jewellery',
+  { id:'traditional', emoji:'🪔', label:'Traditional Wear', accMood:'rich, heritage gold and temple jewellery', img:'1583391733956-6c78276477e2',
     women:[ {emoji:'🥻',name:'Kanjeevaram / Banarasi Saree',desc:'A rich silk saree with traditional zari border — timeless and elegant.'},
              {emoji:'👗',name:'Lehenga Choli',desc:'A festive lehenga with embroidered choli for weddings and celebrations.'},
              {emoji:'👚',name:'Salwar Kameez Set',desc:'A classic salwar suit with dupatta — comfortable and graceful.'},
@@ -1110,7 +1141,7 @@ const OCCASIONS = [
           {emoji:'🤵',name:'Sherwani',desc:'A regal sherwani with churidar — perfect for weddings.'},
           {emoji:'👘',name:'Dhoti Kurta',desc:'A traditional dhoti paired with a kurta for festive and ceremonial occasions.'},
           {emoji:'🧥',name:'Nehru Jacket Set',desc:'A kurta layered with a Nehru jacket for an elevated traditional look.'} ] },
-  { id:'party', emoji:'✨', label:'Party Wear', accMood:'bold, statement pieces that catch the light',
+  { id:'party', emoji:'✨', label:'Party Wear', accMood:'bold, statement pieces that catch the light', img:'1496337589254-7e19d01cec44',
     women:[ {emoji:'👗',name:'Sequinned Gown / Indo-Western',desc:'A shimmering gown or fusion outfit for evening celebrations.'},
              {emoji:'👗',name:'Designer Lehenga',desc:'A glamorous lehenga with contemporary embellishment.'},
              {emoji:'🥻',name:'Shimmer Saree',desc:'A saree in metallic or sequinned fabric for a glamorous evening look.'},
@@ -1119,7 +1150,7 @@ const OCCASIONS = [
           {emoji:'🧥',name:'Indo-Western Jacket Set',desc:'A fusion jacket over a kurta for a stylish party look.'},
           {emoji:'👘',name:'Designer Kurta',desc:'An embellished or textured kurta for evening celebrations.'},
           {emoji:'🤵',name:'Bandhgala with Churidar',desc:'A sharp bandhgala set for a striking party silhouette.'} ] },
-  { id:'casual', emoji:'👟', label:'Casual Wear', accMood:'minimal, everyday-comfortable pieces',
+  { id:'casual', emoji:'👟', label:'Casual Wear', accMood:'minimal, everyday-comfortable pieces', img:'1521572163474-6864f9cf17ab',
     women:[ {emoji:'👚',name:'Cotton Kurti with Leggings',desc:'A breathable, everyday combination — simple and comfortable.'},
              {emoji:'👗',name:'Palazzo Set',desc:'A relaxed top with flowy palazzo pants for all-day ease.'},
              {emoji:'👖',name:'Denim with Kurti',desc:'A casual kurti paired with jeans for a comfortable fusion look.'},
@@ -1128,7 +1159,7 @@ const OCCASIONS = [
           {emoji:'👕',name:'Polo with Chinos',desc:'A smart-casual polo shirt with comfortable chinos.'},
           {emoji:'👔',name:'Linen Shirt Set',desc:'A breathable linen shirt with matching trousers for warm days.'},
           {emoji:'👕',name:'Tee with Joggers',desc:'A relaxed, comfortable everyday combination.'} ] },
-  { id:'trekking', emoji:'⛰️', label:'Trekking', accMood:'functional, minimal — safety over style',
+  { id:'trekking', emoji:'⛰️', label:'Trekking', accMood:'functional, minimal — safety over style', img:'1551632811-561732d1e306',
     women:[ {emoji:'🥾',name:'Quick-Dry Trekking Pants',desc:'Lightweight, stretchable pants built for movement.'},
              {emoji:'👕',name:'Moisture-Wicking Tee',desc:'A breathable layer that keeps you dry on the climb.'},
              {emoji:'🧥',name:'Layered Light Jacket',desc:'An easily removable layer for changing mountain weather.'},
@@ -1137,7 +1168,7 @@ const OCCASIONS = [
           {emoji:'👕',name:'Breathable Tech Tee',desc:'A moisture-wicking layer to stay comfortable on the trail.'},
           {emoji:'🧥',name:'Layered Trekking Jacket',desc:'Windproof outer layer for unpredictable weather.'},
           {emoji:'🥾',name:'Sturdy Trekking Shoes',desc:'Grippy, ankle-supportive footwear for safety on the trail.'} ] },
-  { id:'travel', emoji:'✈️', label:'Travelling', accMood:'lightweight, easy to pack and move in',
+  { id:'travel', emoji:'✈️', label:'Travelling', accMood:'lightweight, easy to pack and move in', img:'1488646953014-85cb44e25828',
     women:[ {emoji:'👗',name:'Comfortable Jumpsuit',desc:'A one-piece outfit that\'s easy to move in and pack light.'},
              {emoji:'👚',name:'Stretchable Kurta Set',desc:'A soft, breathable set ideal for long journeys.'},
              {emoji:'🧥',name:'Layered Travel Wear',desc:'Light layers that adapt easily to changing temperatures.'},
@@ -1146,7 +1177,7 @@ const OCCASIONS = [
           {emoji:'👕',name:'Breathable Shirt',desc:'A relaxed shirt that stays comfortable through a long journey.'},
           {emoji:'🧥',name:'Layered Jacket',desc:'An easy outer layer for airport AC and changing climates.'},
           {emoji:'👟',name:'Easy Slip-On Shoes',desc:'Comfortable, easy-to-remove shoes for security lines and long walks.'} ] },
-  { id:'beach', emoji:'🏖️', label:'Beachside', accMood:'light, water-friendly, minimal',
+  { id:'beach', emoji:'🏖️', label:'Beachside', accMood:'light, water-friendly, minimal', img:'1507525428034-b723cf961d3e',
     women:[ {emoji:'👗',name:'Flowy Cover-Up',desc:'A breezy cover-up perfect over swimwear or as a standalone dress.'},
              {emoji:'👘',name:'Cotton Kaftan',desc:'A relaxed, breathable kaftan ideal for sun and sand.'},
              {emoji:'👗',name:'Beach Maxi Dress',desc:'A light, flowing dress that moves easily in sea breeze.'},
@@ -1155,7 +1186,7 @@ const OCCASIONS = [
           {emoji:'🩳',name:'Comfortable Shorts',desc:'Quick-dry shorts ideal for sand and water.'},
           {emoji:'👘',name:'Light Cotton Kurta',desc:'A relaxed kurta for beachside evenings.'},
           {emoji:'👕',name:'Breathable Fabrics Overall',desc:'Stick to linen and cotton — avoid heavy or dark synthetic fabrics in the sun.'} ] },
-  { id:'temple', emoji:'🛕', label:'Temple Visits', accMood:'simple, modest, traditional gold',
+  { id:'temple', emoji:'🛕', label:'Temple Visits', accMood:'simple, modest, traditional gold', img:'1582719478250-c89cae4dc85b',
     women:[ {emoji:'🥻',name:'Simple Cotton or Silk Saree',desc:'A modest saree in soft colours — traditional and respectful.'},
              {emoji:'👚',name:'Modest Salwar Kameez',desc:'A full-coverage salwar suit, ideal for temple visits.'},
              {emoji:'👘',name:'Traditional Kurta Set',desc:'A simple, modest kurta set with dupatta.'},
@@ -1166,10 +1197,58 @@ const OCCASIONS = [
           {emoji:'🚫',name:'Avoid Shorts/Sleeveless',desc:'Most temples expect modest coverage — check the specific temple\'s dress code.'} ] }
 ];
 
+// Curated style/beauty creators — verified channels, real demo videos.
+// videoIds: confirmed YouTube video/short IDs to embed inline.
+// channelUrl: link to the full channel for "more like this".
+const STYLE_VIDEO_CHANNELS = [
+  { id:'bodyshape', emoji:'📐', title:'Dress for Your Body Shape',
+    creator:'Ishita Saluja — Image Consultant',
+    channelUrl:'https://www.youtube.com/@ishitasalujaimageconsultancy/shorts',
+    videoIds:['21TzZdWck-o','R8VheBG38mY','jbIkdu2YScU'] },
+  { id:'lipstick', emoji:'💄', title:'Lipstick Shade Guide',
+    creator:'SUSH dazzles — Beauty & Makeup',
+    channelUrl:'https://www.youtube.com/@SushDazzles/shorts',
+    videoIds:['R12RDvBoBM4','pIQC4ndDRkw','XhE5Vf92Ymo'] },
+  { id:'lookbook', emoji:'👗', title:'Outfit Lookbooks & Office Wear',
+    creator:'The Lifestyle Cog — Jashan',
+    channelUrl:'https://www.youtube.com/@TheLifestyleCog',
+    videoIds:['YeV9eDZsmMM'] },
+  { id:'indianfashion', emoji:'🌸', title:'Indian Fashion & Beauty (Hindi)',
+    creator:'Perkymegs Hindi',
+    channelUrl:'https://www.youtube.com/@PerkymegsHindi/shorts',
+    videoIds:[] }
+];
+
+function renderSmVideoChannels(){
+  const wrap=document.getElementById('smVideoChannels'); if(!wrap) return;
+  wrap.innerHTML='';
+  STYLE_VIDEO_CHANNELS.forEach(ch=>{
+    const card=document.createElement('div');
+    card.className='sm-video-card';
+    const embeds = ch.videoIds.map(vid=>
+      `<div class="sm-video-embed-wrap"><iframe src="https://www.youtube.com/embed/${vid}" title="${ch.title}" allowfullscreen loading="lazy"></iframe></div>`
+    ).join('');
+    card.innerHTML=`
+      <div class="sm-video-card-header">
+        <span class="sm-video-card-emoji">${ch.emoji}</span>
+        <div><div class="sm-video-card-title">${ch.title}</div><div class="sm-video-card-creator">${ch.creator}</div></div>
+      </div>
+      ${embeds ? `<div class="sm-video-embeds">${embeds}</div>` : ''}
+      <div class="sm-video-card-footer">
+        <a class="sm-channel-link" href="${ch.channelUrl}" target="_blank" rel="noopener noreferrer">
+          <span class="sm-channel-link-icon"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg></span>
+          More from ${ch.creator.split(' — ')[0]} →
+        </a>
+      </div>`;
+    wrap.appendChild(card);
+  });
+}
+
 function buildStyle(){
   renderSmGenderRow();
   renderSmShapeGrids();
   renderSmOccasionGrid();
+  renderSmVideoChannels();
   updateSmProfileUI();
 }
 
@@ -1241,7 +1320,7 @@ function renderSmOccasionGrid(){
   OCCASIONS.forEach(o=>{
     const c=document.createElement('div');
     c.className='sm-occasion-card';
-    c.innerHTML=`<span class="sm-occasion-emoji">${o.emoji}</span><div class="sm-occasion-label">${o.label}</div>`;
+    c.innerHTML=`<img class="sm-occasion-img" src="https://images.unsplash.com/photo-${o.img}?auto=format&fit=crop&w=300&h=80&q=70" loading="lazy" alt="${o.label}" onerror="this.style.display='none'"><div class="sm-occasion-body"><span class="sm-occasion-emoji">${o.emoji}</span><div class="sm-occasion-label">${o.label}</div></div>`;
     c.onclick=()=>showSmOccasion(o.id);
     g.appendChild(c);
   });
@@ -1265,7 +1344,7 @@ function showSmOccasion(occId){
     </div>`).join('');
 
   const bodyTipHtml = body
-    ? `<div class="sm-tip-box"><strong>For your ${body.label} body shape</strong>${body.wear} ${body.avoid}</div>`
+    ? `<div class="sm-tip-box"><strong>For your ${body.label} body shape</strong>${body.wear} ${body.avoid} <a href="https://www.youtube.com/@ishitasalujaimageconsultancy/shorts" target="_blank" rel="noopener noreferrer" style="color:var(--green-600);font-weight:600;text-decoration:underline">Watch real styling demos →</a></div>`
     : `<div class="sm-accessory-prompt">Set your body shape above to get fit tips tailored to you.<button onclick="editSmProfile();document.getElementById('smOccasionDetail').style.display='none';document.getElementById('smOccasionList').style.display='block';window.scrollTo({top:0,behavior:'smooth'})">Build my style profile →</button></div>`;
 
   let accessoryHtml;
@@ -1273,7 +1352,8 @@ function showSmOccasion(occId){
     const a = smGender==='men' ? face.men : face.women;
     const rows = smGender==='men'
       ? [['💇','Hairstyle',a.hairstyle], ['🧔','Beard',a.beard], ['👓','Glasses (if worn)',a.glasses]]
-      : [['💇','Hairstyle',a.hairstyle], ['💎','Earrings',a.earrings], ['📿','Necklace',a.necklace]];
+      : [['💇','Hairstyle',a.hairstyle], ['💎','Earrings',a.earrings], ['📿','Necklace',a.necklace],
+         ['💄','Lipstick shade','Pick warmer reds/corals for festive occasions, soft nudes/MLBBs for daytime. <a href="https://www.youtube.com/@SushDazzles/shorts" target="_blank" rel="noopener noreferrer" style="color:#DB2777;font-weight:600;text-decoration:underline">Watch shade guide →</a>']];
     accessoryHtml = `
       <div class="sm-accessory-section">
         <div class="sm-accessory-title">💍 Accessories for your ${face.label} face</div>
