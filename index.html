@@ -372,12 +372,16 @@ body{font-family:var(--font-sans);background:var(--bg-page);color:var(--text-pri
   font-family:var(--font-serif)}
 .sm-shape-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .sm-shape-card{background:var(--bg-card);border:1.5px solid var(--border-mid);
-  border-radius:var(--radius-md);padding:12px 8px;text-align:center;cursor:pointer;
+  border-radius:var(--radius-md);padding:12px 8px 10px;text-align:center;cursor:pointer;
   transition:all .15s}
 .sm-shape-card:hover{border-color:#DB2777}
 .sm-shape-card.selected{border-color:#DB2777;background:linear-gradient(135deg,var(--bg-card),#FDF2F8)}
 .sm-shape-card svg{width:44px;height:44px;margin-bottom:6px}
 .sm-shape-card-label{font-size:11px;font-weight:600;color:var(--text-primary)}
+.sm-shape-card-desc{font-size:9.5px;color:var(--text-hint);line-height:1.3;margin-top:2px;min-height:22px}
+.sm-shape-card-link{display:inline-block;margin-top:6px;font-size:9.5px;font-weight:600;
+  color:#DB2777;text-decoration:none}
+.sm-shape-card-link:hover{text-decoration:underline}
 
 .sm-section-label{font-size:13px;font-weight:600;color:var(--text-primary);
   margin:18px 0 10px;font-family:var(--font-serif)}
@@ -460,7 +464,7 @@ body{font-family:var(--font-sans);background:var(--bg-page);color:var(--text-pri
   .brand{font-size:34px}.age-btn{padding:10px 18px;font-size:13px}
   .bubble{font-size:13px}.panel{padding:12px}.topbar{padding:11px 14px}
   .story-hero{height:150px}.chat-visual img{height:100px}.mc-top{gap:10px}
-  .sm-occasion-grid{grid-template-columns:repeat(2,1fr)}.sm-shape-grid{grid-template-columns:repeat(3,1fr);gap:6px}
+  .sm-occasion-grid{grid-template-columns:repeat(2,1fr)}.sm-shape-grid{grid-template-columns:repeat(2,1fr);gap:8px}
   .sm-shape-card svg{width:36px;height:36px}
 }
 @media(prefers-reduced-motion:reduce){
@@ -534,6 +538,9 @@ body{font-family:var(--font-sans);background:var(--bg-page);color:var(--text-pri
       <div class="music-intro-title">🎵 Sacred Music &amp; Frequencies</div>
       <div class="music-intro-sub">Morning prayers, devotional songs, concentration music and healing frequencies — curated by mood and moment.</div>
     </div>
+    <div class="sm-section-label" style="margin-top:0">🎭 What's your mood right now?</div>
+    <div class="m-filter-row" id="mMoodFilters"></div>
+    <div class="sm-section-label">Or browse by category &amp; language</div>
     <div class="m-filter-row" id="mCatFilters"></div>
     <div class="m-filter-row" id="mLangFilters"></div>
     <div class="music-grid" id="musicGrid"></div>
@@ -594,7 +601,7 @@ const API_BASE = window.location.hostname === 'localhost' || window.location.hos
 let ageGroup=null, ageName='', ageEmoji='';
 let chatHistory=[];
 let storyFilter='all', wisdomFilter='all';
-let musicCatFilter='all', musicLangFilter='all';
+let musicCatFilter='all', musicLangFilter='all', musicMoodFilter='all';
 let smGender=null, smFaceShape=null, smBodyShape=null;
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -1034,7 +1041,7 @@ function bodySilhouette(sw, ww, hw){
 }
 
 const FACE_SHAPES = [
-  { id:'oval', label:'Oval',
+  { id:'oval', label:'Oval', desc:'Balanced, slightly longer than wide, soft jaw',
     svg:'<ellipse cx="22" cy="22" rx="12" ry="17"/>',
     women:{ hairstyle:'Most styles suit you — soft layers, long waves, or a sleek bun all work beautifully.',
             earrings:'Almost any shape works — try studs, hoops, drops or jhumkas freely.',
@@ -1042,7 +1049,7 @@ const FACE_SHAPES = [
     men:{ hairstyle:'Versatile — try a classic crop, side part, or textured quiff.',
           beard:'Most beard styles work; a light stubble or full beard both suit you.',
           glasses:'Most frame shapes work — square or round frames both flatter you.' } },
-  { id:'round', label:'Round',
+  { id:'round', label:'Round', desc:'Width ≈ length, soft rounded jaw, full cheeks',
     svg:'<circle cx="22" cy="22" r="15"/>',
     women:{ hairstyle:'Go for height at the crown and long layers past the chin to elongate the face — avoid full blunt bobs.',
             earrings:'Long drop earrings or angular geometric shapes elongate the face beautifully.',
@@ -1050,7 +1057,7 @@ const FACE_SHAPES = [
     men:{ hairstyle:'Add height on top with a quiff or pompadour; keep the sides shorter to elongate the face.',
           beard:'A beard with more length at the chin and shorter at the cheeks adds definition.',
           glasses:'Angular, rectangular frames add structure and contrast nicely.' } },
-  { id:'square', label:'Square',
+  { id:'square', label:'Square', desc:'Strong angular jaw, forehead ≈ jaw width',
     svg:'<rect x="8" y="8" width="28" height="30" rx="6"/>',
     women:{ hairstyle:'Soft layers, side-swept bangs or waves soften strong jaw angles beautifully.',
             earrings:'Rounded hoops or soft curved drops balance the jawline well.',
@@ -1058,7 +1065,7 @@ const FACE_SHAPES = [
     men:{ hairstyle:'A textured crop or side part complements your strong jaw nicely.',
           beard:'A rounded beard shape softens strong angles without hiding them.',
           glasses:'Round or oval frames soften your strong jawline elegantly.' } },
-  { id:'heart', label:'Heart',
+  { id:'heart', label:'Heart', desc:'Wider forehead/cheekbones, narrow pointed chin',
     svg:'<path d="M8,14 Q8,6 22,6 Q36,6 36,14 Q36,24 22,40 Q8,24 8,14 Z"/>',
     women:{ hairstyle:'Chin-length styles or side-swept layers balance a wider forehead with a narrower chin.',
             earrings:'Wider, statement earrings near the jaw add lovely balance.',
@@ -1066,7 +1073,7 @@ const FACE_SHAPES = [
     men:{ hairstyle:'Keep some volume at the sides; avoid too much height on top.',
           beard:'A fuller beard at the chin adds welcome width to balance the face.',
           glasses:'Bottom-heavy or rimless frames balance a narrower chin nicely.' } },
-  { id:'long', label:'Long',
+  { id:'long', label:'Long', desc:'Noticeably longer than wide, narrow cheeks',
     svg:'<ellipse cx="22" cy="22" rx="9" ry="19"/>',
     women:{ hairstyle:'Add width with waves, curls or a fringe — avoid very long straight styles that elongate further.',
             earrings:'Wider studs or button earrings add helpful horizontal width.',
@@ -1074,7 +1081,7 @@ const FACE_SHAPES = [
     men:{ hairstyle:'Keep length shorter on top; fringes or textured crops add width.',
           beard:'A fuller beard along the sides (not the chin) adds welcome width.',
           glasses:'Wide, bold frames with strong horizontal lines flatter you well.' } },
-  { id:'diamond', label:'Diamond',
+  { id:'diamond', label:'Diamond', desc:'Narrow forehead/chin, wide prominent cheekbones',
     svg:'<path d="M22,4 L36,20 L22,40 L8,20 Z"/>',
     women:{ hairstyle:'Styles with volume at the forehead and chin balance prominent cheekbones beautifully.',
             earrings:'Studs or chandelier earrings draw the eye and add gentle width at jaw level.',
@@ -1085,37 +1092,37 @@ const FACE_SHAPES = [
 ];
 
 const BODY_SHAPES_WOMEN = [
-  { id:'hourglass', label:'Hourglass', sw:13, ww:7, hw:13,
+  { id:'hourglass', label:'Hourglass', desc:'Shoulders & hips balanced, clearly narrow waist', sw:13, ww:7, hw:13,
     wear:'Fitted silhouettes that follow your natural waistline — wrap dresses, fitted kurtas with a belt, and structured blouses with sarees.',
     avoid:'Avoid boxy, shapeless cuts that hide your defined waist.' },
-  { id:'pear', label:'Pear', sw:9, ww:8, hw:14,
+  { id:'pear', label:'Pear', desc:'Hips noticeably wider than shoulders', sw:9, ww:8, hw:14,
     wear:'A-line skirts and lehengas, statement tops/blouses with detail at the shoulder, and darker shades on bottom to balance proportions.',
     avoid:'Avoid heavily embellished bottoms paired with very plain tops.' },
-  { id:'apple', label:'Apple', sw:11, ww:13, hw:10,
+  { id:'apple', label:'Apple', desc:'Fuller through the middle, narrower shoulders/hips', sw:11, ww:13, hw:10,
     wear:'Empire waistlines, flowy anarkalis, and V-necklines that create a lovely vertical line and draw the eye upward.',
     avoid:'Avoid tight waistbands and clingy fabrics at the midsection.' },
-  { id:'rectangle', label:'Rectangle', sw:10, ww:10, hw:10,
+  { id:'rectangle', label:'Rectangle', desc:'Shoulders, waist & hips similar width', sw:10, ww:10, hw:10,
     wear:'Belted dresses, peplum tops, and ruffled or tiered lehengas create the illusion of curves beautifully.',
     avoid:'Avoid perfectly straight, unstructured shifts that skip the waist entirely.' },
-  { id:'inverted-triangle', label:'Inverted Triangle', sw:14, ww:9, hw:8,
+  { id:'inverted-triangle', label:'Inverted Triangle', desc:'Shoulders broader than hips', sw:14, ww:9, hw:8,
     wear:'A-line and flared bottoms, wide-leg palazzos, and detailing at the hip balance broader shoulders beautifully.',
     avoid:'Avoid heavy embellishment at the shoulders or puff sleeves.' }
 ];
 
 const BODY_SHAPES_MEN = [
-  { id:'trapezoid', label:'Athletic / V-Shape', sw:15, ww:8, hw:9,
+  { id:'trapezoid', label:'Athletic / V-Shape', desc:'Broad shoulders tapering to narrow waist', sw:15, ww:8, hw:9,
     wear:'Most fits work well — fitted shirts and well-tailored kurtas show off your natural shape beautifully.',
     avoid:'Avoid overly baggy fits that hide your natural athletic build.' },
-  { id:'rectangle-m', label:'Rectangle', sw:11, ww:11, hw:11,
+  { id:'rectangle-m', label:'Rectangle', desc:'Shoulders, waist & hips similar width', sw:11, ww:11, hw:11,
     wear:'Layering with jackets/Nehru vests and textured fabrics creates definition and visual interest.',
     avoid:'Avoid completely flat, unstructured fabrics with no texture.' },
-  { id:'triangle', label:'Triangle / Pear', sw:8, ww:10, hw:13,
+  { id:'triangle', label:'Triangle / Pear', desc:'Hips & waist wider than shoulders', sw:8, ww:10, hw:13,
     wear:'Structured shoulders, horizontal stripes up top, and darker, well-fitted bottoms balance proportions nicely.',
     avoid:'Avoid skinny-fit trousers paired with plain, unstructured tops.' },
-  { id:'oval-m', label:'Oval / Round', sw:10, ww:14, hw:11,
+  { id:'oval-m', label:'Oval / Round', desc:'Fuller midsection, narrower shoulders/hips', sw:10, ww:14, hw:11,
     wear:'Vertical patterns, open structured jackets, and well-fitted (not tight) shirts create a flattering, elongated line.',
     avoid:'Avoid tucked-in fitted shirts and horizontal stripes at the midsection.' },
-  { id:'inverted-triangle-m', label:'Inverted Triangle', sw:15, ww:9, hw:8,
+  { id:'inverted-triangle-m', label:'Inverted Triangle', desc:'Broad shoulders, narrow hips', sw:15, ww:9, hw:8,
     wear:'Straight-fit trousers and minimal shoulder detailing balance broader shoulders nicely.',
     avoid:'Avoid extra padding or embellishment at the shoulders.' }
 ];
@@ -1133,16 +1140,16 @@ const OCCASIONS = [
           {emoji:'🧥',name:'Bandhgala Jacket',desc:'A structured Indian bandhgala — sharp and formal for events.'},
           {emoji:'👕',name:'Blazer with Chinos',desc:'Smart-casual blazer over a shirt with tailored chinos.'} ] },
   { id:'traditional', emoji:'🪔', label:'Traditional Wear', accMood:'rich, heritage gold and temple jewellery', img:'1583391733956-6c78276477e2',
-    women:[ {emoji:'🥻',name:'Kanjeevaram / Banarasi Saree',desc:'A rich silk saree with traditional zari border — timeless and elegant.'},
-             {emoji:'👗',name:'Lehenga Choli',desc:'A festive lehenga with embroidered choli for weddings and celebrations.'},
-             {emoji:'👚',name:'Salwar Kameez Set',desc:'A classic salwar suit with dupatta — comfortable and graceful.'},
-             {emoji:'👗',name:'Embroidered Anarkali Suit',desc:'A flared anarkali with detailed embroidery for festive occasions.'} ],
+    women:[ {emoji:'🥻',name:'Kanjeevaram / Banarasi Saree',desc:'A rich silk saree with traditional zari border — timeless and elegant.',videoIds:['FwRCAp2K6Bk','ngmKhrO0ySs']},
+             {emoji:'👗',name:'Lehenga Choli',desc:'A festive lehenga with embroidered choli for weddings and celebrations.',videoIds:['yw9ThZo2u3E','W_4ji-yWvIo','GA9Y7nxVOqs','tsrs_ix6t1k','oaHqS5N1Txo','63eBb08d9mQ','LMnrkvCjgTs','3bbtvXNwBAo','MOKzxyTotzM','ZkIdwdxk1Ow','lGOMZ2uvVRM','AKR_DG7yHnM']},
+             {emoji:'👚',name:'Salwar Kameez Set',desc:'A classic salwar suit with dupatta — comfortable and graceful.',videoIds:['ePHcQIU6ZLM','iA0Lgaq8jlU','7qZyDOFsGjc','4HI9-DhuoCc','JcrWXAQFn9Y','sPHFloOM3Os','8auNhyrGlI8','Voe5qIKT57Y','unm_BJHGkqg']},
+             {emoji:'👗',name:'Embroidered Anarkali Suit',desc:'A flared anarkali with detailed embroidery for festive occasions.',videoIds:['HIIcNgNzfp0','E1cEsS8OKC8','I43guWoMHek']} ],
     men:[ {emoji:'👘',name:'Kurta Pajama',desc:'A classic cotton or silk kurta with matching pajama.'},
           {emoji:'🤵',name:'Sherwani',desc:'A regal sherwani with churidar — perfect for weddings.'},
           {emoji:'👘',name:'Dhoti Kurta',desc:'A traditional dhoti paired with a kurta for festive and ceremonial occasions.'},
           {emoji:'🧥',name:'Nehru Jacket Set',desc:'A kurta layered with a Nehru jacket for an elevated traditional look.'} ] },
   { id:'party', emoji:'✨', label:'Party Wear', accMood:'bold, statement pieces that catch the light', img:'1496337589254-7e19d01cec44',
-    women:[ {emoji:'👗',name:'Sequinned Gown / Indo-Western',desc:'A shimmering gown or fusion outfit for evening celebrations.'},
+    women:[ {emoji:'👗',name:'Sequinned Gown / Indo-Western',desc:'A shimmering gown or fusion outfit for evening celebrations.',videoIds:['_GjIrd-pJdw','o58NWuvbVfU']},
              {emoji:'👗',name:'Designer Lehenga',desc:'A glamorous lehenga with contemporary embellishment.'},
              {emoji:'🥻',name:'Shimmer Saree',desc:'A saree in metallic or sequinned fabric for a glamorous evening look.'},
              {emoji:'👚',name:'Co-ord Party Set',desc:'A matching crop-top and skirt or pant set for a modern party look.'} ],
@@ -1271,7 +1278,8 @@ function renderSmShapeGrids(){
   FACE_SHAPES.forEach(f=>{
     const c=document.createElement('div');
     c.className='sm-shape-card'+(smFaceShape===f.id?' selected':'');
-    c.innerHTML=`<svg viewBox="0 0 44 44" fill="none" stroke="#DB2777" stroke-width="2">${f.svg}</svg><div class="sm-shape-card-label">${f.label}</div>`;
+    const faceSearch=`https://www.youtube.com/results?search_query=${encodeURIComponent(f.label+' face shape guide examples hairstyle')}`;
+    c.innerHTML=`<svg viewBox="0 0 44 44" fill="none" stroke="#DB2777" stroke-width="2">${f.svg}</svg><div class="sm-shape-card-label">${f.label}</div><div class="sm-shape-card-desc">${f.desc}</div><a class="sm-shape-card-link" href="${faceSearch}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">🔍 See examples</a>`;
     c.onclick=()=>{ smFaceShape=f.id; renderSmShapeGrids(); updateSmProfileUI(); };
     faceGrid.appendChild(c);
   });
@@ -1281,7 +1289,8 @@ function renderSmShapeGrids(){
   bodyList.forEach(b=>{
     const c=document.createElement('div');
     c.className='sm-shape-card'+(smBodyShape===b.id?' selected':'');
-    c.innerHTML=`<svg viewBox="0 0 44 44" fill="#DB2777" opacity="0.85">${bodySilhouette(b.sw,b.ww,b.hw)}</svg><div class="sm-shape-card-label">${b.label}</div>`;
+    const bodySearch=`https://www.youtube.com/results?search_query=${encodeURIComponent(b.label+' body shape styling tips Indian '+(smGender||''))}`;
+    c.innerHTML=`<svg viewBox="0 0 44 44" fill="#DB2777" opacity="0.85">${bodySilhouette(b.sw,b.ww,b.hw)}</svg><div class="sm-shape-card-label">${b.label}</div><div class="sm-shape-card-desc">${b.desc}</div><a class="sm-shape-card-link" href="${bodySearch}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">🔍 See examples</a>`;
     c.onclick=()=>{ smBodyShape=b.id; renderSmShapeGrids(); updateSmProfileUI(); };
     bodyGrid.appendChild(c);
   });
@@ -1337,11 +1346,23 @@ function showSmOccasion(occId){
   const dv=document.getElementById('smOccasionDetail');
   dv.style.display='block';
 
-  const outfitHtml = outfits.map(it=>`
-    <div class="sm-outfit-item">
-      <span class="sm-outfit-emoji">${it.emoji}</span>
-      <div><div class="sm-outfit-name">${it.name}</div><div class="sm-outfit-desc">${it.desc}</div></div>
-    </div>`).join('');
+  const outfitHtml = outfits.map(it=>{
+    const searchLink=`https://www.youtube.com/results?search_query=${encodeURIComponent(it.name+' '+(smGender==='men'?'men':'women')+' Indian style')}`;
+    const hasVideos = it.videoIds && it.videoIds.length>0;
+    const embeds = hasVideos ? it.videoIds.map(vid=>
+      `<div class="sm-video-embed-wrap"><iframe src="https://www.youtube.com/embed/${vid}" title="${it.name}" allowfullscreen loading="lazy"></iframe></div>`
+    ).join('') : '';
+    return `
+    <div class="sm-outfit-item" style="flex-direction:column;align-items:stretch">
+      <div style="display:flex;gap:10px">
+        <span class="sm-outfit-emoji">${it.emoji}</span>
+        <div style="flex:1"><div class="sm-outfit-name">${it.name}</div><div class="sm-outfit-desc">${it.desc}</div></div>
+        ${!hasVideos ? `<a href="${searchLink}" target="_blank" rel="noopener noreferrer" style="font-size:11px;font-weight:600;color:#DB2777;white-space:nowrap;flex-shrink:0;align-self:center;text-decoration:none">🔍 Examples</a>` : ''}
+      </div>
+      ${hasVideos ? `<div class="sm-video-embeds" style="padding:10px 0 0">${embeds}</div>
+        <a href="${searchLink}" target="_blank" rel="noopener noreferrer" style="font-size:10.5px;font-weight:600;color:#DB2777;text-decoration:none;padding-left:42px">🔍 See more examples</a>` : ''}
+    </div>`;
+  }).join('');
 
   const bodyTipHtml = body
     ? `<div class="sm-tip-box"><strong>For your ${body.label} body shape</strong>${body.wear} ${body.avoid} <a href="https://www.youtube.com/@ishitasalujaimageconsultancy/shorts" target="_blank" rel="noopener noreferrer" style="color:var(--green-600);font-weight:600;text-decoration:underline">Watch real styling demos →</a></div>`
@@ -1370,6 +1391,8 @@ function showSmOccasion(occId){
       </div>`;
   }
 
+  const occVideoSearch=`https://www.youtube.com/results?search_query=${encodeURIComponent(o.label+' outfit ideas '+(smGender==='men'?'men':'women')+' Indian styling')}`;
+
   dv.innerHTML = `
     <div class="sm-detail">
       <div class="sm-detail-header">
@@ -1379,6 +1402,11 @@ function showSmOccasion(occId){
       </div>
       <div class="sm-detail-body">
         <div class="sm-outfit-list">${outfitHtml}</div>
+        <a class="yt-search-btn" href="${occVideoSearch}" target="_blank" rel="noopener noreferrer" style="margin-bottom:16px">
+          <div class="yt-icon"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg></div>
+          <div><strong style="display:block;font-size:13px;color:var(--text-primary)">Watch more ${o.label} styling videos</strong><span style="font-size:11px;color:var(--text-hint)">Real outfit demos on YouTube</span></div>
+          <span style="margin-left:auto;color:var(--text-hint)">→</span>
+        </a>
         ${bodyTipHtml}
         ${accessoryHtml}
       </div>
@@ -1765,6 +1793,17 @@ const CAT_FILTERS=[{k:'all',l:'All'},{k:'morning',l:'🌅 Morning'},{k:'devotion
 const LANG_FILTERS=[{k:'all',l:'All languages'},{k:'Kannada',l:'Kannada'},{k:'Hindi',l:'Hindi'},{k:'Sanskrit',l:'Sanskrit'},{k:'Banjara',l:'Banjara'},{k:'English',l:'English'},{k:'Devotional',l:'Devotional'},{k:'Instrumental',l:'Instrumental'}];
 
 function buildMusic(){
+  // Mood filters — reuses the `moods` field already on every track
+  const MOOD_FILTERS=[{k:'all',l:'🎵 All moods'},{k:'calm',l:'😌 Calm'},{k:'courage',l:'💪 Courage'},{k:'hope',l:'🌅 Hope'},{k:'wisdom',l:'📖 Wisdom'},{k:'strength',l:'🦁 Strength'},{k:'growth',l:'🌱 Growth'}];
+  const mEl=document.getElementById('mMoodFilters'); mEl.innerHTML='';
+  MOOD_FILTERS.forEach(f=>{
+    const b=document.createElement('button');
+    b.className='mf'+(f.k==='all'?' active':'');
+    b.setAttribute('data-cat', f.k==='all'?'all':'devotional'); // reuse purple active styling
+    b.textContent=f.l;
+    b.onclick=()=>{musicMoodFilter=f.k; document.querySelectorAll('#mMoodFilters .mf').forEach(x=>x.classList.remove('active')); b.classList.add('active'); renderMusicGrid();};
+    mEl.appendChild(b);
+  });
   // Category filters
   const cEl=document.getElementById('mCatFilters'); cEl.innerHTML='';
   CAT_FILTERS.forEach(f=>{
@@ -1789,7 +1828,7 @@ function buildMusic(){
 function renderMusicGrid(){
   const g=document.getElementById('musicGrid'); g.innerHTML='';
   MUSIC_LIBRARY
-    .filter(m=>(musicCatFilter==='all'||m.cat===musicCatFilter)&&(musicLangFilter==='all'||m.langShort===musicLangFilter))
+    .filter(m=>(musicCatFilter==='all'||m.cat===musicCatFilter)&&(musicLangFilter==='all'||m.langShort===musicLangFilter)&&(musicMoodFilter==='all'||(m.moods&&m.moods.includes(musicMoodFilter))))
     .forEach(m=>{
       const card=document.createElement('div');
       card.className=`music-card mc-${m.cat}`;
