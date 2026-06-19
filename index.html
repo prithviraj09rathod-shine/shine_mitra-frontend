@@ -3,406 +3,406 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<meta name="description" content="Mitra — your wise companion for life's difficult moments. Rooted in Gita, Ramayana, history and psychology.">
+<meta name="description" content="Mitra — your wise companion for life's difficult moments.">
 <meta name="theme-color" content="#534AB7">
-<meta property="og:title" content="Mitra — Your Wise Companion">
-<meta property="og:description" content="Best friend, parent and teacher in every difficult moment.">
 <title>Mitra — Your Wise Companion</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --purple-50:#EEEDFE;--purple-100:#CECBF6;--purple-200:#AFA9EC;
-    --purple-400:#7F77DD;--purple-600:#534AB7;--purple-800:#3C3489;--purple-900:#26215C;
-    --amber-50:#FAEEDA;--amber-200:#EF9F27;--amber-600:#854F0B;--amber-800:#633806;
-    --green-50:#EAF3DE;--green-600:#3B6D11;--green-800:#27500A;
-    --teal-50:#E1F5EE;--teal-600:#0F6E56;
-    --gray-50:#F8F7F4;--gray-100:#F1EFE8;--gray-200:#D3D1C7;
-    --gray-600:#5F5E5A;--gray-800:#2C2C2A;
-    --text-primary:#1A1A18;--text-secondary:#5F5E5A;--text-hint:#8E8D88;
-    --bg-page:#F8F7F4;--bg-card:#FFFFFF;--bg-input:#FFFFFF;
-    --border-light:rgba(0,0,0,0.08);--border-mid:rgba(0,0,0,0.14);
-    --shadow-sm:0 1px 3px rgba(0,0,0,0.07);
-    --shadow-md:0 4px 16px rgba(0,0,0,0.10);
-    --radius-sm:8px;--radius-md:12px;--radius-lg:18px;--radius-full:999px;
-    --font-sans:'Inter',system-ui,sans-serif;
-    --font-serif:'Lora',Georgia,serif;
+:root{
+  --purple-50:#EEEDFE;--purple-100:#CECBF6;--purple-200:#AFA9EC;
+  --purple-400:#7F77DD;--purple-600:#534AB7;--purple-800:#3C3489;--purple-900:#26215C;
+  --amber-50:#FAEEDA;--amber-200:#EF9F27;--amber-600:#854F0B;--amber-800:#633806;
+  --green-50:#EAF3DE;--green-600:#3B6D11;--green-800:#27500A;
+  --teal-50:#E1F5EE;--teal-600:#0F6E56;
+  --gray-100:#F1EFE8;--text-primary:#1A1A18;--text-secondary:#5F5E5A;--text-hint:#8E8D88;
+  --bg-page:#F8F7F4;--bg-card:#FFFFFF;--bg-input:#FFFFFF;
+  --border-light:rgba(0,0,0,0.08);--border-mid:rgba(0,0,0,0.14);
+  --shadow-sm:0 1px 3px rgba(0,0,0,0.07);--shadow-md:0 4px 16px rgba(0,0,0,0.10);
+  --radius-sm:8px;--radius-md:12px;--radius-lg:18px;--radius-full:999px;
+  --font-sans:'Inter',system-ui,sans-serif;--font-serif:'Lora',Georgia,serif;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --text-primary:#EEECEA;--text-secondary:#A8A6A0;--text-hint:#6E6D68;
+    --bg-page:#1A1A18;--bg-card:#242420;--bg-input:#2C2C28;
+    --border-light:rgba(255,255,255,0.07);--border-mid:rgba(255,255,255,0.12);
+    --shadow-sm:0 1px 3px rgba(0,0,0,0.3);--shadow-md:0 4px 16px rgba(0,0,0,0.4);
+    --purple-50:#1E1C3A;--purple-100:#2A2756;--green-50:#152110;--amber-50:#1F1608;
   }
-  @media(prefers-color-scheme:dark){
-    :root{
-      --text-primary:#EEECEA;--text-secondary:#A8A6A0;--text-hint:#6E6D68;
-      --bg-page:#1A1A18;--bg-card:#242420;--bg-input:#2C2C28;
-      --border-light:rgba(255,255,255,0.07);--border-mid:rgba(255,255,255,0.12);
-      --shadow-sm:0 1px 3px rgba(0,0,0,0.3);--shadow-md:0 4px 16px rgba(0,0,0,0.4);
-      --purple-50:#1E1C3A;--purple-100:#2A2756;--green-50:#152110;--amber-50:#1F1608;
-    }
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{height:100%;font-size:16px}
-  body{
-    font-family:var(--font-sans);background:var(--bg-page);color:var(--text-primary);
-    height:100%;display:flex;flex-direction:column;align-items:center;
-    -webkit-font-smoothing:antialiased;
-  }
-  #app{width:100%;max-width:680px;min-height:100vh;display:flex;flex-direction:column;position:relative}
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{height:100%;font-size:16px}
+body{font-family:var(--font-sans);background:var(--bg-page);color:var(--text-primary);
+  height:100%;display:flex;flex-direction:column;align-items:center;-webkit-font-smoothing:antialiased}
+#app{width:100%;max-width:680px;min-height:100vh;display:flex;flex-direction:column}
 
-  /* ── SPLASH ── */
-  #splash{
-    flex:1;display:flex;flex-direction:column;align-items:center;
-    justify-content:center;padding:2.5rem 1.5rem;text-align:center;min-height:100vh;
-  }
-  .lamp{font-size:64px;margin-bottom:1.5rem;animation:glow 3s ease-in-out infinite}
-  @keyframes glow{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.7;transform:scale(.96)}}
-  .brand{font-family:var(--font-serif);font-size:42px;font-weight:500;color:var(--purple-600);letter-spacing:-1px;margin-bottom:6px}
-  .brand-sub{font-size:15px;color:var(--text-secondary);margin-bottom:2.5rem;line-height:1.6;font-style:italic;font-family:var(--font-serif)}
-  .age-label{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-hint);margin-bottom:12px}
-  .age-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:2rem}
-  .age-btn{
-    padding:11px 24px;border-radius:var(--radius-full);border:1.5px solid var(--border-mid);
-    background:var(--bg-card);color:var(--text-primary);font-size:14px;font-family:var(--font-sans);
-    cursor:pointer;transition:all .18s;box-shadow:var(--shadow-sm);
-  }
-  .age-btn:hover{border-color:var(--purple-400);background:var(--purple-50)}
-  .age-btn.selected{background:var(--purple-50);border-color:var(--purple-600);color:var(--purple-800);font-weight:500}
-  .start-btn{
-    padding:13px 44px;border-radius:var(--radius-full);border:none;
-    background:var(--purple-600);color:#fff;font-size:15px;font-weight:600;
-    cursor:pointer;transition:all .18s;opacity:.4;pointer-events:none;
-    box-shadow:0 2px 12px rgba(83,74,183,.3);
-  }
-  .start-btn.ready{opacity:1;pointer-events:auto}
-  .start-btn.ready:hover{background:var(--purple-800);transform:translateY(-1px)}
-  .sources{margin-top:2rem;font-size:11px;color:var(--text-hint);line-height:1.8}
+/* ── SPLASH ── */
+#splash{flex:1;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;padding:2.5rem 1.5rem;text-align:center;min-height:100vh}
+.lamp{font-size:64px;margin-bottom:1.5rem;animation:glow 3s ease-in-out infinite}
+@keyframes glow{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.7;transform:scale(.96)}}
+.brand{font-family:var(--font-serif);font-size:42px;font-weight:500;color:var(--purple-600);
+  letter-spacing:-1px;margin-bottom:6px}
+.brand-sub{font-size:15px;color:var(--text-secondary);margin-bottom:2.5rem;
+  line-height:1.6;font-style:italic;font-family:var(--font-serif)}
+.age-label{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--text-hint);margin-bottom:12px}
+.age-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:2rem}
+.age-btn{padding:11px 24px;border-radius:var(--radius-full);border:1.5px solid var(--border-mid);
+  background:var(--bg-card);color:var(--text-primary);font-size:14px;font-family:var(--font-sans);
+  cursor:pointer;transition:all .18s;box-shadow:var(--shadow-sm)}
+.age-btn:hover{border-color:var(--purple-400);background:var(--purple-50)}
+.age-btn.selected{background:var(--purple-50);border-color:var(--purple-600);
+  color:var(--purple-800);font-weight:500}
+.start-btn{padding:13px 44px;border-radius:var(--radius-full);border:none;
+  background:var(--purple-600);color:#fff;font-size:15px;font-weight:600;
+  cursor:pointer;transition:all .18s;opacity:.4;pointer-events:none;
+  box-shadow:0 2px 12px rgba(83,74,183,.3)}
+.start-btn.ready{opacity:1;pointer-events:auto}
+.start-btn.ready:hover{background:var(--purple-800);transform:translateY(-1px)}
+.sources{margin-top:2rem;font-size:11px;color:var(--text-hint);line-height:1.8}
 
-  /* ── MAIN APP ── */
-  #main{flex:1;display:none;flex-direction:column;min-height:100vh}
-  .topbar{
-    display:flex;align-items:center;gap:12px;padding:14px 16px;
-    background:var(--bg-card);border-bottom:1px solid var(--border-light);
-    position:sticky;top:0;z-index:10;box-shadow:var(--shadow-sm);
-  }
-  .topbar-avatar{
-    width:40px;height:40px;border-radius:50%;background:var(--purple-50);
-    display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;
-    border:1.5px solid var(--purple-100);
-  }
-  .topbar-text h1{font-size:16px;font-weight:600;color:var(--text-primary);font-family:var(--font-serif)}
-  .topbar-text p{font-size:12px;color:var(--text-secondary)}
-  .change-btn{
-    margin-left:auto;font-size:12px;color:var(--text-hint);border:none;background:none;
-    cursor:pointer;padding:6px 10px;border-radius:var(--radius-sm);transition:background .15s;
-  }
-  .change-btn:hover{background:var(--gray-100)}
+/* ── MAIN APP ── */
+#main{flex:1;display:none;flex-direction:column;min-height:100vh}
+.topbar{display:flex;align-items:center;gap:12px;padding:14px 16px;
+  background:var(--bg-card);border-bottom:1px solid var(--border-light);
+  position:sticky;top:0;z-index:10;box-shadow:var(--shadow-sm)}
+.topbar-avatar{width:40px;height:40px;border-radius:50%;background:var(--purple-50);
+  display:flex;align-items:center;justify-content:center;font-size:22px;
+  flex-shrink:0;border:1.5px solid var(--purple-100)}
+.topbar-text h1{font-size:16px;font-weight:600;color:var(--text-primary);font-family:var(--font-serif)}
+.topbar-text p{font-size:12px;color:var(--text-secondary)}
+.change-btn{margin-left:auto;font-size:12px;color:var(--text-hint);border:none;background:none;
+  cursor:pointer;padding:6px 10px;border-radius:var(--radius-sm);transition:background .15s}
+.change-btn:hover{background:var(--gray-100)}
 
-  .tab-bar{
-    display:flex;background:var(--bg-card);border-bottom:1px solid var(--border-light);
-    position:sticky;top:69px;z-index:9;
-  }
-  .tab{
-    flex:1;padding:12px 4px;font-size:13px;font-weight:500;color:var(--text-secondary);
-    border:none;background:none;cursor:pointer;border-bottom:2.5px solid transparent;
-    transition:all .18s;font-family:var(--font-sans);
-  }
-  .tab.active{color:var(--purple-600);border-bottom-color:var(--purple-600)}
+/* ── TAB BAR — scrollable so 4 tabs fit on mobile ── */
+.tab-bar{display:flex;background:var(--bg-card);border-bottom:1px solid var(--border-light);
+  position:sticky;top:69px;z-index:9;overflow-x:auto;-webkit-overflow-scrolling:touch;
+  scrollbar-width:none}
+.tab-bar::-webkit-scrollbar{display:none}
+.tab{flex-shrink:0;padding:12px 16px;font-size:13px;font-weight:500;
+  color:var(--text-secondary);border:none;background:none;cursor:pointer;
+  border-bottom:2.5px solid transparent;transition:all .18s;
+  font-family:var(--font-sans);white-space:nowrap}
+.tab.active{color:var(--purple-600);border-bottom-color:var(--purple-600)}
+.panel{padding:16px;flex:1}
 
-  .panel{padding:16px;flex:1}
+/* ── CHAT ── */
+.quick-chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
+.chip{padding:7px 14px;border-radius:var(--radius-full);border:1px solid var(--border-mid);
+  background:var(--bg-card);font-size:12px;color:var(--text-secondary);cursor:pointer;
+  transition:all .15s;font-family:var(--font-sans);box-shadow:var(--shadow-sm)}
+.chip:hover{background:var(--purple-50);border-color:var(--purple-400);color:var(--purple-800)}
+.msgs{display:flex;flex-direction:column;gap:16px;margin-bottom:16px}
+.msg{display:flex;gap:10px;align-items:flex-start}
+.msg.user{flex-direction:row-reverse}
+.msg-avatar{width:32px;height:32px;border-radius:50%;background:var(--purple-50);
+  display:flex;align-items:center;justify-content:center;font-size:17px;
+  flex-shrink:0;border:1px solid var(--purple-100);margin-top:2px}
+.msg-col{display:flex;flex-direction:column;gap:5px;max-width:82%}
+.msg.user .msg-col{align-items:flex-end}
+.bubble{padding:12px 15px;border-radius:18px 18px 18px 4px;font-size:14px;
+  line-height:1.65;color:var(--text-primary);background:var(--bg-card);
+  border:1px solid var(--border-light);box-shadow:var(--shadow-sm)}
+.msg.user .bubble{border-radius:18px 18px 4px 18px;background:var(--purple-600);
+  color:#fff;border:none;box-shadow:0 2px 8px rgba(83,74,183,.25)}
 
-  /* ── CHAT ── */
-  .quick-chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
-  .chip{
-    padding:7px 14px;border-radius:var(--radius-full);border:1px solid var(--border-mid);
-    background:var(--bg-card);font-size:12px;color:var(--text-secondary);cursor:pointer;
-    transition:all .15s;font-family:var(--font-sans);box-shadow:var(--shadow-sm);
-  }
-  .chip:hover{background:var(--purple-50);border-color:var(--purple-400);color:var(--purple-800)}
-  .msgs{display:flex;flex-direction:column;gap:16px;margin-bottom:16px}
-  .msg{display:flex;gap:10px;align-items:flex-start}
-  .msg.user{flex-direction:row-reverse}
-  .msg-avatar{
-    width:32px;height:32px;border-radius:50%;background:var(--purple-50);
-    display:flex;align-items:center;justify-content:center;font-size:17px;
-    flex-shrink:0;border:1px solid var(--purple-100);margin-top:2px;
-  }
-  .msg-col{display:flex;flex-direction:column;gap:6px;max-width:80%}
-  .msg.user .msg-col{align-items:flex-end}
-  .bubble{
-    padding:12px 15px;border-radius:18px 18px 18px 4px;
-    font-size:14px;line-height:1.65;color:var(--text-primary);
-    background:var(--bg-card);border:1px solid var(--border-light);
-    box-shadow:var(--shadow-sm);
-  }
-  .msg.user .bubble{
-    border-radius:18px 18px 4px 18px;background:var(--purple-600);
-    color:#fff;border:none;box-shadow:0 2px 8px rgba(83,74,183,.25);
-  }
+/* mood image in chat */
+.chat-visual{border-radius:var(--radius-md);overflow:hidden;
+  border:1px solid var(--border-light);box-shadow:var(--shadow-sm)}
+.chat-visual img{width:100%;height:120px;object-fit:cover;display:block;
+  transition:transform .3s ease}
+.chat-visual:hover img{transform:scale(1.04)}
+.chat-visual-label{padding:5px 10px;font-size:11px;color:var(--text-hint);font-style:italic}
 
-  /* ── CHAT MOOD VISUAL ── */
-  .chat-visual{
-    border-radius:var(--radius-md);overflow:hidden;
-    border:1px solid var(--border-light);box-shadow:var(--shadow-sm);
-    background:var(--bg-card);
-  }
-  .chat-visual img{
-    width:100%;height:130px;object-fit:cover;display:block;
-    transition:transform .3s ease;
-  }
-  .chat-visual:hover img{transform:scale(1.03)}
-  .chat-visual-label{
-    padding:6px 10px;font-size:11px;color:var(--text-hint);
-    font-style:italic;line-height:1.4;display:flex;align-items:center;gap:4px;
-  }
+/* music suggestion in chat */
+.chat-music-pill{display:flex;align-items:center;gap:8px;padding:8px 12px;
+  background:var(--purple-50);border:1px solid var(--purple-100);
+  border-radius:var(--radius-md);cursor:pointer;transition:all .15s}
+.chat-music-pill:hover{border-color:var(--purple-400)}
+.cmp-icon{font-size:14px;flex-shrink:0}
+.cmp-body{flex:1;min-width:0}
+.cmp-title{font-size:12px;font-weight:600;color:var(--text-primary);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cmp-lang{font-size:11px;color:var(--text-hint)}
+.cmp-listen{font-size:11px;font-weight:600;color:var(--purple-600);
+  white-space:nowrap;flex-shrink:0;text-decoration:none}
+.cmp-listen:hover{text-decoration:underline}
 
-  .typing-indicator{
-    display:flex;gap:4px;align-items:center;padding:12px 16px;
-    background:var(--bg-card);border-radius:18px 18px 18px 4px;
-    border:1px solid var(--border-light);width:fit-content;box-shadow:var(--shadow-sm);
-  }
-  .tdot{width:7px;height:7px;border-radius:50%;background:var(--text-hint);animation:tdot 1.3s infinite}
-  .tdot:nth-child(2){animation-delay:.18s}
-  .tdot:nth-child(3){animation-delay:.36s}
-  @keyframes tdot{0%,70%,100%{opacity:.2;transform:scale(.8)}35%{opacity:1;transform:scale(1)}}
-  .input-area{
-    display:flex;gap:8px;align-items:flex-end;
-    background:var(--bg-card);padding:12px 16px;
-    border-top:1px solid var(--border-light);
-    position:sticky;bottom:0;
-  }
-  .input-area textarea{
-    flex:1;resize:none;border-radius:var(--radius-md);padding:10px 14px;
-    font-size:14px;min-height:44px;max-height:130px;font-family:var(--font-sans);
-    background:var(--bg-input);border:1px solid var(--border-mid);color:var(--text-primary);
-    outline:none;transition:border-color .15s;line-height:1.5;
-  }
-  .input-area textarea:focus{border-color:var(--purple-400)}
-  .input-area textarea::placeholder{color:var(--text-hint)}
-  .send{
-    width:44px;height:44px;border-radius:50%;border:none;background:var(--purple-600);
-    color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;
-    flex-shrink:0;transition:all .18s;font-size:18px;
-  }
-  .send:hover{background:var(--purple-800)}
-  .send:disabled{opacity:.35;cursor:not-allowed}
-  .err-msg{font-size:13px;color:#c0392b;padding:6px 16px;background:var(--bg-page)}
+/* typing */
+.typing-indicator{display:flex;gap:4px;align-items:center;padding:12px 16px;
+  background:var(--bg-card);border-radius:18px 18px 18px 4px;
+  border:1px solid var(--border-light);width:fit-content;box-shadow:var(--shadow-sm)}
+.tdot{width:7px;height:7px;border-radius:50%;background:var(--text-hint);animation:tdot 1.3s infinite}
+.tdot:nth-child(2){animation-delay:.18s}.tdot:nth-child(3){animation-delay:.36s}
+@keyframes tdot{0%,70%,100%{opacity:.2;transform:scale(.8)}35%{opacity:1;transform:scale(1)}}
+.input-area{display:flex;gap:8px;align-items:flex-end;background:var(--bg-card);
+  padding:12px 16px;border-top:1px solid var(--border-light);position:sticky;bottom:0}
+.input-area textarea{flex:1;resize:none;border-radius:var(--radius-md);padding:10px 14px;
+  font-size:14px;min-height:44px;max-height:130px;font-family:var(--font-sans);
+  background:var(--bg-input);border:1px solid var(--border-mid);color:var(--text-primary);
+  outline:none;transition:border-color .15s;line-height:1.5}
+.input-area textarea:focus{border-color:var(--purple-400)}
+.input-area textarea::placeholder{color:var(--text-hint)}
+.send{width:44px;height:44px;border-radius:50%;border:none;background:var(--purple-600);
+  color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;transition:all .18s;font-size:18px}
+.send:hover{background:var(--purple-800)}.send:disabled{opacity:.35;cursor:not-allowed}
+.err-msg{font-size:13px;color:#c0392b;padding:6px 16px;background:var(--bg-page)}
 
-  /* ── STORIES ── */
-  .story-filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
-  .sf-btn{
-    padding:5px 13px;border-radius:var(--radius-full);border:1px solid var(--border-mid);
-    background:var(--bg-card);font-size:12px;color:var(--text-secondary);cursor:pointer;
-    transition:all .15s;font-family:var(--font-sans);
-  }
-  .sf-btn.active{background:var(--purple-50);color:var(--purple-800);border-color:var(--purple-400)}
+/* ── STORIES ── */
+.story-filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.sf-btn{padding:5px 13px;border-radius:var(--radius-full);border:1px solid var(--border-mid);
+  background:var(--bg-card);font-size:12px;color:var(--text-secondary);cursor:pointer;
+  transition:all .15s;font-family:var(--font-sans)}
+.sf-btn.active{background:var(--purple-50);color:var(--purple-800);border-color:var(--purple-400)}
+.story-grid{display:flex;flex-direction:column;gap:10px}
+.story-card{background:var(--bg-card);border:1px solid var(--border-light);
+  border-radius:var(--radius-lg);cursor:pointer;transition:all .18s;
+  box-shadow:var(--shadow-sm);overflow:hidden}
+.story-card:hover{border-color:var(--purple-200);box-shadow:var(--shadow-md);transform:translateY(-1px)}
+.story-card-img{width:100%;height:130px;object-fit:cover;display:block;transition:transform .3s}
+.story-card:hover .story-card-img{transform:scale(1.04)}
+.story-card-body{padding:14px 16px 16px}
+.story-tags{display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap}
+.stag{font-size:11px;padding:3px 9px;border-radius:var(--radius-full);
+  background:var(--purple-50);color:var(--purple-800);font-weight:500}
+.stag.hist{background:var(--amber-50);color:var(--amber-600)}
+.stag.sci{background:var(--green-50);color:var(--green-600)}
+.story-title-text{font-size:15px;font-weight:600;color:var(--text-primary);
+  margin-bottom:5px;font-family:var(--font-serif)}
+.story-preview-text{font-size:13px;color:var(--text-secondary);line-height:1.5}
+.story-read{font-size:12px;color:var(--purple-600);margin-top:8px;font-weight:500}
+.story-detail{background:var(--bg-card);border:1px solid var(--border-light);
+  border-radius:var(--radius-lg);margin-top:4px;overflow:hidden}
+.story-hero{width:100%;height:190px;object-fit:cover;display:block}
+.story-detail-body{padding:16px 18px 20px}
+.back-btn{display:flex;align-items:center;gap:5px;font-size:13px;color:var(--purple-600);
+  border:none;background:none;cursor:pointer;padding:0 0 12px;font-family:var(--font-sans)}
+.story-detail-body h2{font-family:var(--font-serif);font-size:20px;font-weight:500;
+  color:var(--text-primary);margin-bottom:6px;line-height:1.3}
+.story-source{font-size:12px;color:var(--text-hint);margin-bottom:14px;
+  font-weight:500;text-transform:uppercase;letter-spacing:.06em}
+.story-body-text{font-size:14px;color:var(--text-primary);line-height:1.75;
+  white-space:pre-line;font-family:var(--font-serif)}
+.moral-box{margin-top:18px;padding:14px 16px;background:var(--green-50);
+  border-radius:var(--radius-md);border-left:3px solid var(--green-600)}
+.moral-label{font-size:11px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.07em;color:var(--green-600);margin-bottom:4px}
+.moral-text{font-size:14px;color:var(--green-800);line-height:1.55;
+  font-family:var(--font-serif);font-style:italic}
+.video-section{margin-top:16px}
+.video-section-label{font-size:11px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.07em;color:var(--text-hint);margin-bottom:8px}
+.video-embed{border-radius:var(--radius-md);overflow:hidden;
+  border:1px solid var(--border-light);aspect-ratio:16/9;background:#000}
+.video-embed iframe{width:100%;height:100%;border:none;display:block}
+.yt-search-btn{display:flex;align-items:center;gap:10px;width:100%;padding:12px 14px;
+  background:var(--bg-card);border:1px solid var(--border-mid);border-radius:var(--radius-md);
+  cursor:pointer;font-size:13px;font-weight:500;color:var(--text-secondary);
+  transition:all .15s;font-family:var(--font-sans);text-decoration:none}
+.yt-search-btn:hover{background:var(--purple-50);border-color:var(--purple-400);color:var(--purple-800)}
+.yt-icon{width:30px;height:30px;border-radius:6px;background:#FF0000;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.yt-icon svg{fill:#fff;width:14px;height:14px}
 
-  .story-grid{display:flex;flex-direction:column;gap:10px}
+/* ── WISDOM QUOTES — gradient cards by category ── */
+.w-filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.wf{padding:5px 13px;border-radius:var(--radius-full);border:1px solid var(--border-mid);
+  background:var(--bg-card);font-size:12px;color:var(--text-secondary);cursor:pointer;
+  transition:all .15s;font-family:var(--font-sans)}
+.wf.active{background:var(--purple-50);color:var(--purple-800);border-color:var(--purple-400)}
+.w-list{display:flex;flex-direction:column;gap:10px}
+.w-item{border-radius:var(--radius-lg);padding:18px 16px 15px;box-shadow:var(--shadow-sm);
+  position:relative;overflow:hidden;transition:transform .18s,box-shadow .18s;border:1px solid transparent}
+.w-item:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.w-item::before{content:'\201C';position:absolute;top:-8px;right:12px;font-size:90px;
+  font-family:Georgia,serif;line-height:1;opacity:0}
+.w-item.cat-gita{background:linear-gradient(135deg,var(--bg-card) 55%,var(--purple-50));
+  border-color:var(--purple-100);border-left:4px solid var(--purple-400)}
+.w-item.cat-gita::before{color:var(--purple-400);opacity:.14}
+.w-item.cat-history{background:linear-gradient(135deg,var(--bg-card) 55%,var(--amber-50));
+  border-color:#E8C87A;border-left:4px solid var(--amber-200)}
+.w-item.cat-history::before{color:var(--amber-200);opacity:.17}
+.w-item.cat-philosophy{background:linear-gradient(135deg,var(--bg-card) 55%,var(--teal-50));
+  border-color:#8DD4BE;border-left:4px solid var(--teal-600)}
+.w-item.cat-philosophy::before{color:var(--teal-600);opacity:.12}
+.w-item.cat-psychology{background:linear-gradient(135deg,var(--bg-card) 55%,var(--green-50));
+  border-color:#A8C87A;border-left:4px solid var(--green-600)}
+.w-item.cat-psychology::before{color:var(--green-600);opacity:.12}
+.w-trad-badge{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.07em;
+  text-transform:uppercase;padding:2px 8px;border-radius:var(--radius-full);margin-bottom:10px}
+.cat-gita .w-trad-badge{background:var(--purple-100);color:var(--purple-800)}
+.cat-history .w-trad-badge{background:var(--amber-50);color:var(--amber-600)}
+.cat-philosophy .w-trad-badge{background:var(--teal-50);color:var(--teal-600)}
+.cat-psychology .w-trad-badge{background:var(--green-50);color:var(--green-600)}
+.w-text{font-family:var(--font-serif);font-size:15px;color:var(--text-primary);
+  line-height:1.65;font-style:italic;margin-bottom:10px;position:relative;z-index:1}
+.w-source{font-size:12px;font-weight:600;font-family:var(--font-sans)}
+.cat-gita .w-source{color:var(--purple-600)}
+.cat-history .w-source{color:var(--amber-600)}
+.cat-philosophy .w-source{color:var(--teal-600)}
+.cat-psychology .w-source{color:var(--green-600)}
 
-  /* Story card with image */
-  .story-card{
-    background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--radius-lg);
-    cursor:pointer;transition:all .18s;box-shadow:var(--shadow-sm);overflow:hidden;
-  }
-  .story-card:hover{border-color:var(--purple-200);box-shadow:var(--shadow-md);transform:translateY(-1px)}
-  .story-card-img{
-    width:100%;height:140px;object-fit:cover;display:block;
-    transition:transform .3s ease;
-  }
-  .story-card:hover .story-card-img{transform:scale(1.03)}
-  .story-card-body{padding:14px 16px 16px}
-  .story-tags{display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap}
-  .stag{font-size:11px;padding:3px 9px;border-radius:var(--radius-full);background:var(--purple-50);color:var(--purple-800);font-weight:500}
-  .stag.hist{background:var(--amber-50);color:var(--amber-600)}
-  .stag.sci{background:var(--green-50);color:var(--green-600)}
-  .story-title-text{font-size:15px;font-weight:600;color:var(--text-primary);margin-bottom:5px;font-family:var(--font-serif)}
-  .story-preview-text{font-size:13px;color:var(--text-secondary);line-height:1.5}
-  .story-read{font-size:12px;color:var(--purple-600);margin-top:8px;font-weight:500}
+/* ── MUSIC & MANTRAS ── */
+.music-intro{padding:0 0 16px;border-bottom:1px solid var(--border-light);margin-bottom:16px}
+.music-intro-title{font-size:17px;font-weight:600;color:var(--text-primary);
+  font-family:var(--font-serif);margin-bottom:4px}
+.music-intro-sub{font-size:13px;color:var(--text-secondary);line-height:1.5}
 
-  /* Story detail */
-  .story-detail{
-    background:var(--bg-card);border:1px solid var(--border-light);
-    border-radius:var(--radius-lg);margin-top:4px;overflow:hidden;
-  }
-  .story-hero{
-    width:100%;height:200px;object-fit:cover;display:block;
-  }
-  .story-detail-body{padding:18px 20px 20px}
-  .back-btn{
-    display:flex;align-items:center;gap:5px;font-size:13px;color:var(--purple-600);
-    border:none;background:none;cursor:pointer;padding:0 0 14px;font-family:var(--font-sans);
-  }
-  .story-detail-body h2{font-family:var(--font-serif);font-size:20px;font-weight:500;color:var(--text-primary);margin-bottom:6px;line-height:1.3}
-  .story-source{font-size:12px;color:var(--text-hint);margin-bottom:14px;font-weight:500;text-transform:uppercase;letter-spacing:.06em}
-  .story-body-text{font-size:14px;color:var(--text-primary);line-height:1.75;white-space:pre-line;font-family:var(--font-serif)}
-  .moral-box{
-    margin-top:18px;padding:14px 16px;background:var(--green-50);
-    border-radius:var(--radius-md);border-left:3px solid var(--green-600);
-  }
-  .moral-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--green-600);margin-bottom:4px}
-  .moral-text{font-size:14px;color:var(--green-800);line-height:1.55;font-family:var(--font-serif);font-style:italic}
+/* category + language filter rows */
+.m-filter-row{display:flex;gap:6px;margin-bottom:8px;overflow-x:auto;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
+.m-filter-row::-webkit-scrollbar{display:none}
+.mf{padding:6px 14px;border-radius:var(--radius-full);border:1px solid var(--border-mid);
+  background:var(--bg-card);font-size:12px;color:var(--text-secondary);cursor:pointer;
+  transition:all .15s;font-family:var(--font-sans);white-space:nowrap;flex-shrink:0}
+.mf.active{color:#fff;border-color:transparent}
+/* active colour per category */
+.mf.active[data-cat="all"]{background:var(--purple-600)}
+.mf.active[data-cat="morning"]{background:#D97706}
+.mf.active[data-cat="devotional"]{background:var(--purple-600)}
+.mf.active[data-cat="focus"]{background:var(--teal-600)}
+.mf.active[data-cat="energy"]{background:#B45309}
+.mf.active[data-cat="peace"]{background:#4F46E5}
+/* language filter active */
+.mf.active[data-lang]{background:var(--purple-600)}
 
-  /* Story video section */
-  .video-section{margin-top:16px}
-  .video-section-label{
-    font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;
-    color:var(--text-hint);margin-bottom:8px;
-  }
-  .video-embed{
-    border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--border-light);
-    aspect-ratio:16/9;background:#000;
-  }
-  .video-embed iframe{width:100%;height:100%;border:none;display:block}
-  .yt-search-btn{
-    display:flex;align-items:center;gap:10px;
-    width:100%;padding:13px 16px;
-    background:var(--bg-card);border:1px solid var(--border-mid);
-    border-radius:var(--radius-md);cursor:pointer;
-    font-size:13px;font-weight:500;color:var(--text-secondary);
-    transition:all .15s;font-family:var(--font-sans);text-decoration:none;
-  }
-  .yt-search-btn:hover{background:var(--purple-50);border-color:var(--purple-400);color:var(--purple-800)}
-  .yt-icon{
-    width:32px;height:32px;border-radius:6px;background:#FF0000;
-    display:flex;align-items:center;justify-content:center;flex-shrink:0;
-  }
-  .yt-icon svg{fill:#fff;width:16px;height:16px}
-  .yt-btn-text strong{display:block;font-size:13px;color:var(--text-primary)}
-  .yt-btn-text span{font-size:11px;color:var(--text-hint)}
+.music-grid{display:flex;flex-direction:column;gap:12px}
 
-  /* ── WISDOM QUOTES ── */
-  .w-filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
-  .wf{
-    padding:5px 13px;border-radius:var(--radius-full);border:1px solid var(--border-mid);
-    background:var(--bg-card);font-size:12px;color:var(--text-secondary);cursor:pointer;
-    transition:all .15s;font-family:var(--font-sans);
-  }
-  .wf.active{background:var(--purple-50);color:var(--purple-800);border-color:var(--purple-400)}
+/* individual music card */
+.music-card{background:var(--bg-card);border:1px solid var(--border-light);
+  border-radius:var(--radius-lg);padding:16px;box-shadow:var(--shadow-sm);
+  transition:transform .18s,box-shadow .18s;overflow:hidden}
+.music-card:hover{transform:translateY(-1px);box-shadow:var(--shadow-md)}
+/* left border accent per category */
+.music-card.mc-morning{border-left:4px solid #D97706}
+.music-card.mc-devotional{border-left:4px solid var(--purple-400)}
+.music-card.mc-focus{border-left:4px solid var(--teal-600)}
+.music-card.mc-energy{border-left:4px solid #B45309}
+.music-card.mc-peace{border-left:4px solid #4F46E5}
 
-  .w-list{display:flex;flex-direction:column;gap:10px}
+.mc-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
+.mc-emoji{font-size:28px;flex-shrink:0;line-height:1;margin-top:2px}
+.mc-title-block{flex:1;min-width:0}
+.mc-title{font-size:15px;font-weight:600;color:var(--text-primary);
+  font-family:var(--font-serif);line-height:1.3;margin-bottom:2px}
+.mc-subtitle{font-size:12px;color:var(--text-secondary);line-height:1.4}
+.mc-lang-badge{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  padding:3px 9px;border-radius:var(--radius-full);background:var(--purple-50);
+  color:var(--purple-800);white-space:nowrap;flex-shrink:0;align-self:flex-start}
 
-  /* Quote cards — visual by category */
-  .w-item{
-    border-radius:var(--radius-lg);padding:20px 18px 16px;
-    box-shadow:var(--shadow-sm);position:relative;overflow:hidden;
-    transition:transform .18s,box-shadow .18s;border:1px solid transparent;
-    background:var(--bg-card);
-  }
-  .w-item:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
-  .w-item::before{
-    content:'\201C';position:absolute;top:-10px;right:12px;
-    font-size:100px;font-family:Georgia,'Lora',serif;line-height:1;
-    opacity:0;
-  }
-  /* Gita — purple */
-  .w-item.cat-gita{
-    background:linear-gradient(135deg,var(--bg-card) 55%,var(--purple-50));
-    border-color:var(--purple-100);border-left:4px solid var(--purple-400);
-  }
-  .w-item.cat-gita::before{color:var(--purple-400);opacity:.15}
-  /* History — amber */
-  .w-item.cat-history{
-    background:linear-gradient(135deg,var(--bg-card) 55%,var(--amber-50));
-    border-color:#E8C87A;border-left:4px solid var(--amber-200);
-  }
-  .w-item.cat-history::before{color:var(--amber-200);opacity:.18}
-  /* Philosophy — teal */
-  .w-item.cat-philosophy{
-    background:linear-gradient(135deg,var(--bg-card) 55%,var(--teal-50));
-    border-color:#8DD4BE;border-left:4px solid var(--teal-600);
-  }
-  .w-item.cat-philosophy::before{color:var(--teal-600);opacity:.13}
-  /* Psychology — green */
-  .w-item.cat-psychology{
-    background:linear-gradient(135deg,var(--bg-card) 55%,var(--green-50));
-    border-color:#A8C87A;border-left:4px solid var(--green-600);
-  }
-  .w-item.cat-psychology::before{color:var(--green-600);opacity:.13}
+.mc-cat-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.07em;
+  text-transform:uppercase;padding:2px 9px;border-radius:var(--radius-full);margin-bottom:10px}
+.mc-morning .mc-cat-badge{background:#FEF3C7;color:#92400E}
+.mc-devotional .mc-cat-badge{background:var(--purple-50);color:var(--purple-800)}
+.mc-focus .mc-cat-badge{background:var(--teal-50);color:var(--teal-600)}
+.mc-energy .mc-cat-badge{background:#FEF3C7;color:#78350F}
+.mc-peace .mc-cat-badge{background:#EEF2FF;color:#3730A3}
 
-  .w-tradition-badge{
-    display:inline-block;font-size:10px;font-weight:600;letter-spacing:.07em;
-    text-transform:uppercase;padding:2px 8px;border-radius:var(--radius-full);
-    margin-bottom:10px;
-  }
-  .cat-gita .w-tradition-badge{background:var(--purple-100);color:var(--purple-800)}
-  .cat-history .w-tradition-badge{background:var(--amber-50);color:var(--amber-600)}
-  .cat-philosophy .w-tradition-badge{background:var(--teal-50);color:var(--teal-600)}
-  .cat-psychology .w-tradition-badge{background:var(--green-50);color:var(--green-600)}
+.mc-significance{font-size:13px;color:var(--text-secondary);line-height:1.6;margin-bottom:12px}
+.mc-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.mc-best-time{font-size:12px;color:var(--text-hint);font-style:italic}
+.mc-loop-badge{font-size:11px;padding:2px 8px;border-radius:var(--radius-full);
+  background:var(--green-50);color:var(--green-600);font-weight:500}
 
-  .w-text{
-    font-family:var(--font-serif);font-size:15px;color:var(--text-primary);
-    line-height:1.65;font-style:italic;margin-bottom:10px;position:relative;z-index:1;
-  }
-  .w-source{font-size:12px;color:var(--purple-600);font-weight:600;font-family:var(--font-sans)}
-  .cat-history .w-source{color:var(--amber-600)}
-  .cat-philosophy .w-source{color:var(--teal-600)}
-  .cat-psychology .w-source{color:var(--green-600)}
+.mc-listen-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;
+  padding:11px 16px;border:none;border-radius:var(--radius-md);cursor:pointer;
+  font-size:13px;font-weight:600;font-family:var(--font-sans);
+  transition:all .18s;color:#fff}
+.mc-morning .mc-listen-btn{background:#D97706}.mc-morning .mc-listen-btn:hover{background:#B45309}
+.mc-devotional .mc-listen-btn{background:var(--purple-600)}.mc-devotional .mc-listen-btn:hover{background:var(--purple-800)}
+.mc-focus .mc-listen-btn{background:var(--teal-600)}.mc-focus .mc-listen-btn:hover{background:#0A5240}
+.mc-energy .mc-listen-btn{background:#B45309}.mc-energy .mc-listen-btn:hover{background:#92400E}
+.mc-peace .mc-listen-btn{background:#4F46E5}.mc-peace .mc-listen-btn:hover{background:#3730A3}
+/* Kannada — forest green */
+.music-card.mc-kannada{border-left:4px solid #059669}
+.mc-kannada .mc-cat-badge{background:#ECFDF5;color:#065F46}
+.mc-kannada .mc-listen-btn{background:#059669}.mc-kannada .mc-listen-btn:hover{background:#047857}
+/* Janapada — earthy brown */
+.music-card.mc-janapada{border-left:4px solid #92400E}
+.mc-janapada .mc-cat-badge{background:#FEF3C7;color:#78350F}
+.mc-janapada .mc-listen-btn{background:#92400E}.mc-janapada .mc-listen-btn:hover{background:#78350F}
+/* Motivation — vivid orange */
+.music-card.mc-motivation{border-left:4px solid #EA580C}
+.mc-motivation .mc-cat-badge{background:#FFF7ED;color:#9A3412}
+.mc-motivation .mc-listen-btn{background:#EA580C}.mc-motivation .mc-listen-btn:hover{background:#C2410C}
+/* Rock/Boost — dark slate */
+.music-card.mc-rock{border-left:4px solid #475569}
+.mc-rock .mc-cat-badge{background:#F1F5F9;color:#1E293B}
+.mc-rock .mc-listen-btn{background:#334155}.mc-rock .mc-listen-btn:hover{background:#1E293B}
+/* Romantic — rose pink */
+.music-card.mc-romantic{border-left:4px solid #DB2777}
+.mc-romantic .mc-cat-badge{background:#FDF2F8;color:#831843}
+.mc-romantic .mc-listen-btn{background:#DB2777}.mc-romantic .mc-listen-btn:hover{background:#BE185D}
+/* Desh Bhakti — saffron */
+.music-card.mc-desh_bhakti{border-left:4px solid #F59E0B}
+.mc-desh_bhakti .mc-cat-badge{background:#FFFBEB;color:#92400E}
+.mc-desh_bhakti .mc-listen-btn{background:#F59E0B}.mc-desh_bhakti .mc-listen-btn:hover{background:#D97706}
+/* Banjara — golden */
+.music-card.mc-banjara{border-left:4px solid #B45309}
+.mc-banjara .mc-cat-badge{background:#FEF9C3;color:#713F12}
+.mc-banjara .mc-listen-btn{background:#B45309}.mc-banjara .mc-listen-btn:hover{background:#92400E}
 
-  /* ── RESPONSIVE ── */
-  @media(max-width:480px){
-    .brand{font-size:34px}
-    .age-btn{padding:10px 18px;font-size:13px}
-    .bubble{font-size:13px}
-    .panel{padding:12px}
-    .topbar{padding:11px 14px}
-    .story-hero{height:160px}
-    .chat-visual img{height:110px}
-  }
-  @media(prefers-reduced-motion:reduce){
-    .story-card:hover .story-card-img,
-    .chat-visual:hover img{transform:none}
-    .w-item:hover{transform:none}
-  }
+/* ── RESPONSIVE ── */
+@media(max-width:480px){
+  .brand{font-size:34px}.age-btn{padding:10px 18px;font-size:13px}
+  .bubble{font-size:13px}.panel{padding:12px}.topbar{padding:11px 14px}
+  .story-hero{height:150px}.chat-visual img{height:100px}.mc-top{gap:10px}
+}
+@media(prefers-reduced-motion:reduce){
+  .story-card:hover .story-card-img,.chat-visual:hover img,.w-item:hover,.music-card:hover{transform:none}
+}
 </style>
 </head>
 <body>
 <div id="app">
 
-<!-- ───────── SPLASH SCREEN ───────── -->
+<!-- ── SPLASH ── -->
 <div id="splash">
   <div class="lamp">🪔</div>
   <div class="brand">Mitra</div>
   <div class="brand-sub">Your best friend, parent &amp; teacher<br>in every difficult moment</div>
   <div class="age-label">Who are you?</div>
   <div class="age-row">
-    <button class="age-btn" onclick="selectAge('kid','Child (6–12)','🌱')">Child &nbsp;·&nbsp; 6–12</button>
-    <button class="age-btn" onclick="selectAge('teen','Teen (13–17)','🌿')">Teen &nbsp;·&nbsp; 13–17</button>
-    <button class="age-btn" onclick="selectAge('adult','Adult (18+)','🌳')">Adult &nbsp;·&nbsp; 18+</button>
+    <button class="age-btn" onclick="selectAge('kid','Child (6–12)','🌱')">Child · 6–12</button>
+    <button class="age-btn" onclick="selectAge('teen','Teen (13–17)','🌿')">Teen · 13–17</button>
+    <button class="age-btn" onclick="selectAge('adult','Adult (18+)','🌳')">Adult · 18+</button>
   </div>
-  <button class="start-btn" id="startBtn" onclick="enterApp()">Enter Mitra &rarr;</button>
+  <button class="start-btn" id="startBtn" onclick="enterApp()">Enter Mitra →</button>
   <div class="sources">Draws from · Bhagavad Gita · Ramayana · Mahabharata<br>Gandhi · APJ Kalam · Tagore · Vivekananda · Marcus Aurelius · Viktor Frankl</div>
 </div>
 
-<!-- ───────── MAIN APP ───────── -->
+<!-- ── MAIN APP ── -->
 <div id="main">
   <div class="topbar">
     <div class="topbar-avatar" id="topAvatar">🪔</div>
-    <div class="topbar-text">
-      <h1>Mitra</h1>
-      <p id="topSub">Your wise companion</p>
-    </div>
+    <div class="topbar-text"><h1>Mitra</h1><p id="topSub">Your wise companion</p></div>
     <button class="change-btn" onclick="goSplash()">Change age</button>
   </div>
   <div class="tab-bar">
-    <button class="tab active" id="tab-chat" onclick="switchTab('chat')">💬 Talk to Mitra</button>
-    <button class="tab" id="tab-stories" onclick="switchTab('stories')">📖 Wisdom Stories</button>
-    <button class="tab" id="tab-wisdom" onclick="switchTab('wisdom')">✨ Quotes</button>
+    <button class="tab active" id="tab-chat"    onclick="switchTab('chat')">💬 Talk to Mitra</button>
+    <button class="tab"        id="tab-stories" onclick="switchTab('stories')">📖 Stories</button>
+    <button class="tab"        id="tab-wisdom"  onclick="switchTab('wisdom')">✨ Quotes</button>
+    <button class="tab"        id="tab-music"   onclick="switchTab('music')">🎵 Music & Mantras</button>
   </div>
 
-  <!-- CHAT PANEL -->
+  <!-- CHAT -->
   <div id="panel-chat" style="padding:0;display:flex;flex-direction:column;flex:1">
-    <div style="padding:14px 16px 4px">
-      <div class="quick-chips" id="chips"></div>
-    </div>
-    <div style="padding:0 16px;flex:1">
-      <div class="msgs" id="msgs"></div>
-    </div>
+    <div style="padding:14px 16px 4px"><div class="quick-chips" id="chips"></div></div>
+    <div style="padding:0 16px;flex:1"><div class="msgs" id="msgs"></div></div>
     <div class="err-msg" id="chatErr" style="display:none"></div>
     <div class="input-area">
       <textarea id="userInput" placeholder="Tell Mitra what's happening…" rows="1"
         oninput="autoResize(this)" onkeydown="handleKey(event)"></textarea>
-      <button class="send" id="sendBtn" onclick="sendMsg()" aria-label="Send message">&#10148;</button>
+      <button class="send" id="sendBtn" onclick="sendMsg()" aria-label="Send">&#10148;</button>
     </div>
   </div>
 
-  <!-- STORIES PANEL -->
+  <!-- STORIES -->
   <div id="panel-stories" class="panel" style="display:none">
     <div id="storyList">
       <div class="story-filters" id="storyFilters"></div>
@@ -411,245 +411,622 @@
     <div id="storyDetail" style="display:none"></div>
   </div>
 
-  <!-- WISDOM PANEL -->
+  <!-- QUOTES -->
   <div id="panel-wisdom" class="panel" style="display:none">
     <div class="w-filters" id="wFilters"></div>
     <div class="w-list" id="wList"></div>
   </div>
 
-</div><!-- #main -->
+  <!-- MUSIC & MANTRAS -->
+  <div id="panel-music" class="panel" style="display:none">
+    <div class="music-intro">
+      <div class="music-intro-title">🎵 Sacred Music &amp; Frequencies</div>
+      <div class="music-intro-sub">Morning prayers, devotional songs, concentration music and healing frequencies — curated by mood and moment.</div>
+    </div>
+    <div class="m-filter-row" id="mCatFilters"></div>
+    <div class="m-filter-row" id="mLangFilters"></div>
+    <div class="music-grid" id="musicGrid"></div>
+  </div>
+</div>
 
 </div><!-- #app -->
-
 <script>
-// ── CONFIG ──────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────────────
+// CONFIG
+// ─────────────────────────────────────────────────────────────────────────────
 const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
   ? 'http://localhost:3001'
   : 'https://mitra-backend-inky.vercel.app';
 
-// ── STATE ────────────────────────────────────────────────────────────────────
-let ageGroup = null, ageName = '', ageEmoji = '';
-let chatHistory = [];
-let storyFilter = 'all';
-let wisdomFilter = 'all';
+// ─────────────────────────────────────────────────────────────────────────────
+// STATE
+// ─────────────────────────────────────────────────────────────────────────────
+let ageGroup=null, ageName='', ageEmoji='';
+let chatHistory=[];
+let storyFilter='all', wisdomFilter='all';
+let musicCatFilter='all', musicLangFilter='all';
 
-// ── MOOD → IMAGES ─────────────────────────────────────────────────────────────
-// Free Unsplash photos matched to emotional themes.
-// Add/swap IDs freely — format: https://images.unsplash.com/photo-{ID}
+// ─────────────────────────────────────────────────────────────────────────────
+// MOOD → IMAGES  (Unsplash direct CDN, no API key needed)
+// ─────────────────────────────────────────────────────────────────────────────
 const MOOD_IMAGES = {
-  calm: [
-    { id:'1506905925346-21bda4d32df4', caption:'A calm place for your thoughts' },
-    { id:'1501854140801-50d01698950b', caption:'Still water, still mind' }
-  ],
-  courage: [
-    { id:'1464822759023-fed622ff2c3b', caption:'Every great journey begins with one step' },
-    { id:'1454496522488-7a8e488e8606', caption:'The path ahead belongs to you' }
-  ],
-  hope: [
-    { id:'1470252649378-9c29740c9fa8', caption:'After every night, the sun rises' },
-    { id:'1500534314209-a25ddb2bd429', caption:'Light always finds a way through' }
-  ],
-  wisdom: [
-    { id:'1481627834876-b7833e8f5570', caption:'Wisdom lives inside you — waiting' },
-    { id:'1434030216411-0b793f4b6935', caption:'Every question is the beginning of a story' }
-  ],
-  strength: [
-    { id:'1439853949212-36089a09c5f3', caption:'You are stronger than this moment' },
-    { id:'1447752875215-b2761acb3c5d', caption:'Roots hold even through the storm' }
-  ],
-  growth: [
-    { id:'1416879595882-3373a0480b5b', caption:'Even small things grow into something beautiful' },
-    { id:'1502082553048-f009b5469d50', caption:'Every day is a new beginning' }
-  ]
+  calm:    [{id:'1506905925346-21bda4d32df4',cap:'A calm place for your thoughts'},
+            {id:'1501854140801-50d01698950b',cap:'Still water, still mind'}],
+  courage: [{id:'1464822759023-fed622ff2c3b',cap:'Every great journey begins with one step'},
+            {id:'1454496522488-7a8e488e8606',cap:'The path ahead belongs to you'}],
+  hope:    [{id:'1470252649378-9c29740c9fa8',cap:'After every night, the sun rises'},
+            {id:'1500534314209-a25ddb2bd429',cap:'Light always finds a way through'}],
+  wisdom:  [{id:'1481627834876-b7833e8f5570',cap:'Wisdom lives inside you — waiting'},
+            {id:'1434030216411-0b793f4b6935',cap:'Every question is the start of a story'}],
+  strength:[{id:'1439853949212-36089a09c5f3',cap:'You are stronger than this moment'},
+            {id:'1447752875215-b2761acb3c5d',cap:'Roots hold even through the storm'}],
+  growth:  [{id:'1416879595882-3373a0480b5b',cap:'Even small things grow into something beautiful'},
+            {id:'1502082553048-f009b5469d50',cap:'Every day is a new beginning'}]
 };
 
-// ── AGE SELECTION ─────────────────────────────────────────────────────────────
-function selectAge(g, n, e) {
-  ageGroup = g; ageName = n; ageEmoji = e;
-  document.querySelectorAll('.age-btn').forEach(b => b.classList.remove('selected'));
+// ─────────────────────────────────────────────────────────────────────────────
+// MUSIC LIBRARY
+// ─────────────────────────────────────────────────────────────────────────────
+// To add your own songs: copy one object and fill in the fields.
+// videoId: paste YouTube video ID (the part after ?v=) to embed inline.
+//          Leave '' to show a YouTube Search button instead.
+// ytSearch: the search query used when videoId is empty.
+// ─────────────────────────────────────────────────────────────────────────────
+const MUSIC_LIBRARY = [
+
+  // ── 🌅 MORNING PRAYERS ──────────────────────────────────────────────────────
+  {
+    id:'narasimha-stotram', emoji:'🦁',
+    title:'Narasimha Stotram',
+    subtitle:'Fierce protection — for overcoming fear and darkness',
+    lang:'Sanskrit', langShort:'Sanskrit', cat:'morning',
+    moods:['calm','courage','strength'],
+    significance:'Lord Narasimha — the half-lion form of Vishnu — appeared to protect the young devotee Prahlada from extreme cruelty and terror. He is the embodiment of divine power that destroys fear at its root. This stotram is chanted when facing deep anxiety, danger, or when you feel completely unprotected. Many devotees report feeling a fearless calm settle in within minutes of listening.',
+    bestTime:'🌅 Morning, or whenever fear feels overwhelming',
+    loop:false, videoId:'',
+    ytSearch:'Narasimha Stotram Sanskrit devotional fear protection powerful full'
+  },
+  {
+    id:'shiva-lingashtakam', emoji:'🔱',
+    title:'Lingashtakam — Shiva Stotram',
+    subtitle:'Eight sacred verses to Lord Shiva — clears negativity',
+    lang:'Sanskrit', langShort:'Sanskrit', cat:'morning',
+    moods:['calm','strength'],
+    significance:'Lingashtakam is sung at dawn to invoke Shiva\'s blessings. Each of the eight verses destroys a specific negative quality — anger, greed, ego, fear — and fills the heart with pure stillness. Shiva represents the consciousness that dissolves all suffering. Listening first thing in the morning sets a grounded, peaceful tone for the entire day.',
+    bestTime:'🌅 Before sunrise, or at the very start of the day',
+    loop:false, videoId:'',
+    ytSearch:'Lingashtakam Shiva Stotram Sanskrit devotional morning full powerful'
+  },
+  {
+    id:'gayatri-mantra', emoji:'☀️',
+    title:'Gayatri Mantra',
+    subtitle:'The universal prayer for wisdom — 3,500 years old',
+    lang:'Sanskrit', langShort:'Sanskrit', cat:'morning',
+    moods:['wisdom','growth','hope'],
+    significance:'One of the oldest prayers known to humanity. The Gayatri is addressed to the Sun — the symbol of knowledge — asking it to illuminate the mind. Chanted or listened to 108 times at sunrise, it purifies thought, opens the intellect, and brings a gentle clarity that lasts all day. Even one attentive listening carries its full power.',
+    bestTime:'🌅 Sunrise (6 AM), noon, or sunset — the three sandhyas',
+    loop:true, videoId:'',
+    ytSearch:'Gayatri Mantra 108 times Sanskrit sunrise devotional clear audio'
+  },
+  {
+    id:'brihaspati-gayatri', emoji:'⭐',
+    title:'Brihaspati Gayatri Mantra',
+    subtitle:'Thursday mantra for wisdom, students and learning',
+    lang:'Sanskrit', langShort:'Sanskrit', cat:'morning',
+    moods:['wisdom','growth'],
+    significance:'Brihaspati is the Guru of the gods — Jupiter, the planet of wisdom, education, and justice. This Gayatri is specifically for students, teachers, and anyone seeking knowledge or good judgment. Chanted on Thursday mornings it is said to remove intellectual blocks, sharpen memory, and bring clarity in complex decisions.',
+    bestTime:'🌅 Thursday mornings especially; any morning for students',
+    loop:false, videoId:'',
+    ytSearch:'Brihaspati Gayatri Mantra Thursday Jupiter wisdom Sanskrit students'
+  },
+  {
+    id:'saraswati-vandana', emoji:'🎶',
+    title:'Saraswati Vandana',
+    subtitle:'Invocation to the goddess of knowledge and arts',
+    lang:'Sanskrit', langShort:'Sanskrit', cat:'morning',
+    moods:['wisdom','growth'],
+    significance:'Saraswati is the goddess of learning, music, and creative intelligence. Her Vandana is traditionally sung before any study or creative work. Listening removes mental blocks, awakens the intellect, and creates the inner stillness needed for deep focus. Many students find concentration improves noticeably after just a few minutes of this prayer.',
+    bestTime:'🌅 Before studying, exams, writing, or any creative work',
+    loop:true, videoId:'',
+    ytSearch:'Saraswati Vandana Sanskrit morning prayer students knowledge full'
+  },
+  {
+    id:'vishnu-sahasranama', emoji:'🌸',
+    title:'Vishnu Sahasranama',
+    subtitle:'1000 names of Vishnu — peace, protection, clarity',
+    lang:'Sanskrit', langShort:'Sanskrit', cat:'morning',
+    moods:['calm','hope'],
+    significance:'Each of Vishnu\'s 1000 names is a vibration that aligns the listener with harmony, protection, and grace. Traditionally listened to after morning bath, it removes fear, brings mental clarity, and invites Vishnu\'s sustaining energy into the day. The recording by MS Subbulakshmi is considered particularly powerful by devotees worldwide.',
+    bestTime:'🌅 Morning after bath, or any quiet undisturbed time',
+    loop:false, videoId:'',
+    ytSearch:'Vishnu Sahasranama MS Subbulakshmi Sanskrit devotional full'
+  },
+
+  // ── 🙏 DEVOTIONAL ───────────────────────────────────────────────────────────
+  {
+    id:'hanuman-chalisa', emoji:'🙏',
+    title:'Hanuman Chalisa',
+    subtitle:'40 verses of devotion — for courage and inner strength',
+    lang:'Hindi', langShort:'Hindi', cat:'devotional',
+    moods:['courage','strength'],
+    significance:'Written by Tulsidas in the 16th century, the Hanuman Chalisa is one of the most recited devotional prayers in the world. Hanuman embodies absolute courage, loyalty, and selfless service. Listening to it removes fear, builds inner strength, and gives courage to face what feels impossible. Particularly powerful during bullying, peer pressure, or before a major challenge.',
+    bestTime:'🌅 Morning, before challenges, tests, or difficult conversations',
+    loop:false, videoId:'',
+    ytSearch:'Hanuman Chalisa full Hindi devotional Gulshan Kumar clear audio'
+  },
+  {
+    id:'mahamrityunjaya', emoji:'♾️',
+    title:'Mahamrityunjaya Mantra',
+    subtitle:'Ancient Vedic mantra for healing and protection',
+    lang:'Sanskrit', langShort:'Sanskrit', cat:'devotional',
+    moods:['strength','calm'],
+    significance:'From the Rigveda — one of humanity\'s most ancient hymns. Addressed to Shiva as the conqueror of suffering, it is chanted during illness, grief, fear, or danger. Brings a profound sense of divine protection and inner calm. Its vibration is said to activate the body\'s own healing. Even 11 minutes of listening with closed eyes produces measurable calming in the nervous system.',
+    bestTime:'🌅 Morning, or during illness, fear, grief, or emotional pain',
+    loop:true, videoId:'',
+    ytSearch:'Mahamrityunjaya Mantra 108 times Sanskrit healing protection full'
+  },
+  {
+    id:'bhagyada-lakshmi', emoji:'🌼',
+    title:'Bhagyada Lakshmi Baramma',
+    subtitle:'Welcome, O Lakshmi — the most beloved Kannada devotional',
+    lang:'Kannada', langShort:'Kannada', cat:'devotional',
+    moods:['hope','growth'],
+    significance:'Composed by the great saint-poet Purandaradasa (1484–1564), this is one of the most beloved Kannada devotional songs ever written. It invites Goddess Lakshmi — the embodiment of abundance, beauty, and grace — into the home and heart. Sung at sunrise across Karnataka for generations. Its melody carries a particular warmth that makes people feel held and at home.',
+    bestTime:'🌅 Morning, especially Friday — Lakshmi\'s day',
+    loop:false, videoId:'',
+    ytSearch:'Bhagyada Lakshmi Baramma Kannada Purandaradasa devotional morning full'
+  },
+  {
+    id:'jagadodharana', emoji:'🦚',
+    title:'Jagadodharana',
+    subtitle:'Upholder of the World — Kannada Krishna bhajan',
+    lang:'Kannada', langShort:'Kannada', cat:'devotional',
+    moods:['calm','hope'],
+    significance:'Another Purandaradasa masterpiece, this bhajan celebrates Krishna as the sustainer of the entire universe. Its lilting melody instantly calms a restless, anxious mind. Sung across Karnataka for over 500 years, it carries the energy of absolute trust — the feeling that something larger than you is holding everything together and you can simply rest.',
+    bestTime:'🌅 Morning, or whenever restless, anxious, or overwhelmed',
+    loop:false, videoId:'',
+    ytSearch:'Jagadodharana Purandaradasa Kannada Krishna bhajan devotional full'
+  },
+  {
+    id:'om-jai-jagdish', emoji:'🪔',
+    title:'Om Jai Jagdish Hare',
+    subtitle:'The classic Hindu aarti — for family, home and peace',
+    lang:'Hindi', langShort:'Hindi', cat:'devotional',
+    moods:['calm','hope'],
+    significance:'Om Jai Jagdish Hare is the most widely sung aarti in Hindu households — a prayer that calls on all divine forms simultaneously. Its rhythmic melody is deeply calming and connects one instantly to the feeling of home, safety, and divine love. Perfect for evenings, family prayer time, or whenever you feel lost, homesick, or in need of comfort.',
+    bestTime:'🌆 Evening aarti time, or when missing home, or feeling lost',
+    loop:false, videoId:'',
+    ytSearch:'Om Jai Jagdish Hare aarti full Hindi devotional Gulshan Kumar'
+  },
+
+  // ── 📚 FOCUS & STUDY ────────────────────────────────────────────────────────
+  {
+    id:'saraswati-432hz', emoji:'🎵',
+    title:'Saraswati Music — 432 Hz',
+    subtitle:'Tuned to nature\'s frequency for deep concentration',
+    lang:'Instrumental', langShort:'Instrumental', cat:'focus',
+    moods:['wisdom','growth'],
+    significance:'432 Hz is called the "natural frequency" — the tuning that resonates with the mathematical patterns found throughout nature. Combined with Saraswati-inspired instruments (veena, flute, tanpura), this music calms the nervous system, lowers cortisol, and puts the brain into the alpha state — the precise mental state optimal for reading, learning, and creative thinking.',
+    bestTime:'📚 While studying, reading, writing, or doing creative work',
+    loop:true, videoId:'',
+    ytSearch:'Saraswati music 432 Hz study concentration focus veena flute 1 hour'
+  },
+  {
+    id:'om-chanting-108', emoji:'🕉️',
+    title:'Om Chanting — 108 Times',
+    subtitle:'The primordial sound — reduces anxiety and sharpens focus',
+    lang:'Sanskrit', langShort:'Sanskrit', cat:'focus',
+    moods:['calm','wisdom'],
+    significance:'Om (Aum) is the first sound of creation in the Vedas. Research shows that listening to Om chanting measurably reduces anxiety, lowers blood pressure, and synchronises both hemispheres of the brain — left (logical) and right (creative) working together. Even 5 minutes before studying improves focus and memory retention significantly.',
+    bestTime:'📚 Before studying, meditation, exams, or sleep',
+    loop:true, videoId:'',
+    ytSearch:'Om chanting 108 times 432 Hz meditation focus Sanskrit clear'
+  },
+  {
+    id:'binaural-alpha', emoji:'🧠',
+    title:'Alpha Binaural Beats',
+    subtitle:'8–12 Hz waves for sustained deep focus — use headphones',
+    lang:'Instrumental', langShort:'Instrumental', cat:'focus',
+    moods:['wisdom','growth'],
+    significance:'Alpha brainwaves (8–12 Hz) represent the brain\'s ideal learning state — relaxed yet alert. Binaural beats work by playing slightly different frequencies in each ear, guiding brainwaves to the target frequency. Research shows improved focus, less mind-wandering, and better comprehension during long study sessions. Must use with headphones to work properly.',
+    bestTime:'📚 During long study sessions — headphones required',
+    loop:true, videoId:'',
+    ytSearch:'alpha binaural beats study focus concentration 8 Hz 1 hour headphones'
+  },
+  {
+    id:'classical-flute', emoji:'🎋',
+    title:'Indian Classical Flute — Morning Raga',
+    subtitle:'Ragas mapped to time of day for optimal concentration',
+    lang:'Instrumental', langShort:'Instrumental', cat:'focus',
+    moods:['calm','wisdom'],
+    significance:'Indian ragas are precisely mapped to times of day and states of mind. Raga Bhairav (morning) and Raga Bhimpalasi (afternoon) are neurologically calming without inducing sleep. The bansuri bamboo flute produces tones close to the human voice, making it deeply soothing. Used in music therapy and proven effective for sustained focus, including with children who have difficulty concentrating.',
+    bestTime:'📚 Any study time — especially powerful in the morning',
+    loop:true, videoId:'',
+    ytSearch:'Hariprasad Chaurasia bansuri Indian classical flute Raga morning concentration'
+  },
+
+  // ── ⚡ ENERGY & POSITIVITY ───────────────────────────────────────────────────
+  {
+    id:'528hz-miracle', emoji:'✨',
+    title:'528 Hz — The Love Frequency',
+    subtitle:'Cellular energy restoration and inner radiance',
+    lang:'Instrumental', langShort:'Instrumental', cat:'energy',
+    moods:['hope','growth'],
+    significance:'528 Hz sits at the mathematical center of music and nature. Called the "Miracle Tone" by researchers, it is said to resonate with the frequency of healthy DNA and elevate mood from within. It is genuinely energising without overstimulating — not a caffeine rush but a soft inner radiance. Particularly helpful when waking up feeling drained, hopeless, or completely unmotivated.',
+    bestTime:'🌞 Morning, or when feeling drained and needing inner energy',
+    loop:true, videoId:'',
+    ytSearch:'528 Hz miracle frequency love healing energy solfeggio morning 1 hour'
+  },
+  {
+    id:'surya-mantra', emoji:'🌞',
+    title:'Surya Namaskar Mantra',
+    subtitle:'12 sun salutation verses — the ancient energy ritual',
+    lang:'Sanskrit', langShort:'Sanskrit', cat:'energy',
+    moods:['courage','strength'],
+    significance:'The 12 Surya Namaskar mantras invoke 12 aspects of the Sun — the source of all energy on Earth. Listening while stretching, doing yoga, or even just sitting quietly fills the body with solar energy, drives away lethargy, and ignites enthusiasm for the day. Ancient yogis considered this the single most powerful morning ritual for sustained energy throughout the day.',
+    bestTime:'🌅 At sunrise while doing yoga, stretching, or walking',
+    loop:false, videoId:'',
+    ytSearch:'Surya Namaskar mantra 12 Sanskrit morning yoga energy sun salutation'
+  },
+  {
+    id:'vande-mataram', emoji:'🇮🇳',
+    title:'Vande Mataram',
+    subtitle:'The song that fuelled a freedom movement',
+    lang:'Sanskrit / Bengali', langShort:'Sanskrit', cat:'energy',
+    moods:['courage','strength'],
+    significance:'Written in 1882, Vande Mataram became the anthem of India\'s freedom struggle. Freedom fighters walked toward their own imprisonment singing this song. Its words describe the motherland as a goddess — abundant, beautiful, powerful. Listening awakens deep pride, courage, and a sense of belonging. Particularly powerful when you feel small, unworthy, or like you don\'t belong.',
+    bestTime:'🌅 Morning, before challenges, or when feeling lost or unworthy',
+    loop:false, videoId:'',
+    ytSearch:'Vande Mataram full original Sanskrit Bengali version AR Rahman devotional'
+  },
+
+  // ── 💆 PEACE & CALM ─────────────────────────────────────────────────────────
+  {
+    id:'396hz-release-fear', emoji:'💜',
+    title:'396 Hz — Release Fear &amp; Guilt',
+    subtitle:'Solfeggio frequency for deep emotional clearing',
+    lang:'Instrumental', langShort:'Instrumental', cat:'peace',
+    moods:['calm','courage'],
+    significance:'396 Hz is the Solfeggio frequency associated with liberating fear, guilt, and grief. It works by vibrating the body at a frequency that disrupts the anxious thought loop — like untying a knot in the nervous system. Particularly effective when stuck in cycles of worry, self-blame, shame, or old emotional pain that keeps returning. Listen with eyes closed in a quiet space.',
+    bestTime:'🌙 Evening, before sleep, or during emotional difficulty',
+    loop:true, videoId:'',
+    ytSearch:'396 Hz solfeggio frequency release fear guilt emotional healing 1 hour'
+  },
+  {
+    id:'vishnu-shanta', emoji:'🌊',
+    title:'Vishnu Stotram — Shantakaram',
+    subtitle:'The peaceful resting form — for a racing mind at night',
+    lang:'Sanskrit', langShort:'Sanskrit', cat:'peace',
+    moods:['calm','hope'],
+    significance:'"Shantakaram Bhujagashayanam" — these words describe Vishnu resting on the cosmic ocean in a state of perfect infinite tranquility. Meditating on this image, and listening to this stotram, aligns the mind with deep ocean-like stillness. Particularly powerful for children and adults with a racing mind at night. Many families have listened to this every night for generations as their sleep ritual.',
+    bestTime:'🌙 Before sleep, or during anxiety and mental restlessness',
+    loop:true, videoId:'',
+    ytSearch:'Vishnu Stotram Shantakaram Sanskrit peaceful meditation sleep'
+  },
+  {
+    id:'tibetan-bowls', emoji:'🔔',
+    title:'Tibetan Singing Bowls',
+    subtitle:'Ancient sound healing — complete mental reset in 10 minutes',
+    lang:'Instrumental', langShort:'Instrumental', cat:'peace',
+    moods:['calm','growth'],
+    significance:'Tibetan singing bowls produce complex layered harmonics that slow brainwaves from beta (anxious/active) to theta (meditative/creative). Used for centuries in Buddhist practice. Research shows even 10 minutes measurably reduces stress hormones and produces spaciousness in the mind. When completely overwhelmed, this is the reset button — it works for children as young as 6.',
+    bestTime:'🌙 Evening, meditation, before sleep, or when overwhelmed',
+    loop:true, videoId:'',
+    ytSearch:'Tibetan singing bowls healing meditation deep relaxation 1 hour'
+  },
+
+  // ── 🌅 MORNING SPIRITUAL — user curated (5 tracks) ─────────────────────────
+  {id:'morning-u1',emoji:'🌅',title:'Morning Spiritual Bhajan · 1',subtitle:'Sacred dawn song for a blessed beginning',lang:'Devotional',langShort:'Devotional',cat:'morning',moods:['calm','hope'],
+    significance:'A devotional song curated for the sacred morning hours. Morning bhajans set the emotional tone for the entire day — filling the heart with gratitude and peace before the world\'s noise begins. Best listened to in stillness, with eyes gently closed, in the first light of day.',
+    bestTime:'🌅 Before 7 AM — in the quiet before the day starts',loop:false,videoId:'xz2icG8-3_Y',ytSearch:'morning bhajan devotional spiritual'},
+  {id:'morning-u2',emoji:'🌄',title:'Morning Spiritual Bhajan · 2',subtitle:'Devotional melody for a beautiful day',lang:'Devotional',langShort:'Devotional',cat:'morning',moods:['calm','hope'],
+    significance:'Begin your day wrapped in devotion. Morning spiritual songs create a buffer between sleep and the demands of the world — a few minutes of the sacred before the ordinary. This curated track is ideal for quiet reflection, prayer, or simply sitting in gratitude as the sun rises.',
+    bestTime:'🌅 Early morning, before breakfast',loop:false,videoId:'psfT4kQJ1uI',ytSearch:'morning spiritual devotional bhajan India'},
+  {id:'morning-u3',emoji:'🪷',title:'Morning Devotional Prayer',subtitle:'Sacred chanting for inner stillness',lang:'Devotional',langShort:'Devotional',cat:'morning',moods:['calm','wisdom'],
+    significance:'Devotional chanting in the morning activates the voice, breath, and heart simultaneously. This track is part of a morning ritual practised across India for thousands of years — the first sounds of the day offered as prayer. Even simply listening, without chanting along, carries its full benefit.',
+    bestTime:'🌅 Sunrise — ideally facing east',loop:false,videoId:'7XzeIZQgqZ8',ytSearch:'morning devotional chanting prayer India Sanskrit'},
+  {id:'morning-u4',emoji:'🕉️',title:'Extended Morning Prayers',subtitle:'Long-form morning spiritual collection',lang:'Devotional',langShort:'Devotional',cat:'morning',moods:['calm','growth'],
+    significance:'A longer morning spiritual collection, ideal for those with more time — during yoga, meditation, or a quiet morning walk. Let these sacred sounds fill the background while you prepare for the day. Its extended length makes it perfect for looping through an entire morning routine.',
+    bestTime:'🌅 Morning — ideal during yoga or slow morning routines',loop:true,videoId:'lCmn5X97x64',ytSearch:'morning prayers spiritual collection long India'},
+  {id:'morning-u5',emoji:'🌻',title:'Morning Devotional Mix',subtitle:'Uplifting dawn spiritual playlist',lang:'Devotional',langShort:'Devotional',cat:'morning',moods:['hope','growth'],
+    significance:'Morning music shapes the emotional baseline for the entire day. When the first sounds you hear are sacred and uplifting, the mind carries that quality into everything that follows. This track curates the warmest, most energising devotional music for a beautiful start.',
+    bestTime:'🌅 As you wake and get ready for the day',loop:false,videoId:'GtM4MbcvpkQ',ytSearch:'morning devotional uplifting spiritual mix India'},
+
+  // ── 🦁 NARASIMHA KAVACH — overcome fear ────────────────────────────────────
+  {id:'narasimha-kavach',emoji:'🦁',title:'Narasimha Kavach',subtitle:'Powerful protection mantra — to overcome any fear',lang:'Sanskrit',langShort:'Sanskrit',cat:'devotional',moods:['calm','courage','strength'],
+    significance:'The Narasimha Kavach is one of the most powerful protective prayers in the Hindu tradition. Lord Narasimha — Vishnu\'s fierce, fearless form — is invoked when facing overwhelming fear, danger, or darkness. This kavach (divine armour) is said to create a shield of protection around the listener. Many devotees report that fear dissolves within minutes of listening with focused attention and sincere heart.',
+    bestTime:'🌅 Morning, or whenever fear, anxiety or danger feels unbearable',loop:false,videoId:'aai1k4SX_uk',ytSearch:'Narasimha Kavach Sanskrit powerful protection fear full'},
+
+  // ── 🌿 KANNADA DEVOTIONAL — user curated (4 tracks) ────────────────────────
+  {id:'kannada-u1',emoji:'🌿',title:'Kannada Devotional Song · 1',subtitle:'Karnataka bhakti — for heart and home',lang:'Kannada',langShort:'Kannada',cat:'kannada',moods:['calm','hope'],
+    significance:'Karnataka has one of the richest devotional music traditions in India — from Purandaradasa to Kanakadasa, saints who sang in the everyday language of the people. These Kannada devotional songs carry a particular warmth and intimacy — like being in your grandmother\'s home at dawn, incense burning, the day beginning in prayer.',
+    bestTime:'🌅 Morning or evening prayer time',loop:false,videoId:'S6WxaSKG4AE',ytSearch:'Kannada devotional song bhakti geete Karnataka'},
+  {id:'kannada-u2',emoji:'🌾',title:'Kannada Bhakti Geete · 2',subtitle:'Devotional song — love in the mother tongue',lang:'Kannada',langShort:'Kannada',cat:'kannada',moods:['hope','growth'],
+    significance:'Devotional songs in the mother tongue carry a double power — the sacred meaning of the words AND the comfort of hearing them in the language of home. Kannada bhajans connect those who grew up in Karnataka to something deep, rooted, and beloved. A reminder of who you are and where you come from.',
+    bestTime:'🌅 Morning, or when needing to feel grounded and at home',loop:false,videoId:'WL0MtwH6s2c',ytSearch:'Kannada bhakti geete devotional Karnataka song'},
+  {id:'kannada-u3',emoji:'🪷',title:'Kannada Devotional Classic · 3',subtitle:'Sacred Karnataka song — for peace of mind',lang:'Kannada',langShort:'Kannada',cat:'kannada',moods:['calm','hope'],
+    significance:'This Kannada devotional carries the vibration of centuries of bhakti — complete, wholehearted surrender to the divine. For those who grew up in Karnataka, hearing these songs is like returning home to something deep within. For all others, it is an invitation into one of India\'s most beautiful devotional traditions.',
+    bestTime:'🌅 Morning prayer time, or whenever seeking peace',loop:false,videoId:'HblTMjGSOI4',ytSearch:'Kannada devotional classic bhakti song Karnataka'},
+  {id:'kannada-u4',emoji:'🌺',title:'Kannada Sacred Song · 4',subtitle:'Bhakti in the mother tongue — pure devotion',lang:'Kannada',langShort:'Kannada',cat:'kannada',moods:['calm','strength'],
+    significance:'Pure devotion needs no translation — even if you don\'t understand every word, the feeling in a sincere Kannada bhajan is unmistakable. These songs were composed and sung by people who found the divine in everyday life, and that quality — the sacred within the ordinary — is what comes through when you listen.',
+    bestTime:'🌅 Morning, or when you need to feel grounded',loop:false,videoId:'dAvhAhaKQFM',ytSearch:'Kannada sacred devotional bhakti song India'},
+
+  // ── 🌾 JANAPADA — Kannada folk songs (2 tracks) ────────────────────────────
+  {id:'janapada-u1',emoji:'🌾',title:'Janapada Geete · 1',subtitle:'Kannada folk song — the voice of the land',lang:'Kannada',langShort:'Kannada',cat:'janapada',moods:['hope','strength'],
+    significance:'Janapada songs are the folk songs of Karnataka — born in the fields, in the homes, in the everyday lives of ordinary people. They carry a raw, earthy beauty that no concert hall can replicate. These songs connect listeners to the soil, the seasons, the community, and a sense of belonging to something much larger than themselves. The wisdom of generations, sung simply.',
+    bestTime:'🌅 Morning, outdoor walks, or when feeling disconnected',loop:false,videoId:'dtmr-rDIR6s',ytSearch:'Janapada geete Kannada folk song Karnataka traditional'},
+  {id:'janapada-u2',emoji:'🎵',title:'Janapada Geete · 2',subtitle:'Karnataka folk tradition — roots and belonging',lang:'Kannada',langShort:'Kannada',cat:'janapada',moods:['hope','growth'],
+    significance:'Folk music is the memory of a people. Kannada Janapada songs carry stories, wisdom, and the emotional life of generations of Kannadigas — farmers, mothers, warriors, and dreamers. Listening reconnects you to your roots and the collective strength of those who came before you. A song is sometimes the most honest way a community knows itself.',
+    bestTime:'🌅 Morning, or whenever feeling lost or disconnected from your roots',loop:false,videoId:'g4zOLRfglNY',ytSearch:'Janapada folk song Kannada traditional Karnataka geete'},
+
+  // ── 💪 MOTIVATION / INSPIRATIONAL — user curated (8 tracks) ───────────────
+  {id:'motivation-u1',emoji:'💪',title:'Motivational Song · 1',subtitle:'Rise up — for courage, clarity and action',lang:'Hindi',langShort:'Hindi',cat:'motivation',moods:['courage','growth'],
+    significance:'Music shifts emotional state within 30 seconds — faster than any pep talk. Motivational songs combine the body\'s rhythm with the mind\'s aspirations, changing breathing patterns, raising energy, and reminding you of what you\'re capable of. Listen when you need to get off the floor and get moving.',
+    bestTime:'💪 Morning, before study, before a challenge, or when giving up',loop:false,videoId:'8DMF0U6xV78',ytSearch:'motivational Hindi song inspiration energy rise up'},
+  {id:'motivation-u2',emoji:'🔥',title:'Motivational Song · 2',subtitle:'Push through — for resilience and determination',lang:'Hindi',langShort:'Hindi',cat:'motivation',moods:['courage','strength'],
+    significance:'Great motivational music speaks to the part of you that refuses to accept limitations. These songs are designed for the difficult middle — when the beginning\'s excitement has faded and the end feels impossibly far. The exact moment most people stop. Let this remind you why you started.',
+    bestTime:'💪 During long study sessions, or when exhausted and tempted to quit',loop:false,videoId:'NFgvJvxkED8',ytSearch:'inspirational Hindi song motivational push through resilience'},
+  {id:'motivation-u3',emoji:'⚡',title:'Achievement Song · 3',subtitle:'Celebrate your strength — you are capable',lang:'Hindi',langShort:'Hindi',cat:'motivation',moods:['courage','growth'],
+    significance:'The right music before a high-stakes moment primes the brain for peak performance. Athletes, olympians, and performers all use music this way — deliberately, as a performance tool. This track is curated for exactly that purpose: to remind your body and mind what they are made of.',
+    bestTime:'💪 Immediately before exams, sports events, or presentations',loop:false,videoId:'1JPlmLKsrB4',ytSearch:'achievement motivational Hindi song strength capable winner'},
+  {id:'motivation-u4',emoji:'🏆',title:'Victory Anthem · 4',subtitle:'For the achiever in you — no matter where you start',lang:'Hindi',langShort:'Hindi',cat:'motivation',moods:['courage','strength'],
+    significance:'Victory songs are ancient — every culture used music to prepare warriors, inspire builders, and celebrate those who endured. These modern Indian motivational songs carry that same energy: the deep feeling that effort is worthwhile, that greatness is possible, that you are more than your doubts suggest.',
+    bestTime:'💪 Morning, or before any high-stakes effort',loop:false,videoId:'0zFoHrvbRu4',ytSearch:'victory anthem Hindi motivational inspirational achiever song'},
+  {id:'motivation-u5',emoji:'🌟',title:'Rising Song · 5',subtitle:'When you need to believe again',lang:'Hindi',langShort:'Hindi',cat:'motivation',moods:['hope','courage'],
+    significance:'Some days the hardest thing is simply believing it\'s still possible. These songs speak directly to that exact moment — the one where you\'re about to give up and need one more reason to try. Let this play loudly. Let it remind you what you\'re fighting for and why it matters.',
+    bestTime:'💪 When feeling hopeless, before giving up on something important',loop:false,videoId:'jMfvlh0tjyo',ytSearch:'motivation song Hindi rising believe again keep going'},
+  {id:'motivation-u6',emoji:'💡',title:'Clarity &amp; Drive · 6',subtitle:'Focused fire — for deep work sessions',lang:'Hindi',langShort:'Hindi',cat:'motivation',moods:['growth','wisdom'],
+    significance:'Not all motivation is loud. Some of the most powerful motivational music creates a quiet, sustained fire — the kind that keeps you working for hours, not minutes. This track is for that quality: the burning clarity that makes you sit down and actually do the work, without drama or noise.',
+    bestTime:'📚 During long study sessions or creative deep work',loop:false,videoId:'Ax0G_P2dSBw',ytSearch:'focus motivation Hindi song deep work clarity drive'},
+  {id:'motivation-u7',emoji:'🦅',title:'Unstoppable · 7',subtitle:'No limits — break through every barrier',lang:'Hindi',langShort:'Hindi',cat:'motivation',moods:['courage','strength'],
+    significance:'The feeling of being unstoppable — even briefly — changes what you attempt. It\'s neurological: the right music releases dopamine and norepinephrine, creating genuine confidence. Use this song intentionally before you face something you believe might be too hard for you.',
+    bestTime:'💪 Before challenges, competitions, or anything that feels too hard',loop:false,videoId:'CaI0xNLpurM',ytSearch:'unstoppable Hindi motivational no limits break barriers song'},
+  {id:'motivation-u8',emoji:'🎯',title:'Purpose Song · 8',subtitle:'Know WHY — reconnect with your deeper reason',lang:'Hindi',langShort:'Hindi',cat:'motivation',moods:['wisdom','growth'],
+    significance:'Motivation without purpose is just energy without direction. The deepest motivational songs connect effort to meaning — reminding you WHY you are working this hard, what it\'s all for, who you\'re doing it for. This is for the moments when you\'ve lost the "why" and need to find it again.',
+    bestTime:'💪 Morning, or when feeling lost in the effort and needing perspective',loop:false,videoId:'9iIX4PBplAY',ytSearch:'purpose motivation Hindi song why deeper reason keep going'},
+
+  // ── 🙏 HINDI DEVOTIONAL — user curated (2 tracks) ─────────────────────────
+  {id:'hindi-dev-u1',emoji:'🙏',title:'Hindi Devotional Bhajan · 1',subtitle:'Sacred Hindi song for the heart',lang:'Hindi',langShort:'Hindi',cat:'devotional',moods:['calm','hope'],
+    significance:'Hindi devotional bhajans carry the heart of the Bhakti movement — a tradition of poets and saints who believed that love for the divine was available to everyone, not just scholars or priests. Songs like these are the sound of millions of ordinary people finding the extraordinary within their ordinary lives.',
+    bestTime:'🌅 Morning or evening prayer time, or when you need comfort',loop:false,videoId:'4CKpFcQdJXk',ytSearch:'Hindi devotional bhajan sacred song heart India'},
+  {id:'hindi-dev-u2',emoji:'🪔',title:'Hindi Devotional Song · 2',subtitle:'Bhakti in the language of the heart',lang:'Hindi',langShort:'Hindi',cat:'devotional',moods:['calm','hope'],
+    significance:'The Bhakti tradition teaches that the purest prayer is love — not ritual, not recitation, but love. Hindi devotional songs embody this teaching completely. Simple, direct, full of longing and gratitude. They require no prior knowledge to work. Just listening with an open heart is enough.',
+    bestTime:'🌅 Morning, evening, or whenever you need to feel held',loop:false,videoId:'Rv8J3aGDrfk',ytSearch:'Hindi devotional song bhakti love heart India'},
+
+  // ── 🎸 ROCK / BOOST MODE — user curated (6 tracks) ────────────────────────
+  {id:'rock-u1',emoji:'🎸',title:'Rock Boost · 1',subtitle:'High energy — instant mood and energy lift',lang:'English',langShort:'English',cat:'rock',moods:['courage','strength'],
+    significance:'Sometimes the mind needs sound — loud, driving, energetic sound that breaks through inertia and gets the body moving. Rock music activates the sympathetic nervous system, increases heart rate, and releases adrenaline. When you\'re stuck, sluggish, or need to push through exhaustion, this is your tool.',
+    bestTime:'🎸 Before workouts, intense study sessions, or when stuck',loop:false,videoId:'iauc_Kp73Us',ytSearch:'rock boost energy motivational song high tempo'},
+  {id:'rock-u2',emoji:'🔊',title:'Rock Boost · 2',subtitle:'Power up — maximum energy mode activated',lang:'English',langShort:'English',cat:'rock',moods:['courage','strength'],
+    significance:'High-energy rock creates what psychologists call "arousal" — an activated, alert state where performance peaks. Research shows that athletes who listen to high-tempo music before competition perform measurably better. Use this as part of your deliberate pre-performance ritual.',
+    bestTime:'🎸 Before physical activity, sports, or high-energy work',loop:false,videoId:'qLyHApRMONY',ytSearch:'rock power boost energy track high tempo performance'},
+  {id:'rock-u3',emoji:'⚡',title:'Rock Boost · 3',subtitle:'Break through — pure energy when willpower runs low',lang:'English',langShort:'English',cat:'rock',moods:['courage','growth'],
+    significance:'Rhythm is one of the most ancient human technologies for building collective energy and drive. Rock music distils this into its purest form. When mental fatigue sets in and willpower is running low, a loud, driving track can reset the entire system completely and get you moving again.',
+    bestTime:'🎸 Mid-afternoon energy slump, or before a workout',loop:false,videoId:'8HDTS80dlr4',ytSearch:'rock energy boost break through track driving'},
+  {id:'rock-u4',emoji:'🏋️',title:'Rock Boost · 4',subtitle:'Raw power — for your strongest moments',lang:'English',langShort:'English',cat:'rock',moods:['strength','courage'],
+    significance:'There are moments that require raw, undiluted energy — not calm, not gentle focus, but power. This is the music for those moments. Loud, fast, driving. Let it flood your system before you do something that requires everything you have. Your body already knows what to do when the music starts.',
+    bestTime:'🎸 Before intense physical or mental challenges',loop:false,videoId:'x_NoA_Fp2Rc',ytSearch:'rock raw power energy boost song strong'},
+  {id:'rock-u5',emoji:'🔥',title:'Rock Boost · 5',subtitle:'Ignite — relentless energy and drive',lang:'English',langShort:'English',cat:'rock',moods:['courage','strength'],
+    significance:'Great rock music has a quality that goes beyond entertainment — it creates a brief feeling of invincibility. That feeling is real and neurological, and it is useful. Use it intentionally — as a deliberate ritual before you face something difficult. Let the music do what it was designed to do.',
+    bestTime:'🎸 Before challenges, competitions, or heavy training',loop:false,videoId:'NsAlWQN5BVk',ytSearch:'rock ignite energy drive relentless motivation song'},
+  {id:'rock-u6',emoji:'🎵',title:'Rock Boost · 6',subtitle:'Peak state — perform at your absolute best',lang:'English',langShort:'English',cat:'rock',moods:['strength','growth'],
+    significance:'Peak performance requires being in the right physiological and psychological state before you begin. Music is one of the fastest routes to that state — faster than meditation, faster than caffeine, and with no side effects. This track is a tool, used deliberately, to prime your system.',
+    bestTime:'🎸 Any time you need to perform at your very best',loop:false,videoId:'7_-vnprO76I',ytSearch:'rock peak state performance drive maximum energy'},
+
+  // ── 💕 ROMANTIC / SOOTHING OLD SONGS — user curated (8 tracks) ────────────
+  {id:'romantic-u1',emoji:'🌹',title:'Romantic Old Song · 1',subtitle:'Warm, beautiful, patient — the old way',lang:'Hindi',langShort:'Hindi',cat:'romantic',moods:['calm','hope'],
+    significance:'Old Hindi songs carry a quality modern music often lacks — patience, warmth, and a gentle belief that love and beauty are enough. They slow the nervous system, soften the mind, and create a feeling of being held. Perfect for unwinding, reflection, or simply being still without needing to be productive.',
+    bestTime:'🌙 Evenings, weekends, or when emotionally tired',loop:false,videoId:'j-sGiorNo-Q',ytSearch:'romantic old Hindi song soothing warm classic'},
+  {id:'romantic-u2',emoji:'🎵',title:'Independence — Most Moving Song',subtitle:'The best independence-related song — deeply emotional',lang:'Hindi',langShort:'Hindi',cat:'romantic',moods:['hope','strength'],
+    significance:'The user notes this as the best independence-related track — a deeply moving song that carries the full weight of freedom, sacrifice, and belonging. Songs like this remind us that the ordinary life we live was earned by extraordinary courage. Listen with full attention. Let it land.',
+    bestTime:'🌅 Independence Day, Republic Day, or any moment needing perspective',loop:false,videoId:'T1mUUV7fdmY',ytSearch:'independence India emotional song patriotic deeply moving'},
+  {id:'romantic-u3',emoji:'🌺',title:'Soothing Classic · 3',subtitle:'Soft and beautiful — for quiet evenings',lang:'Hindi',langShort:'Hindi',cat:'romantic',moods:['calm','hope'],
+    significance:'There is a kind of beauty in old songs that modern production rarely captures — the sound of human breath, slight imperfections, instruments that feel present in the room with you. These songs are for those moments when you want to feel something real and gentle. Not distracted. Just present.',
+    bestTime:'🌙 Evenings, before sleep, or on slow quiet days',loop:false,videoId:'s2IyulqljhA',ytSearch:'soothing classic old Hindi song quiet evening beautiful'},
+  {id:'romantic-u4',emoji:'🌙',title:'Soft Old Melody · 4',subtitle:'Timeless — heart at rest',lang:'Hindi',langShort:'Hindi',cat:'romantic',moods:['calm','hope'],
+    significance:'Old Hindi melodies were composed with extraordinary care — each note considered, each phrase balanced. Listening to them is like being in a conversation with someone who speaks slowly and means every word. For when you need peace, not just quiet. For when you want to feel something rather than just relax.',
+    bestTime:'🌙 Evening, weekend afternoons, or unwinding after a hard day',loop:false,videoId:'sK7riqg2mr4',ytSearch:'soft old classic Hindi melody timeless heart rest'},
+  {id:'romantic-u5',emoji:'💫',title:'Gentle Old Song · 5',subtitle:'Slow down — feel everything softly',lang:'Hindi',langShort:'Hindi',cat:'romantic',moods:['calm','hope'],
+    significance:'In a world that moves fast and feels loud, old songs are a form of quiet resistance. They ask you to slow down, to feel the full weight and sweetness of a moment without rushing through it. This is music for being fully present — not productive or efficient, simply alive to this exact moment.',
+    bestTime:'🌙 Evenings, slow days, or when emotionally tired',loop:false,videoId:'norKA9zS8x4',ytSearch:'gentle old song Hindi slow peaceful soothing classic'},
+  {id:'romantic-u6',emoji:'🌸',title:'Beautiful Melody · 6',subtitle:'For the soul — when beauty is enough',lang:'Hindi',langShort:'Hindi',cat:'romantic',moods:['calm','hope'],
+    significance:'A well-crafted melody has the power to make you feel that life is worth living, even on the hardest days. Not through false optimism but through demonstration — the evidence that something this lovely exists, that humans can make this, that beauty is real. Sometimes that is all you need.',
+    bestTime:'🌙 Morning or evening, any slow quiet time',loop:false,videoId:'g2ReoAqozMk',ytSearch:'melodic classic old Hindi song beautiful soul soothing'},
+  {id:'romantic-u7',emoji:'✨',title:'Soothing Short · 7',subtitle:'A brief, complete moment of beauty',lang:'Hindi',langShort:'Hindi',cat:'romantic',moods:['calm','hope'],
+    significance:'Short-form music can be just as powerful as a long composition — sometimes more so, because it demands nothing from you. A brief song that captures the right feeling can reset the entire mood of an hour. Use these as intentional small breaks throughout the day, as conscious pauses.',
+    bestTime:'💆 Short break between work or study sessions',loop:false,videoId:'xDG4CPdgwXw',ytSearch:'short soothing song Hindi beautiful peaceful moment'},
+  {id:'romantic-u8',emoji:'🕊️',title:'Peaceful Short · 8',subtitle:'Peace in a brief form — the art of the pause',lang:'Hindi',langShort:'Hindi',cat:'romantic',moods:['calm','hope'],
+    significance:'A brief moment of beauty can anchor the entire quality of an hour. These short soothing songs are transition music — between work and rest, between one mood and another, between the world outside and the world within. Use them with intention and they will serve you beautifully.',
+    bestTime:'💆 Between tasks, as a mindful, intentional pause',loop:false,videoId:'lN27-vBjv5Q',ytSearch:'short peaceful classic Hindi song art of pause soothing'},
+
+  // ── 🇮🇳 DESH BHAKTI — user curated (2 tracks) ──────────────────────────────
+  {id:'desh-bhakti-u1',emoji:'🇮🇳',title:'Desh Bhakti Geete · 1',subtitle:'Patriotic Kannada song — love for the motherland',lang:'Kannada',langShort:'Kannada',cat:'desh_bhakti',moods:['courage','strength'],
+    significance:'Desh Bhakti songs in Kannada connect love of the divine with love of the land — reminding us that pride in one\'s roots is itself a form of spiritual strength. These songs were sung by freedom fighters and are still sung by children in schools across Karnataka today. They carry something irreplaceable: the dignity of a people who chose freedom.',
+    bestTime:'🌅 Morning, Independence Day, Republic Day, or before challenges',loop:false,videoId:'sdyPozsx_6M',ytSearch:'Desh bhakti geete Kannada patriotic song Karnataka India'},
+  {id:'desh-bhakti-u2',emoji:'🏅',title:'Desh Bhakti Song · 2',subtitle:'The pride of the nation — inner courage through belonging',lang:'Kannada',langShort:'Kannada',cat:'desh_bhakti',moods:['courage','hope'],
+    significance:'A nation is not just geography — it is the sum of its stories, its sacrifices, and its living aspirations. Patriotic songs keep those stories alive and make them felt in the body, not just the mind. When you feel small or insignificant, these songs remind you that you are part of something vast, ancient, and deeply worth being part of.',
+    bestTime:'🌅 Morning, national days, or when seeking courage and belonging',loop:false,videoId:'c05H8xW0nu4',ytSearch:'desh bhakti song Kannada patriotic pride India nation Karnataka'},
+
+  // ── 🌟 BANJARA BHAJAN — user curated (2 tracks) ─────────────────────────────
+  {id:'banjara-u1',emoji:'🌟',title:'Banjara Bhajan · 1',subtitle:'Devotional song of the Banjara community',lang:'Banjara',langShort:'Banjara',cat:'banjara',moods:['hope','calm'],
+    significance:'The Banjara community — also known as Lambada or Gormati — has one of India\'s richest oral and musical traditions. Their bhajans combine folk melody with profound devotion, sung during festivals and pilgrimages across Karnataka, Andhra Pradesh, and Telangana. These songs carry centuries of a community\'s unbroken relationship with the divine, expressed with extraordinary beauty and raw sincerity.',
+    bestTime:'🌅 Morning prayer time, festivals, or during community gatherings',loop:false,videoId:'AB0IyiEoyac',ytSearch:'Banjara bhajan devotional Lambada Gormati Karnataka song'},
+  {id:'banjara-u2',emoji:'💫',title:'Banjara Bhajan · 2',subtitle:'Ancient community wisdom — resilience in song',lang:'Banjara',langShort:'Banjara',cat:'banjara',moods:['hope','strength'],
+    significance:'Banjara bhajans celebrate resilience, community, and faith across all hardships. A nomadic people\'s gift of beauty to the world — they carried their entire culture in their songs, across generations and geographies. Listening connects you to the extraordinary spirit of those who kept their dignity and devotion intact through everything.',
+    bestTime:'🌅 Morning prayers, community gatherings, or when seeking strength',loop:false,videoId:'Ecp9DSmGXbQ',ytSearch:'Banjara devotional bhajan ancient community wisdom Karnataka'}
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// MOOD → MUSIC  (which tracks to suggest after a Mitra reply)
+// ─────────────────────────────────────────────────────────────────────────────
+const MOOD_MUSIC = {
+  calm:    ['narasimha-kavach','om-chanting-108','vishnu-shanta','396hz-release-fear','romantic-u1','romantic-u4'],
+  courage: ['hanuman-chalisa','narasimha-kavach','mahamrityunjaya','motivation-u1','rock-u1','desh-bhakti-u1'],
+  hope:    ['gayatri-mantra','bhagyada-lakshmi','528hz-miracle','jagadodharana','motivation-u5','banjara-u1'],
+  wisdom:  ['saraswati-vandana','brihaspati-gayatri','saraswati-432hz','om-chanting-108','motivation-u8'],
+  strength:['mahamrityunjaya','hanuman-chalisa','narasimha-kavach','surya-mantra','rock-u2','motivation-u4'],
+  growth:  ['gayatri-mantra','saraswati-432hz','binaural-alpha','motivation-u2','morning-u1']
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
+// AGE SELECTION
+// ─────────────────────────────────────────────────────────────────────────────
+function selectAge(g,n,e){
+  ageGroup=g; ageName=n; ageEmoji=e;
+  document.querySelectorAll('.age-btn').forEach(b=>b.classList.remove('selected'));
   event.currentTarget.classList.add('selected');
   document.getElementById('startBtn').classList.add('ready');
 }
-
-function enterApp() {
-  if (!ageGroup) return;
-  document.getElementById('splash').style.display = 'none';
-  const main = document.getElementById('main');
-  main.style.display = 'flex';
-  document.getElementById('topAvatar').textContent = ageEmoji;
-  document.getElementById('topSub').textContent = ageName + ' · Your wise companion';
-  chatHistory = [];
-  document.getElementById('msgs').innerHTML = '';
+function enterApp(){
+  if(!ageGroup) return;
+  document.getElementById('splash').style.display='none';
+  const main=document.getElementById('main');
+  main.style.display='flex';
+  document.getElementById('topAvatar').textContent=ageEmoji;
+  document.getElementById('topSub').textContent=ageName+' · Your wise companion';
+  chatHistory=[]; document.getElementById('msgs').innerHTML='';
   switchTab('chat');
-  buildChips();
-  buildStories();
-  buildWisdom();
-  addMsg('mitra', welcomeMsg(), null);
+  buildChips(); buildStories(); buildWisdom(); buildMusic();
+  addMsg('mitra',welcomeMsg(),null);
+}
+function goSplash(){
+  document.getElementById('main').style.display='none';
+  document.getElementById('splash').style.display='flex';
+}
+function welcomeMsg(){
+  return {
+    kid:'Namaste! 🙏 I\'m Mitra — your wise friend! Whenever something feels scary, confusing or unfair, I\'m right here. What\'s on your mind today?',
+    teen:'Hey. I\'m Mitra — not here to lecture, just genuinely here for you. Whatever you\'re going through — pressure, fear, confusion, conflict — I care. What\'s happening?',
+    adult:'Namaste. I\'m Mitra — a companion rooted in the Gita, Ramayana, history, and psychology. Whatever you\'re navigating — I\'m here. Tell me what\'s weighing on you.'
+  }[ageGroup]||'Namaste. I\'m Mitra. Tell me what\'s on your mind.';
 }
 
-function goSplash() {
-  document.getElementById('main').style.display = 'none';
-  document.getElementById('splash').style.display = 'flex';
+// ─────────────────────────────────────────────────────────────────────────────
+// TABS
+// ─────────────────────────────────────────────────────────────────────────────
+function switchTab(t){
+  ['chat','stories','wisdom','music'].forEach(id=>{
+    document.getElementById('tab-'+id).classList.toggle('active',id===t);
+    const p=document.getElementById('panel-'+id);
+    p.style.display= id===t ? (id==='chat'?'flex':'block') : 'none';
+  });
 }
 
-function welcomeMsg() {
-  const w = {
-    kid:   'Namaste! 🙏 I\'m Mitra — your wise friend! Whenever something feels scary, confusing or unfair, I\'m right here. What\'s on your mind today?',
-    teen:  'Hey. I\'m Mitra — not here to lecture, just genuinely here for you. Whatever you\'re going through — pressure, fear, confusion, conflict — I care. What\'s happening?',
-    adult: 'Namaste. I\'m Mitra — a companion rooted in the Gita, Ramayana, history, and psychology. Whatever situation you\'re navigating — I\'m here. Tell me what\'s weighing on you.'
-  };
-  return w[ageGroup] || w.adult;
-}
-
-// ── QUICK CHIPS ───────────────────────────────────────────────────────────────
-const QUICK_TOPICS = {
-  kid:   ['Someone is being mean to me', 'I feel scared', 'My parents are fighting', 'I told a lie and feel bad', 'I failed my test', 'I feel very lonely'],
-  teen:  ['Peer pressure to do something wrong', 'Feeling anxious & overwhelmed', 'Family conflict at home', 'I don\'t know what\'s right to do', 'I feel like I don\'t belong', 'Scared of failing'],
-  adult: ['Facing a big moral dilemma', 'Anxiety & self-doubt', 'Family conflict', 'Feeling lost about life\'s purpose', 'How to deal with failure', 'Feeling lonely & isolated']
+// ─────────────────────────────────────────────────────────────────────────────
+// QUICK CHIPS
+// ─────────────────────────────────────────────────────────────────────────────
+const QUICK_TOPICS={
+  kid:  ['Someone is being mean to me','I feel scared','My parents are fighting','I told a lie and feel bad','I failed my test','I feel very lonely'],
+  teen: ['Peer pressure to do something wrong','Feeling anxious & overwhelmed','Family conflict at home','I don\'t know what\'s right to do','I feel like I don\'t belong','Scared of failing'],
+  adult:['Facing a big moral dilemma','Anxiety & self-doubt','Family conflict','Feeling lost about life\'s purpose','How to deal with failure','Feeling lonely & isolated']
 };
-
-function buildChips() {
-  const c = document.getElementById('chips');
-  c.innerHTML = '';
-  (QUICK_TOPICS[ageGroup] || []).forEach(q => {
-    const b = document.createElement('button');
-    b.className = 'chip'; b.textContent = q;
-    b.onclick = () => { document.getElementById('userInput').value = q; sendMsg(); };
+function buildChips(){
+  const c=document.getElementById('chips'); c.innerHTML='';
+  (QUICK_TOPICS[ageGroup]||[]).forEach(q=>{
+    const b=document.createElement('button');
+    b.className='chip'; b.textContent=q;
+    b.onclick=()=>{document.getElementById('userInput').value=q; sendMsg();};
     c.appendChild(b);
   });
 }
 
-// ── CHAT ──────────────────────────────────────────────────────────────────────
-function addMsg(role, text, mood) {
-  const c = document.getElementById('msgs');
-  const wrap = document.createElement('div');
-  wrap.className = 'msg ' + (role === 'user' ? 'user' : 'mitra');
-
-  const av = document.createElement('div');
-  av.className = 'msg-avatar';
-  av.textContent = role === 'user' ? (ageEmoji || '👤') : '🪔';
-
-  const col = document.createElement('div');
-  col.className = 'msg-col';
-
-  const bub = document.createElement('div');
-  bub.className = 'bubble';
-  bub.innerHTML = text.replace(/\n/g, '<br>');
+// ─────────────────────────────────────────────────────────────────────────────
+// CHAT MESSAGES
+// ─────────────────────────────────────────────────────────────────────────────
+function addMsg(role, text, mood){
+  const c=document.getElementById('msgs');
+  const wrap=document.createElement('div');
+  wrap.className='msg '+(role==='user'?'user':'mitra');
+  const av=document.createElement('div');
+  av.className='msg-avatar';
+  av.textContent=role==='user'?(ageEmoji||'👤'):'🪔';
+  const col=document.createElement('div');
+  col.className='msg-col';
+  const bub=document.createElement('div');
+  bub.className='bubble';
+  bub.innerHTML=text.replace(/\n/g,'<br>');
   col.appendChild(bub);
 
-  // Mood visual — only for Mitra replies that have a mood (not welcome message)
-  if (role === 'mitra' && mood && MOOD_IMAGES[mood]) {
-    const opts = MOOD_IMAGES[mood];
-    const pick = opts[Math.floor(Math.random() * opts.length)];
-    const vis = document.createElement('div');
-    vis.className = 'chat-visual';
-    vis.innerHTML = `
-      <img
-        src="https://images.unsplash.com/photo-${pick.id}?auto=format&fit=crop&w=440&h=130&q=75"
-        loading="lazy"
-        alt=""
-        onerror="this.closest('.chat-visual').remove()">
-      <div class="chat-visual-label">✦ ${pick.caption}</div>`;
+  // Mood image + music suggestion (only for AI replies with a mood)
+  if(role==='mitra' && mood && MOOD_IMAGES[mood]){
+    const imgs=MOOD_IMAGES[mood];
+    const pick=imgs[Math.floor(Math.random()*imgs.length)];
+    const vis=document.createElement('div');
+    vis.className='chat-visual';
+    vis.innerHTML=`<img src="https://images.unsplash.com/photo-${pick.id}?auto=format&fit=crop&w=440&h=120&q=70" loading="lazy" alt="" onerror="this.closest('.chat-visual').remove()"><div class="chat-visual-label">✦ ${pick.cap}</div>`;
     col.appendChild(vis);
+
+    // Music suggestion pill
+    const musicIds=MOOD_MUSIC[mood]||MOOD_MUSIC.growth;
+    const musicId=musicIds[Math.floor(Math.random()*musicIds.length)];
+    const track=MUSIC_LIBRARY.find(m=>m.id===musicId);
+    if(track){
+      const ytUrl=track.videoId
+        ? `https://www.youtube.com/watch?v=${track.videoId}`
+        : `https://www.youtube.com/results?search_query=${encodeURIComponent(track.ytSearch)}`;
+      const pill=document.createElement('div');
+      pill.className='chat-music-pill';
+      pill.innerHTML=`<span class="cmp-icon">${track.emoji}</span><div class="cmp-body"><div class="cmp-title">${track.title}</div><div class="cmp-lang">${track.langShort} · ${CAT_LABELS[track.cat]}</div></div><a class="cmp-listen" href="${ytUrl}" target="_blank" rel="noopener noreferrer">🎵 Listen →</a>`;
+      col.appendChild(pill);
+    }
   }
 
-  wrap.appendChild(av);
-  wrap.appendChild(col);
+  wrap.appendChild(av); wrap.appendChild(col);
   c.appendChild(wrap);
-  wrap.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  wrap.scrollIntoView({behavior:'smooth',block:'end'});
 }
 
-function showTyping() {
-  const c = document.getElementById('msgs');
-  const wrap = document.createElement('div');
-  wrap.className = 'msg mitra'; wrap.id = 'typing';
-  wrap.innerHTML = `<div class="msg-avatar">🪔</div>
-    <div class="typing-indicator">
-      <span class="tdot"></span><span class="tdot"></span><span class="tdot"></span>
-    </div>`;
-  c.appendChild(wrap);
-  wrap.scrollIntoView({ behavior: 'smooth', block: 'end' });
+function showTyping(){
+  const c=document.getElementById('msgs');
+  const wrap=document.createElement('div');
+  wrap.className='msg mitra'; wrap.id='typing';
+  wrap.innerHTML='<div class="msg-avatar">🪔</div><div class="typing-indicator"><span class="tdot"></span><span class="tdot"></span><span class="tdot"></span></div>';
+  c.appendChild(wrap); wrap.scrollIntoView({behavior:'smooth',block:'end'});
 }
+function hideTyping(){const t=document.getElementById('typing');if(t)t.remove();}
+function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,130)+'px';}
+function handleKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg();}}
 
-function hideTyping() {
-  const t = document.getElementById('typing');
-  if (t) t.remove();
-}
-
-function autoResize(el) {
-  el.style.height = 'auto';
-  el.style.height = Math.min(el.scrollHeight, 130) + 'px';
-}
-
-function handleKey(e) {
-  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMsg(); }
-}
-
-async function sendMsg() {
-  const inp = document.getElementById('userInput');
-  const txt = inp.value.trim();
-  if (!txt || !ageGroup) return;
-  inp.value = ''; inp.style.height = 'auto';
-  document.getElementById('sendBtn').disabled = true;
-  const errEl = document.getElementById('chatErr');
-  errEl.style.display = 'none';
-  addMsg('user', txt, null);
-  chatHistory.push({ role: 'user', content: txt });
+async function sendMsg(){
+  const inp=document.getElementById('userInput');
+  const txt=inp.value.trim();
+  if(!txt||!ageGroup) return;
+  inp.value=''; inp.style.height='auto';
+  document.getElementById('sendBtn').disabled=true;
+  const errEl=document.getElementById('chatErr');
+  errEl.style.display='none';
+  addMsg('user',txt,null);
+  chatHistory.push({role:'user',content:txt});
   showTyping();
-
-  try {
-    const res = await fetch(`${API_BASE}/api/mitra`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        message: txt,
-        ageGroup,
-        ageName,
-        history: chatHistory.slice(-6)
-      })
+  try{
+    const res=await fetch(`${API_BASE}/api/mitra`,{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({message:txt,ageGroup,ageName,history:chatHistory.slice(-6)})
     });
-
-    if (!res.ok) {
-      const err = await res.json().catch(() => ({}));
-      throw new Error(err.error || 'Something went wrong');
-    }
-
-    const data = await res.json();
+    if(!res.ok){const err=await res.json().catch(()=>({})); throw new Error(err.error||'Something went wrong');}
+    const data=await res.json();
     hideTyping();
-    chatHistory.push({ role: 'assistant', content: data.reply });
-    addMsg('mitra', data.reply, data.mood || 'growth');  // mood from backend
-  } catch (err) {
+    chatHistory.push({role:'assistant',content:data.reply});
+    addMsg('mitra',data.reply,data.mood||'growth');
+  }catch(err){
     hideTyping();
-    errEl.textContent = err.message || 'Mitra is unavailable. Please try again.';
-    errEl.style.display = 'block';
+    errEl.textContent=err.message||'Mitra is unavailable. Please try again.';
+    errEl.style.display='block';
     chatHistory.pop();
   }
-  document.getElementById('sendBtn').disabled = false;
+  document.getElementById('sendBtn').disabled=false;
   document.getElementById('userInput').focus();
 }
 
-// ── TABS ─────────────────────────────────────────────────────────────────────
-function switchTab(t) {
-  ['chat', 'stories', 'wisdom'].forEach(id => {
-    document.getElementById('tab-' + id).classList.toggle('active', id === t);
-    const p = document.getElementById('panel-' + id);
-    if (id === 'chat') p.style.display = id === t ? 'flex' : 'none';
-    else p.style.display = id === t ? 'block' : 'none';
-  });
-}
-
-// ── STORIES ───────────────────────────────────────────────────────────────────
-// imageUnsplash: Unsplash photo ID — free, no API key needed for direct embeds
-// videoId: YouTube video ID — set this to embed a specific video inline
-// videoSearch: fallback YouTube search query if no videoId set
-const STORIES = [
-  {
-    id:'eklavya', title:'Eklavya — the disciple who taught himself',
-    source:'Mahabharata', theme:'failure', tradition:'epic',
+// ─────────────────────────────────────────────────────────────────────────────
+// STORIES
+// ─────────────────────────────────────────────────────────────────────────────
+const STORIES=[
+  {id:'eklavya',title:'Eklavya — the disciple who taught himself',
+    source:'Mahabharata',theme:'failure',tradition:'epic',
     tags:['Mahabharata','Self-belief','Failure'],
-    imageUnsplash:'1448375240586-882707db888b',  // forest path at dawn
-    videoId:'',  // Set a YouTube video ID here to embed inline, e.g. 'dQw4w9WgXcQ'
-    videoSearch:'Eklavya story animated English children moral story',
+    imageUnsplash:'1448375240586-882707db888b',
+    videoId:'',ytSearch:'Eklavya story animated English children moral story Mahabharata',
     preview:'A boy refused by the greatest teacher became greater than all his students.',
     body:`Eklavya, a young tribal boy, walked days to reach Dronacharya — the finest teacher in the land. He wanted to learn archery more than anything in the world.
 
@@ -661,20 +1038,17 @@ His devotion was total. His discipline, unshakeable.
 
 When Dronacharya's royal students — including Arjuna, the greatest archer of his age — came to the forest, Eklavya demonstrated skills that left them speechless. He had surpassed them all.
 
-Dronacharya, seeing this, asked for Eklavya's thumb as a teacher's fee. Eklavya cut it off without a word of complaint — because the real teacher had always been within himself.
+Dronacharya asked for Eklavya's thumb as a teacher's fee. Eklavya cut it off without a word of complaint — because the real teacher had always been within himself.
 
 Even after that sacrifice, Eklavya remained extraordinary.`,
-    moral:'When the world closes its doors, build your own. Your devotion and discipline will always be greater than any teacher\'s rejection.'
-  },
-  {
-    id:'rama', title:'Rama\'s exile — dignity in the darkest moment',
-    source:'Valmiki Ramayana', theme:'family', tradition:'epic',
+    moral:'When the world closes its doors, build your own. Your devotion and discipline will always be greater than any teacher\'s rejection.'},
+  {id:'rama',title:'Rama\'s exile — dignity in the darkest moment',
+    source:'Valmiki Ramayana',theme:'family',tradition:'epic',
     tags:['Ramayana','Family','Character'],
-    imageUnsplash:'1506905925346-21bda4d32df4',  // serene mountain landscape
-    videoId:'',
-    videoSearch:'Rama exile story Ramayana animated children English moral',
+    imageUnsplash:'1506905925346-21bda4d32df4',
+    videoId:'',ytSearch:'Rama exile story Ramayana animated children English moral Diwali',
     preview:'A prince lost his crown, his home and his freedom — and never lost himself.',
-    body:`On the very eve of his coronation, Prince Rama was told he would be exiled to the forest for fourteen years. Not because of any crime — but because of a promise his father had made to his stepmother Kaikeyi long ago.
+    body:`On the very eve of his coronation, Prince Rama was told he would be exiled for fourteen years — not because of any crime, but because of a promise his father had made long ago.
 
 Rama had done nothing wrong. He was beloved by everyone. The injustice was complete and total.
 
@@ -686,298 +1060,247 @@ He took nothing but his bow, his wife Sita, and his brother Lakshmana. He walked
 
 Every trial that followed — the loss of Sita, the war against Ravana, years of wandering — built the king the world needed.
 
-He returned after fourteen years. His people lit lamps across every home to welcome him home.
-Sita was loyal and true to him through every hardship. Lakshmana was his unwavering support. The love and loyalty they showed each other through the darkest chapter defined their greatness — not the crown they lost or regained.
+He returned after fourteen years. His people lit lamps across every home.
 We still light those lamps every year. We call it Diwali.`,
-    moral:'Your circumstances do not define your character. How you carry yourself through your darkest chapter is who you truly are.'
-  },
-  {
-    id:'yudhishthira', title:'Yudhishthira\'s final test — truth above heaven',
-    source:'Mahabharata', theme:'right-wrong', tradition:'epic',
+    moral:'Your circumstances do not define your character. How you carry yourself through your darkest chapter is who you truly are.'},
+  {id:'yudhishthira',title:'Yudhishthira\'s final test — truth above heaven',
+    source:'Mahabharata',theme:'right-wrong',tradition:'epic',
     tags:['Mahabharata','Integrity','Right vs Wrong'],
-    imageUnsplash:'1419242902214-272b3f66ee7a',  // starry night sky
-    videoId:'',
-    videoSearch:'Yudhishthira Mahabharata final test heaven dog animated story',
+    imageUnsplash:'1419242902214-272b3f66ee7a',
+    videoId:'',ytSearch:'Yudhishthira Mahabharata final test heaven dog moral animated',
     preview:'Even at the gates of heaven, one man refused to abandon truth.',
-    body:`After the Kurukshetra war, the Pandavas began their final journey. One by one, each brother fell — even mighty Bhima, even noble Arjuna — because of their own hidden flaws.
+    body:`After the Kurukshetra war, the Pandavas began their final journey. One by one, each brother fell — even mighty Bhima, even noble Arjuna — because of their hidden flaws.
 
 Only Yudhishthira remained, and a stray dog that had followed them the whole way.
 
-At the gates of heaven, Indra — the king of heaven — appeared in a chariot. "Come in, Yudhishthira. You have earned your place. But the dog cannot enter."
+At the gates of heaven, Indra appeared in a chariot. "Come in, Yudhishthira. But the dog cannot enter."
 
 Yudhishthira said: "I will not abandon one who trusted me and walked beside me this far. I choose the dog over heaven itself."
 
-Indra revealed it was a test. The dog was Dharma — the god of righteousness — in disguise, testing his son one final time.
+Indra revealed it was a test. The dog was Dharma — the god of righteousness — testing his son one final time.
 
 Yudhishthira had chosen loyalty and compassion over the greatest prize in existence.
 
-He entered heaven — with full honors — as the only person to do so with his mortal body and soul intact.`,
-    moral:'Doing the right thing is never about reward. It\'s about who you are when everything is at stake and no one will know.'
-  },
-  {
-    id:'gandhi', title:'Gandhi\'s train — the night that changed the world',
-    source:'Historical — South Africa, 1893', theme:'bullying', tradition:'history',
+He entered heaven with full honors — as the only person to do so with his mortal body intact.`,
+    moral:'Doing the right thing is never about reward. It\'s about who you are when everything is at stake and no one will know.'},
+  {id:'gandhi',title:'Gandhi\'s train — the night that changed the world',
+    source:'Historical — South Africa, 1893',theme:'bullying',tradition:'history',
     tags:['Gandhi','Bullying','Dignity'],
-    imageUnsplash:'1469474968028-56623f02e42e',  // open road — the long journey ahead
-    videoId:'',
-    videoSearch:'Gandhi train Pietermaritzburg story animated children English moral',
+    imageUnsplash:'1469474968028-56623f02e42e',
+    videoId:'',ytSearch:'Gandhi Pietermaritzburg train story animated children English moral',
     preview:'A young lawyer was thrown off a train. He chose dignity over anger — and changed history.',
-    body:`In 1893, a young Indian lawyer named Mohandas Gandhi bought a first-class train ticket in South Africa. He had every legal right to sit there. He was dressed properly and carried his ticket.
+    body:`In 1893, a young Indian lawyer named Mohandas Gandhi bought a first-class train ticket in South Africa. He had every legal right to sit there.
 
 A white passenger complained. The conductor told Gandhi to move to third class. Gandhi refused — his ticket was valid.
 
 At Pietermaritzburg station, police threw him off the train into the freezing night.
 
-Gandhi sat alone on that cold platform for hours. His luggage had been taken. The next train was hours away. He was shivering, humiliated, and far from home.
+Gandhi sat alone on that cold platform for hours. His luggage had been taken. He was shivering, humiliated, and far from home.
 
-He had a choice: go back to India and forget, or stay and fight injustice — not with anger or violence, but with truth and dignity.
+He had a choice: go back to India and forget, or stay and fight injustice — not with anger, but with truth and dignity.
 
 He chose to stay.
 
-That cold, dark night became the seed of a movement that would eventually free a nation of 300 million people from colonial rule.
+That cold, dark night became the seed of a movement that eventually freed a nation of 300 million people from colonial rule.
 
 Gandhi said decades later: "That night in Pietermaritzburg was the most creative experience of my life."`,
-    moral:'When you face injustice, you have a choice: shrink, react in anger, or rise with dignity. The greatest power is how you choose to respond.'
-  },
-  {
-    id:'kalam', title:'Kalam\'s rejection — the door that led to the stars',
-    source:'Historical — India, 1950s', theme:'failure', tradition:'history',
+    moral:'When you face injustice, you have a choice: shrink, react in anger, or rise with dignity. The greatest power is how you choose to respond.'},
+  {id:'kalam',title:'Kalam\'s rejection — the door that led to the stars',
+    source:'Historical — India, 1950s',theme:'failure',tradition:'history',
     tags:['APJ Kalam','Failure','Purpose'],
-    imageUnsplash:'1462331940025-496dfbfc7564',  // stars and cosmos — his real destiny
-    videoId:'',
-    videoSearch:'APJ Abdul Kalam story animated English children inspiration wings of fire',
+    imageUnsplash:'1462331940025-496dfbfc7564',
+    videoId:'',ytSearch:'APJ Abdul Kalam story animated English children inspiration wings of fire',
     preview:'India\'s future President was rejected from the Air Force. He was meant for something far greater.',
-    body:`A young man from Rameswaram — the son of a boat-owner who ferried pilgrims for a living — dreamed of becoming a fighter pilot. He studied hard, passed his exams, and reached the final selection interview for the Indian Air Force.
+    body:`A young man from Rameswaram — the son of a boat-owner — dreamed of becoming a fighter pilot. He studied hard, passed his exams, and reached the final Air Force selection.
 
-He came ninth. Only eight candidates were selected.
+He came ninth. Only eight were selected.
 
 APJ Abdul Kalam was rejected.
 
-Heartbroken, he made his way to Rishikesh and met the sage Swami Sivananda, who told him something simple: "Accept your fate. Your destiny lies elsewhere."
+Heartbroken, he met the sage Swami Sivananda in Rishikesh, who told him: "Accept your fate. Your destiny lies elsewhere."
 
 Kalam didn't know what that meant yet.
 
-He went on to design India's first satellite launch vehicle. He led India's space and missile programs. He developed the Agni and Prithvi missiles. He oversaw the Pokhran nuclear tests. He became the President of India — called by a billion people the "Missile Man" who gave a nation wings.
+He went on to design India's first satellite launch vehicle. He led India's space and missile programs. He oversaw the Pokhran nuclear tests. He became the President of India — called by a billion people the "Missile Man" who gave a nation wings.
 
 The Air Force rejection was the best thing that ever happened to him.`,
-    moral:'Rejection is not a stop sign. It is a redirection. What feels like the end of your dream today may be the opening of a far greater one.'
-  },
-  {
-    id:'lincoln', title:'Lincoln\'s failures — twelve steps to greatness',
-    source:'Historical — USA, 1831–1860', theme:'failure', tradition:'history',
+    moral:'Rejection is not a stop sign. It is a redirection. What feels like the end of your dream today may be the opening of a far greater one.'},
+  {id:'lincoln',title:'Lincoln\'s failures — twelve steps to greatness',
+    source:'Historical — USA, 1831–1860',theme:'failure',tradition:'history',
     tags:['Lincoln','Failure','Persistence'],
-    imageUnsplash:'1507003211169-0a1dd7228f2d',  // lone tree — standing through everything
-    videoId:'',
-    videoSearch:'Abraham Lincoln failure success story animated English children motivation',
+    imageUnsplash:'1507003211169-0a1dd7228f2d',
+    videoId:'',ytSearch:'Abraham Lincoln failure success story animated English children motivation',
     preview:'He failed at business twice, lost eight elections, had a nervous breakdown — then became America\'s greatest President.',
-    body:`1831: Abraham Lincoln failed in business.
-1832: He ran for the Illinois legislature — and lost.
-1833: His second business failed. He spent the next 17 years paying off the debt.
-1835: His fiancée died.
-1836: He had a complete nervous breakdown.
+    body:`1831: Lincoln failed in business.
+1832: He ran for legislature — and lost.
+1833: His second business failed. He spent 17 years paying off the debt.
+1835: His fiancée died. 1836: He had a complete nervous breakdown.
 1838: He ran for Illinois Speaker — and lost.
 1843: He ran for Congress — and lost.
-1848: He ran for Congress again — and lost again.
-1849: He applied to be Commissioner of the General Land Office — and was rejected.
+1848: He ran for Congress again — and lost.
+1849: He applied to be Commissioner — and was rejected.
 1854: He ran for the US Senate — and lost.
 1856: He sought the Vice-Presidential nomination — and lost.
-1858: He ran for the Senate again — and lost.
+1858: He ran for Senate again — and lost.
 
 1860: Abraham Lincoln was elected the 16th President of the United States.
 
 He led America through its bloodiest war. He abolished slavery. He is remembered as the greatest American president who ever lived.
 
 Every single failure was preparing him for the one moment that mattered.`,
-    moral:'Your setbacks are not your story — they are the chapters that build the person your greatest chapter needs you to be.'
-  },
+    moral:'Your setbacks are not your story — they are the chapters that build the person your greatest chapter needs you to be.'}
 ];
 
-const STORY_FILTERS = [
-  {k:'all',l:'All stories'},{k:'failure',l:'Failure & rejection'},{k:'family',l:'Family & home'},
-  {k:'bullying',l:'Bullying'},{k:'right-wrong',l:'Right vs wrong'}
+const STORY_FILTERS=[
+  {k:'all',l:'All stories'},{k:'failure',l:'Failure & rejection'},
+  {k:'family',l:'Family & home'},{k:'bullying',l:'Bullying'},{k:'right-wrong',l:'Right vs wrong'}
 ];
 
-function buildStories() {
-  const fEl = document.getElementById('storyFilters');
-  fEl.innerHTML = '';
-  STORY_FILTERS.forEach(f => {
-    const b = document.createElement('button');
-    b.className = 'sf-btn' + (f.k === 'all' ? ' active' : '');
-    b.textContent = f.l;
-    b.onclick = () => {
-      storyFilter = f.k;
-      document.querySelectorAll('.sf-btn').forEach(x => x.classList.remove('active'));
-      b.classList.add('active');
-      renderStoryGrid();
-    };
+function buildStories(){
+  const fEl=document.getElementById('storyFilters'); fEl.innerHTML='';
+  STORY_FILTERS.forEach(f=>{
+    const b=document.createElement('button');
+    b.className='sf-btn'+(f.k==='all'?' active':''); b.textContent=f.l;
+    b.onclick=()=>{storyFilter=f.k; document.querySelectorAll('.sf-btn').forEach(x=>x.classList.remove('active')); b.classList.add('active'); renderStoryGrid();};
     fEl.appendChild(b);
   });
   renderStoryGrid();
 }
-
-function renderStoryGrid() {
-  const g = document.getElementById('storyGrid');
-  g.innerHTML = '';
-  const filtered = storyFilter === 'all' ? STORIES : STORIES.filter(s => s.theme === storyFilter);
-  filtered.forEach(s => {
-    const card = document.createElement('div');
-    card.className = 'story-card';
-    card.onclick = () => showStory(s.id);
-    card.innerHTML = `
-      <img class="story-card-img"
-        src="https://images.unsplash.com/photo-${s.imageUnsplash}?auto=format&fit=crop&w=680&h=140&q=75"
-        loading="lazy"
-        alt="${s.title}"
-        onerror="this.style.display='none'">
-      <div class="story-card-body">
-        <div class="story-tags">${s.tags.map((t,i)=>`<span class="stag${i===1?' hist':i===2?' sci':''}">${t}</span>`).join('')}</div>
-        <div class="story-title-text">${s.title}</div>
-        <div class="story-preview-text">${s.preview}</div>
-        <div class="story-read">Read the full story →</div>
-      </div>`;
+function renderStoryGrid(){
+  const g=document.getElementById('storyGrid'); g.innerHTML='';
+  const filtered=storyFilter==='all'?STORIES:STORIES.filter(s=>s.theme===storyFilter);
+  filtered.forEach(s=>{
+    const card=document.createElement('div'); card.className='story-card'; card.onclick=()=>showStory(s.id);
+    card.innerHTML=`<img class="story-card-img" src="https://images.unsplash.com/photo-${s.imageUnsplash}?auto=format&fit=crop&w=680&h=130&q=70" loading="lazy" alt="${s.title}" onerror="this.style.display='none'"><div class="story-card-body"><div class="story-tags">${s.tags.map((t,i)=>`<span class="stag${i===1?' hist':i===2?' sci':''}">${t}</span>`).join('')}</div><div class="story-title-text">${s.title}</div><div class="story-preview-text">${s.preview}</div><div class="story-read">Read the full story →</div></div>`;
     g.appendChild(card);
   });
 }
-
-function showStory(id) {
-  const s = STORIES.find(x => x.id === id);
-  if (!s) return;
-  document.getElementById('storyList').style.display = 'none';
-  const dv = document.getElementById('storyDetail');
-  dv.style.display = 'block';
-
-  // Build video section
-  let videoHtml = '';
-  if (s.videoId) {
-    // Embed specific YouTube video if ID is provided
-    videoHtml = `
-      <div class="video-section">
-        <div class="video-section-label">📺 Watch the story</div>
-        <div class="video-embed">
-          <iframe
-            src="https://www.youtube.com/embed/${s.videoId}?rel=0&modestbranding=1"
-            title="${s.title} — video"
-            allowfullscreen
-            loading="lazy">
-          </iframe>
-        </div>
-      </div>`;
-  } else if (s.videoSearch) {
-    // Fallback: YouTube search button
-    const query = encodeURIComponent(s.videoSearch);
-    videoHtml = `
-      <div class="video-section">
-        <div class="video-section-label">📺 Watch related videos</div>
-        <a class="yt-search-btn"
-          href="https://www.youtube.com/results?search_query=${query}"
-          target="_blank" rel="noopener noreferrer">
-          <div class="yt-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/>
-            </svg>
-          </div>
-          <div class="yt-btn-text">
-            <strong>Find on YouTube</strong>
-            <span>Watch animated stories about ${s.tags[0]}</span>
-          </div>
-          <span style="margin-left:auto;color:var(--text-hint);font-size:18px">→</span>
-        </a>
-      </div>`;
-  }
-
-  dv.innerHTML = `
-    <div class="story-detail">
-      <div class="story-detail-body" style="padding-top:14px">
-        <button class="back-btn" onclick="closeStory()">&#8592; All stories</button>
-      </div>
-      <img class="story-hero"
-        src="https://images.unsplash.com/photo-${s.imageUnsplash}?auto=format&fit=crop&w=680&h=200&q=80"
-        alt="${s.title}"
-        loading="lazy"
-        onerror="this.style.display='none'">
-      <div class="story-detail-body">
-        <div class="story-tags" style="margin-top:14px">${s.tags.map((t,i)=>`<span class="stag${i===1?' hist':''}">${t}</span>`).join('')}</div>
-        <h2>${s.title}</h2>
-        <div class="story-source">${s.source}</div>
-        <div class="story-body-text">${s.body}</div>
-        <div class="moral-box">
-          <div class="moral-label">The lesson</div>
-          <div class="moral-text">${s.moral}</div>
-        </div>
-        ${videoHtml}
-      </div>
-    </div>`;
-  dv.scrollIntoView({ behavior: 'smooth' });
+function showStory(id){
+  const s=STORIES.find(x=>x.id===id); if(!s) return;
+  document.getElementById('storyList').style.display='none';
+  const dv=document.getElementById('storyDetail'); dv.style.display='block';
+  const ytUrl=s.videoId?`https://www.youtube.com/embed/${s.videoId}?rel=0&modestbranding=1`:'';
+  const videoHtml=s.videoId
+    ?`<div class="video-section"><div class="video-section-label">📺 Watch the story</div><div class="video-embed"><iframe src="${ytUrl}" title="${s.title}" allowfullscreen loading="lazy"></iframe></div></div>`
+    :`<div class="video-section"><div class="video-section-label">📺 Watch related videos</div><a class="yt-search-btn" href="https://www.youtube.com/results?search_query=${encodeURIComponent(s.ytSearch)}" target="_blank" rel="noopener noreferrer"><div class="yt-icon"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg></div><div><strong style="display:block;font-size:13px;color:var(--text-primary)">Find on YouTube</strong><span style="font-size:11px;color:var(--text-hint)">Animated story about ${s.tags[0]}</span></div><span style="margin-left:auto;color:var(--text-hint)">→</span></a></div>`;
+  dv.innerHTML=`<div class="story-detail"><div class="story-detail-body" style="padding-bottom:0"><button class="back-btn" onclick="closeStory()">← All stories</button></div><img class="story-hero" src="https://images.unsplash.com/photo-${s.imageUnsplash}?auto=format&fit=crop&w=680&h=190&q=80" alt="${s.title}" loading="lazy" onerror="this.style.display='none'"><div class="story-detail-body"><div class="story-tags" style="margin-top:14px">${s.tags.map((t,i)=>`<span class="stag${i===1?' hist':''}">${t}</span>`).join('')}</div><h2>${s.title}</h2><div class="story-source">${s.source}</div><div class="story-body-text">${s.body}</div><div class="moral-box"><div class="moral-label">The lesson</div><div class="moral-text">${s.moral}</div></div>${videoHtml}</div></div>`;
+  dv.scrollIntoView({behavior:'smooth'});
+}
+function closeStory(){
+  document.getElementById('storyDetail').style.display='none';
+  document.getElementById('storyList').style.display='block';
 }
 
-function closeStory() {
-  document.getElementById('storyDetail').style.display = 'none';
-  document.getElementById('storyList').style.display = 'block';
-}
-
-// ── WISDOM QUOTES ─────────────────────────────────────────────────────────────
-const WISDOM = [
+// ─────────────────────────────────────────────────────────────────────────────
+// WISDOM QUOTES
+// ─────────────────────────────────────────────────────────────────────────────
+const WISDOM=[
   {q:'You have the right to perform your duty, but never to the fruits of your actions.',src:'Bhagavad Gita 2.47',trad:'Bhagavad Gita',cat:'gita'},
   {q:'The soul is never born nor dies. It is unborn, eternal, ever-existing and primeval.',src:'Bhagavad Gita 2.20',trad:'Bhagavad Gita',cat:'gita'},
-  {q:'Let a person raise himself by his own efforts. Let him not degrade himself — for the self alone is the friend of the self, and the self alone is the enemy.',src:'Bhagavad Gita 6.5',trad:'Bhagavad Gita',cat:'gita'},
+  {q:'Let a person raise himself by his own efforts. The self alone is the friend of the self.',src:'Bhagavad Gita 6.5',trad:'Bhagavad Gita',cat:'gita'},
   {q:'In the middle of every difficulty lies opportunity.',src:'Albert Einstein',trad:'Philosophy',cat:'philosophy'},
   {q:'Be the change you wish to see in the world.',src:'Mahatma Gandhi',trad:'Historical',cat:'history'},
   {q:'Failure is a prerequisite to great success. If you want to succeed faster, double your rate of failure.',src:'APJ Abdul Kalam',trad:'Historical',cat:'history'},
-  {q:'Between stimulus and response there is a space. In that space is our power to choose our response. In our response lies our growth and our freedom.',src:'Viktor Frankl, Man\'s Search for Meaning',trad:'Psychology',cat:'psychology'},
+  {q:'Between stimulus and response there is a space. In that space is our power to choose. In our response lies our growth and our freedom.',src:'Viktor Frankl, Man\'s Search for Meaning',trad:'Psychology',cat:'psychology'},
   {q:'Where the mind is without fear and the head is held high — into that heaven of freedom, my Father, let my country awake.',src:'Rabindranath Tagore',trad:'Historical',cat:'history'},
   {q:'You have power over your mind, not outside events. Realize this, and you will find strength.',src:'Marcus Aurelius, Meditations',trad:'Philosophy',cat:'philosophy'},
   {q:'The mind is everything. What you think, you become.',src:'The Buddha',trad:'Philosophy',cat:'philosophy'},
   {q:'It does not matter how slowly you go, as long as you do not stop.',src:'Confucius',trad:'Philosophy',cat:'philosophy'},
   {q:'Arise, awake and stop not until the goal is reached.',src:'Swami Vivekananda',trad:'Historical',cat:'history'},
   {q:'Our greatest glory is not in never falling, but in rising every time we fall.',src:'Confucius',trad:'Philosophy',cat:'philosophy'},
-  {q:'The privilege of a lifetime is being who you are.',src:'Joseph Campbell',trad:'Psychology',cat:'psychology'},
   {q:'Do not pray for an easy life; pray for the strength to endure a difficult one.',src:'Bruce Lee',trad:'Philosophy',cat:'philosophy'},
   {q:'Even the darkest night will end and the sun will rise.',src:'Victor Hugo, Les Misérables',trad:'Philosophy',cat:'philosophy'},
 ];
+const W_CATS=[{k:'all',l:'All'},{k:'gita',l:'Bhagavad Gita'},{k:'history',l:'Historical'},{k:'philosophy',l:'Philosophy'},{k:'psychology',l:'Psychology'}];
+const W_TRAD_LABELS={gita:'Bhagavad Gita',history:'Historical',philosophy:'Philosophy',psychology:'Psychology'};
 
-const W_CATS = [
-  {k:'all',l:'All'},
-  {k:'gita',l:'Bhagavad Gita'},
-  {k:'history',l:'Historical'},
-  {k:'philosophy',l:'Philosophy'},
-  {k:'psychology',l:'Psychology'}
-];
-
-// Badge label per category
-const CAT_LABELS = {
-  gita:'Bhagavad Gita', history:'Historical', philosophy:'Philosophy', psychology:'Psychology'
-};
-
-function buildWisdom() {
-  const fEl = document.getElementById('wFilters');
-  fEl.innerHTML = '';
-  W_CATS.forEach(c => {
-    const b = document.createElement('button');
-    b.className = 'wf' + (c.k === 'all' ? ' active' : '');
-    b.textContent = c.l;
-    b.onclick = () => {
-      wisdomFilter = c.k;
-      document.querySelectorAll('.wf').forEach(x => x.classList.remove('active'));
-      b.classList.add('active');
-      renderWisdom();
-    };
+function buildWisdom(){
+  const fEl=document.getElementById('wFilters'); fEl.innerHTML='';
+  W_CATS.forEach(c=>{
+    const b=document.createElement('button');
+    b.className='wf'+(c.k==='all'?' active':''); b.textContent=c.l;
+    b.onclick=()=>{wisdomFilter=c.k; document.querySelectorAll('.wf').forEach(x=>x.classList.remove('active')); b.classList.add('active'); renderWisdom();};
     fEl.appendChild(b);
   });
   renderWisdom();
 }
-
-function renderWisdom() {
-  const l = document.getElementById('wList');
-  l.innerHTML = '';
-  WISDOM.filter(w => wisdomFilter === 'all' || w.cat === wisdomFilter).forEach(w => {
-    const d = document.createElement('div');
-    d.className = `w-item cat-${w.cat}`;
-    d.innerHTML = `
-      <div class="w-tradition-badge">${CAT_LABELS[w.cat] || w.trad}</div>
-      <div class="w-text">"${w.q}"</div>
-      <div class="w-source">— ${w.src}</div>`;
+function renderWisdom(){
+  const l=document.getElementById('wList'); l.innerHTML='';
+  WISDOM.filter(w=>wisdomFilter==='all'||w.cat===wisdomFilter).forEach(w=>{
+    const d=document.createElement('div');
+    d.className=`w-item cat-${w.cat}`;
+    d.innerHTML=`<div class="w-trad-badge">${W_TRAD_LABELS[w.cat]||w.trad}</div><div class="w-text">"${w.q}"</div><div class="w-source">— ${w.src}</div>`;
     l.appendChild(d);
   });
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// MUSIC & MANTRAS
+// ─────────────────────────────────────────────────────────────────────────────
+const CAT_LABELS={morning:'🌅 Morning',devotional:'🙏 Devotional',kannada:'🌿 Kannada',janapada:'🌾 Janapada',motivation:'💪 Motivation',rock:'🎸 Rock/Boost',romantic:'💕 Soothing',desh_bhakti:'🇮🇳 Desh Bhakti',banjara:'🌟 Banjara',focus:'📚 Focus',energy:'⚡ Energy',peace:'💆 Peace'};
+const CAT_FILTERS=[{k:'all',l:'All'},{k:'morning',l:'🌅 Morning'},{k:'devotional',l:'🙏 Devotional'},{k:'kannada',l:'🌿 Kannada'},{k:'janapada',l:'🌾 Janapada'},{k:'motivation',l:'💪 Motivation'},{k:'rock',l:'🎸 Rock/Boost'},{k:'romantic',l:'💕 Soothing'},{k:'desh_bhakti',l:'🇮🇳 Desh Bhakti'},{k:'banjara',l:'🌟 Banjara'},{k:'focus',l:'📚 Focus'},{k:'energy',l:'⚡ Energy'},{k:'peace',l:'💆 Peace'}];
+const LANG_FILTERS=[{k:'all',l:'All languages'},{k:'Kannada',l:'Kannada'},{k:'Hindi',l:'Hindi'},{k:'Sanskrit',l:'Sanskrit'},{k:'Banjara',l:'Banjara'},{k:'English',l:'English'},{k:'Devotional',l:'Devotional'},{k:'Instrumental',l:'Instrumental'}];
+
+function buildMusic(){
+  // Category filters
+  const cEl=document.getElementById('mCatFilters'); cEl.innerHTML='';
+  CAT_FILTERS.forEach(f=>{
+    const b=document.createElement('button');
+    b.className='mf'+(f.k==='all'?' active':'');
+    b.setAttribute('data-cat',f.k); b.textContent=f.l;
+    b.onclick=()=>{musicCatFilter=f.k; document.querySelectorAll('#mCatFilters .mf').forEach(x=>x.classList.remove('active')); b.classList.add('active'); renderMusicGrid();};
+    cEl.appendChild(b);
+  });
+  // Language filters
+  const lEl=document.getElementById('mLangFilters'); lEl.innerHTML='';
+  LANG_FILTERS.forEach(f=>{
+    const b=document.createElement('button');
+    b.className='mf'+(f.k==='all'?' active':'');
+    b.setAttribute('data-lang',f.k); b.textContent=f.l;
+    b.onclick=()=>{musicLangFilter=f.k; document.querySelectorAll('#mLangFilters .mf').forEach(x=>x.classList.remove('active')); b.classList.add('active'); renderMusicGrid();};
+    lEl.appendChild(b);
+  });
+  renderMusicGrid();
+}
+
+function renderMusicGrid(){
+  const g=document.getElementById('musicGrid'); g.innerHTML='';
+  MUSIC_LIBRARY
+    .filter(m=>(musicCatFilter==='all'||m.cat===musicCatFilter)&&(musicLangFilter==='all'||m.langShort===musicLangFilter))
+    .forEach(m=>{
+      const card=document.createElement('div');
+      card.className=`music-card mc-${m.cat}`;
+      const loopBadge=m.loop?'<span class="mc-loop-badge">🔁 Good for looping</span>':'';
+      card.innerHTML=`
+        <div class="mc-top">
+          <div class="mc-emoji">${m.emoji}</div>
+          <div class="mc-title-block">
+            <div class="mc-title">${m.title}</div>
+            <div class="mc-subtitle">${m.subtitle}</div>
+          </div>
+          <span class="mc-lang-badge">${m.langShort}</span>
+        </div>
+        <span class="mc-cat-badge">${CAT_LABELS[m.cat]||m.cat}</span>
+        <div class="mc-significance">${m.significance}</div>
+        <div class="mc-meta">
+          <span class="mc-best-time">${m.bestTime}</span>
+          ${loopBadge}
+        </div>
+        <button class="mc-listen-btn" onclick="listenMusic('${m.ytSearch.replace(/'/g,"\\'")}','${m.videoId}')">
+          ▶&nbsp; Listen on YouTube
+        </button>`;
+      g.appendChild(card);
+    });
+  if(document.getElementById('musicGrid').children.length===0){
+    document.getElementById('musicGrid').innerHTML='<div style="text-align:center;padding:32px;color:var(--text-hint);font-size:14px">No tracks match this filter.</div>';
+  }
+}
+
+function listenMusic(ytSearch, videoId){
+  const url = videoId
+    ? `https://www.youtube.com/watch?v=${videoId}`
+    : `https://www.youtube.com/results?search_query=${encodeURIComponent(ytSearch)}`;
+  window.open(url,'_blank','noopener,noreferrer');
 }
 </script>
 </body>
