@@ -74,7 +74,55 @@ body{font-family:var(--font-sans);background:var(--bg-page);color:var(--text-pri
   flex-shrink:0;border:1.5px solid var(--purple-100)}
 .topbar-text h1{font-size:16px;font-weight:600;color:var(--text-primary);font-family:var(--font-serif)}
 .topbar-text p{font-size:12px;color:var(--text-secondary)}
-.change-btn{margin-left:auto;font-size:12px;color:var(--text-hint);border:none;background:none;
+.voice-toggle-btn{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--border-mid);
+  background:var(--bg-card);cursor:pointer;font-size:15px;display:flex;align-items:center;
+  justify-content:center;flex-shrink:0;transition:all .18s;margin-left:auto}
+.voice-toggle-btn.active{background:var(--purple-50);border-color:var(--purple-600)}
+#accountBtn{margin-left:8px}
+#accountBtn.signed-in{background:var(--purple-50);border-color:var(--purple-600);color:var(--purple-800)}
+
+/* Account modal */
+.account-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:100;
+  display:flex;align-items:center;justify-content:center;padding:20px}
+.account-modal{background:var(--bg-card);border-radius:var(--radius-lg);width:100%;
+  max-width:380px;max-height:85vh;overflow-y:auto;padding:24px 22px;position:relative;
+  box-shadow:0 8px 40px rgba(0,0,0,.25)}
+.account-close{position:absolute;top:14px;right:14px;width:28px;height:28px;border-radius:50%;
+  border:none;background:var(--bg-page);color:var(--text-hint);cursor:pointer;font-size:13px;
+  display:flex;align-items:center;justify-content:center}
+.account-title{font-family:var(--font-serif);font-size:18px;font-weight:500;
+  color:var(--text-primary);margin-bottom:6px}
+.account-sub{font-size:12.5px;color:var(--text-secondary);line-height:1.5;margin-bottom:18px}
+.account-input{width:100%;padding:11px 14px;border-radius:var(--radius-md);
+  border:1px solid var(--border-mid);background:var(--bg-input);color:var(--text-primary);
+  font-size:14px;font-family:var(--font-sans);outline:none;margin-bottom:12px}
+.account-input:focus{border-color:var(--purple-400)}
+.account-consent{display:flex;align-items:flex-start;gap:8px;margin-bottom:14px;
+  font-size:11.5px;color:var(--text-secondary);line-height:1.5}
+.account-consent input{margin-top:2px;flex-shrink:0}
+.account-btn-primary{width:100%;padding:12px;border-radius:var(--radius-md);border:none;
+  background:var(--purple-600);color:#fff;font-size:14px;font-weight:600;cursor:pointer;
+  transition:background .18s;font-family:var(--font-sans)}
+.account-btn-primary:hover{background:var(--purple-800)}
+.account-btn-primary:disabled{opacity:.5;cursor:not-allowed}
+.account-btn-secondary{width:100%;padding:11px;border-radius:var(--radius-md);
+  border:1px solid var(--border-mid);background:none;color:var(--text-secondary);
+  font-size:13px;cursor:pointer;margin-top:10px;font-family:var(--font-sans)}
+.account-btn-danger{width:100%;padding:11px;border-radius:var(--radius-md);
+  border:1px solid #FCA5A5;background:#FEF2F2;color:#B91C1C;font-size:13px;
+  font-weight:500;cursor:pointer;margin-top:8px;font-family:var(--font-sans)}
+.account-status{font-size:13px;padding:10px 12px;border-radius:var(--radius-md);
+  margin-bottom:14px;line-height:1.5}
+.account-status.success{background:var(--green-50);color:var(--green-800)}
+.account-status.error{background:#FEF2F2;color:#B91C1C}
+.account-signed-in-row{display:flex;align-items:center;gap:10px;padding:12px;
+  background:var(--purple-50);border-radius:var(--radius-md);margin-bottom:16px}
+.account-signed-in-email{font-size:13px;font-weight:600;color:var(--purple-800);
+  word-break:break-all}
+.account-signed-in-label{font-size:11px;color:var(--text-hint)}
+.account-divider{border:none;border-top:1px solid var(--border-light);margin:16px 0}
+.account-saved-note{font-size:11px;color:var(--text-hint);text-align:center;margin-top:10px}
+.change-btn{margin-left:8px;font-size:12px;color:var(--text-hint);border:none;background:none;
   cursor:pointer;padding:6px 10px;border-radius:var(--radius-sm);transition:background .15s}
 .change-btn:hover{background:var(--gray-100)}
 
@@ -151,6 +199,21 @@ body{font-family:var(--font-sans);background:var(--bg-page);color:var(--text-pri
   color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;
   flex-shrink:0;transition:all .18s;font-size:18px}
 .send:hover{background:var(--purple-800)}.send:disabled{opacity:.35;cursor:not-allowed}
+.mic-btn{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--border-mid);
+  background:var(--bg-card);color:var(--text-secondary);cursor:pointer;display:flex;
+  align-items:center;justify-content:center;flex-shrink:0;transition:all .18s;font-size:17px}
+.mic-btn:hover{border-color:var(--purple-400)}
+.mic-btn.listening{background:#FEE2E2;border-color:#EF4444;color:#EF4444;animation:micPulse 1.4s infinite}
+@keyframes micPulse{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.4)}50%{box-shadow:0 0 0 8px rgba(239,68,68,0)}}
+.mic-btn[disabled]{display:none}
+.speak-btn{width:24px;height:24px;border-radius:50%;border:none;background:var(--purple-50);
+  color:var(--purple-600);cursor:pointer;font-size:11px;display:flex;align-items:center;
+  justify-content:center;flex-shrink:0;transition:all .15s;margin-top:4px}
+.speak-btn:hover{background:var(--purple-100)}
+.speak-btn.speaking{background:var(--purple-600);color:#fff;animation:micPulse 1.4s infinite}
+.listening-banner{display:flex;align-items:center;gap:8px;padding:8px 16px;font-size:12px;
+  color:#EF4444;background:#FEF2F2}
+.listening-banner .ldot{width:6px;height:6px;border-radius:50%;background:#EF4444;animation:tdot 1s infinite}
 .err-msg{font-size:13px;color:#c0392b;padding:6px 16px;background:var(--bg-page)}
 
 /* ── STORIES ── */
@@ -471,6 +534,8 @@ body{font-family:var(--font-sans);background:var(--bg-page);color:var(--text-pri
   .story-card:hover .story-card-img,.chat-visual:hover img,.w-item:hover,.music-card:hover{transform:none}
 }
 </style>
+<!-- Supabase client — used only for teen/adult account features (preferences, not chat content) -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 </head>
 <body>
 <div id="app">
@@ -495,7 +560,17 @@ body{font-family:var(--font-sans);background:var(--bg-page);color:var(--text-pri
   <div class="topbar">
     <div class="topbar-avatar" id="topAvatar">🪔</div>
     <div class="topbar-text"><h1>Mitra</h1><p id="topSub">Your wise companion</p></div>
+    <button class="voice-toggle-btn" id="voiceToggleBtn" onclick="toggleAutoRead()" aria-label="Toggle read aloud" title="Read Mitra's replies aloud">🔇</button>
+    <button class="voice-toggle-btn" id="accountBtn" onclick="openAccountModal()" aria-label="Account" title="Account" style="display:none">👤</button>
     <button class="change-btn" onclick="goSplash()">Change age</button>
+  </div>
+
+  <!-- ACCOUNT MODAL (teen/adult only) -->
+  <div id="accountOverlay" class="account-overlay" style="display:none" onclick="if(event.target===this)closeAccountModal()">
+    <div class="account-modal">
+      <button class="account-close" onclick="closeAccountModal()" aria-label="Close">✕</button>
+      <div id="accountModalBody"></div>
+    </div>
   </div>
   <div class="tab-bar">
     <button class="tab active" id="tab-chat"    onclick="switchTab('chat')">💬 Talk to Mitra</button>
@@ -513,6 +588,7 @@ body{font-family:var(--font-sans);background:var(--bg-page);color:var(--text-pri
     <div class="input-area">
       <textarea id="userInput" placeholder="Tell Mitra what's happening…" rows="1"
         oninput="autoResize(this)" onkeydown="handleKey(event)"></textarea>
+      <button class="mic-btn" id="micBtn" onclick="toggleVoiceInput()" aria-label="Speak instead of typing" title="Speak instead of typing">🎤</button>
       <button class="send" id="sendBtn" onclick="sendMsg()" aria-label="Send">&#10148;</button>
     </div>
   </div>
@@ -603,6 +679,53 @@ let chatHistory=[];
 let storyFilter='all', wisdomFilter='all';
 let musicCatFilter='all', musicLangFilter='all', musicMoodFilter='all';
 let smGender=null, smFaceShape=null, smBodyShape=null;
+
+// ── Voice input/output state ──────────────────────────────────────────────────
+let speechRecognizer=null, isListening=false;
+let autoReadEnabled=false, currentSpeakBtn=null;
+const voiceInputSupported = !!(window.SpeechRecognition || window.webkitSpeechRecognition);
+const voiceOutputSupported = !!window.speechSynthesis;
+
+// ── Account state (Supabase — teen/adult only, preferences only, no chat content) ──
+// Fill these in with your own Supabase project's values (Settings → API).
+// The anon key is safe to expose publicly — it's designed for this; real
+// protection comes from Row Level Security policies (see supabase_schema.sql).
+const SUPABASE_URL = 'https://YOUR-PROJECT-REF.supabase.co';
+const SUPABASE_ANON_KEY = 'YOUR-ANON-PUBLIC-KEY';
+let supabaseClient = null;
+let currentUser = null;       // { id, email } once signed in
+let accountSaveTimer = null;  // debounce timer for auto-saving preferences
+
+function accountsAvailable(){
+  // Accounts only ever apply to teen/adult — kids never see or use this
+  return (ageGroup==='teen' || ageGroup==='adult') &&
+    SUPABASE_URL.indexOf('YOUR-PROJECT-REF')===-1;
+}
+
+function initSupabase(){
+  if(supabaseClient || SUPABASE_URL.indexOf('YOUR-PROJECT-REF')!==-1) return;
+  supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  supabaseClient.auth.onAuthStateChange((event, session) => {
+    currentUser = session?.user ? { id: session.user.id, email: session.user.email } : null;
+    updateAccountBtnUI();
+    if(currentUser) loadUserPreferences();
+  });
+  supabaseClient.auth.getSession().then(({data}) => {
+    if(data?.session?.user){
+      currentUser = { id: data.session.user.id, email: data.session.user.email };
+      updateAccountBtnUI();
+      loadUserPreferences();
+    }
+  });
+}
+
+function updateAccountBtnUI(){
+  const btn = document.getElementById('accountBtn');
+  if(!btn) return;
+  const show = ageGroup==='teen' || ageGroup==='adult';
+  btn.style.display = show ? 'flex' : 'none';
+  btn.classList.toggle('signed-in', !!currentUser);
+}
 
 // ─────────────────────────────────────────────────────────────────────────────
 // MOOD → IMAGES  (Unsplash direct CDN, no API key needed)
@@ -1268,7 +1391,7 @@ function renderSmGenderRow(){
     b.onclick=()=>{ smGender=g.k; smFaceShape=null; smBodyShape=null;
       document.getElementById('smOccasionDetail').style.display='none';
       document.getElementById('smOccasionList').style.display='block';
-      buildStyle(); };
+      buildStyle(); saveUserPreferences(); };
     row.appendChild(b);
   });
 }
@@ -1280,7 +1403,7 @@ function renderSmShapeGrids(){
     c.className='sm-shape-card'+(smFaceShape===f.id?' selected':'');
     const faceSearch=`https://www.youtube.com/results?search_query=${encodeURIComponent(f.label+' face shape guide examples hairstyle')}`;
     c.innerHTML=`<svg viewBox="0 0 44 44" fill="none" stroke="#DB2777" stroke-width="2">${f.svg}</svg><div class="sm-shape-card-label">${f.label}</div><div class="sm-shape-card-desc">${f.desc}</div><a class="sm-shape-card-link" href="${faceSearch}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">🔍 See examples</a>`;
-    c.onclick=()=>{ smFaceShape=f.id; renderSmShapeGrids(); updateSmProfileUI(); };
+    c.onclick=()=>{ smFaceShape=f.id; renderSmShapeGrids(); updateSmProfileUI(); saveUserPreferences(); };
     faceGrid.appendChild(c);
   });
 
@@ -1291,7 +1414,7 @@ function renderSmShapeGrids(){
     c.className='sm-shape-card'+(smBodyShape===b.id?' selected':'');
     const bodySearch=`https://www.youtube.com/results?search_query=${encodeURIComponent(b.label+' body shape styling tips Indian '+(smGender||''))}`;
     c.innerHTML=`<svg viewBox="0 0 44 44" fill="#DB2777" opacity="0.85">${bodySilhouette(b.sw,b.ww,b.hw)}</svg><div class="sm-shape-card-label">${b.label}</div><div class="sm-shape-card-desc">${b.desc}</div><a class="sm-shape-card-link" href="${bodySearch}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">🔍 See examples</a>`;
-    c.onclick=()=>{ smBodyShape=b.id; renderSmShapeGrids(); updateSmProfileUI(); };
+    c.onclick=()=>{ smBodyShape=b.id; renderSmShapeGrids(); updateSmProfileUI(); saveUserPreferences(); };
     bodyGrid.appendChild(c);
   });
 }
@@ -1439,6 +1562,12 @@ function enterApp(){
   switchTab('chat');
   buildChips(); buildStories(); buildWisdom(); buildMusic(); buildStyle();
   addMsg('mitra',welcomeMsg(),null);
+  // Accounts only ever apply to teen/adult — kids never see the account button
+  // or have any Supabase calls made on their behalf.
+  if(ageGroup==='teen' || ageGroup==='adult'){
+    initSupabase();
+  }
+  updateAccountBtnUI();
 }
 function goSplash(){
   document.getElementById('main').style.display='none';
@@ -1498,6 +1627,17 @@ function addMsg(role, text, mood){
   bub.innerHTML=text.replace(/\n/g,'<br>');
   col.appendChild(bub);
 
+  // Speaker button — read this reply aloud (Mitra messages only)
+  if(role==='mitra' && voiceOutputSupported){
+    const spk=document.createElement('button');
+    spk.className='speak-btn';
+    spk.setAttribute('aria-label','Read this reply aloud');
+    spk.title='Read aloud';
+    spk.textContent='🔊';
+    spk.onclick=()=>toggleSpeak(text, spk);
+    col.appendChild(spk);
+  }
+
   // Mood image + music suggestion (only for AI replies with a mood)
   if(role==='mitra' && mood && MOOD_IMAGES[mood]){
     const imgs=MOOD_IMAGES[mood];
@@ -1524,6 +1664,12 @@ function addMsg(role, text, mood){
 
   wrap.appendChild(av); wrap.appendChild(col);
   c.appendChild(wrap);
+
+  // Auto-read this reply aloud if the user has the toggle on
+  if(role==='mitra' && autoReadEnabled && voiceOutputSupported){
+    const spkBtn = col.querySelector('.speak-btn');
+    if(spkBtn) toggleSpeak(text, spkBtn);
+  }
   wrap.scrollIntoView({behavior:'smooth',block:'end'});
 }
 
@@ -1567,6 +1713,258 @@ async function sendMsg(){
   }
   document.getElementById('sendBtn').disabled=false;
   document.getElementById('userInput').focus();
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// VOICE INPUT (speech-to-text) — uses the Web Speech API.
+// Not supported in all browsers (works in Chrome/Edge; limited in Safari/Firefox).
+// ─────────────────────────────────────────────────────────────────────────────
+function toggleVoiceInput(){
+  if(!voiceInputSupported){
+    alert('Voice input isn\'t supported in this browser. Try Chrome on Android or desktop.');
+    return;
+  }
+  if(isListening){
+    if(speechRecognizer) speechRecognizer.stop();
+    return;
+  }
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  speechRecognizer = new SR();
+  speechRecognizer.lang = 'en-IN';
+  speechRecognizer.interimResults = true;
+  speechRecognizer.continuous = false;
+  speechRecognizer.maxAlternatives = 1;
+
+  const micBtn = document.getElementById('micBtn');
+  const input = document.getElementById('userInput');
+  const baseText = input.value ? input.value.trim()+' ' : '';
+
+  speechRecognizer.onstart = () => {
+    isListening = true;
+    micBtn.classList.add('listening');
+    micBtn.textContent = '⏹️';
+    input.placeholder = 'Listening… speak now';
+  };
+  speechRecognizer.onresult = (e) => {
+    let transcript = '';
+    for(let i=0;i<e.results.length;i++) transcript += e.results[i][0].transcript;
+    input.value = baseText + transcript;
+    autoResize(input);
+  };
+  speechRecognizer.onerror = (e) => {
+    if(e.error==='not-allowed' || e.error==='service-not-allowed'){
+      alert('Microphone access was blocked. Please allow microphone permission to use voice input.');
+    }
+  };
+  speechRecognizer.onend = () => {
+    isListening = false;
+    micBtn.classList.remove('listening');
+    micBtn.textContent = '🎤';
+    input.placeholder = 'Tell Mitra what\'s happening…';
+  };
+  speechRecognizer.start();
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// VOICE OUTPUT (text-to-speech) — reads Mitra's replies aloud.
+// ─────────────────────────────────────────────────────────────────────────────
+function stripHtmlForSpeech(text){
+  // Strip our own <br> insertions and any markdown-ish symbols so speech sounds natural
+  return text.replace(/<br\s*\/?>/gi,'. ').replace(/[*_#]/g,'').trim();
+}
+
+function toggleSpeak(text, btnEl){
+  if(!voiceOutputSupported) return;
+  // If this exact button is already speaking, stop it
+  if(currentSpeakBtn===btnEl && window.speechSynthesis.speaking){
+    window.speechSynthesis.cancel();
+    btnEl.classList.remove('speaking'); btnEl.textContent='🔊';
+    currentSpeakBtn=null;
+    return;
+  }
+  // Stop any other speech in progress first
+  window.speechSynthesis.cancel();
+  if(currentSpeakBtn){ currentSpeakBtn.classList.remove('speaking'); currentSpeakBtn.textContent='🔊'; }
+
+  const utter = new SpeechSynthesisUtterance(stripHtmlForSpeech(text));
+  utter.lang = 'en-IN';
+  utter.rate = 0.95;
+  utter.onstart = () => { btnEl.classList.add('speaking'); btnEl.textContent='⏹️'; currentSpeakBtn=btnEl; };
+  utter.onend = () => { btnEl.classList.remove('speaking'); btnEl.textContent='🔊'; currentSpeakBtn=null; };
+  utter.onerror = () => { btnEl.classList.remove('speaking'); btnEl.textContent='🔊'; currentSpeakBtn=null; };
+  window.speechSynthesis.speak(utter);
+}
+
+function toggleAutoRead(){
+  if(!voiceOutputSupported){
+    alert('Voice output isn\'t supported in this browser.');
+    return;
+  }
+  autoReadEnabled = !autoReadEnabled;
+  const btn = document.getElementById('voiceToggleBtn');
+  btn.classList.toggle('active', autoReadEnabled);
+  btn.textContent = autoReadEnabled ? '🔊' : '🔇';
+  btn.title = autoReadEnabled ? 'Auto-read is on — tap to turn off' : 'Read Mitra\'s replies aloud';
+  if(!autoReadEnabled) window.speechSynthesis.cancel();
+  saveUserPreferences();
+}
+
+// Hide mic button entirely if the browser doesn't support voice input
+if(!voiceInputSupported){
+  document.addEventListener('DOMContentLoaded', () => {
+    const m = document.getElementById('micBtn');
+    if(m) m.disabled = true;
+  });
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ACCOUNT (Supabase) — teen & adult only. Saves PREFERENCES only — never
+// chat/conversation content, by design.
+// ─────────────────────────────────────────────────────────────────────────────
+function openAccountModal(){
+  if(!accountsAvailable()){
+    alert('Accounts aren\'t set up yet on this deployment. (Add your Supabase project URL and anon key in index.html.)');
+    return;
+  }
+  document.getElementById('accountOverlay').style.display='flex';
+  renderAccountModal();
+}
+function closeAccountModal(){
+  document.getElementById('accountOverlay').style.display='none';
+}
+
+function renderAccountModal(status){
+  const body = document.getElementById('accountModalBody');
+  const statusHtml = status ? `<div class="account-status ${status.type}">${status.msg}</div>` : '';
+
+  if(currentUser){
+    body.innerHTML = `
+      ${statusHtml}
+      <div class="account-title">Your account</div>
+      <div class="account-signed-in-row">
+        <span style="font-size:20px">👤</span>
+        <div><div class="account-signed-in-email">${currentUser.email}</div><div class="account-signed-in-label">Signed in</div></div>
+      </div>
+      <div class="account-sub">We save your StyleMyway profile and a couple of app preferences so they're here next time you visit. We never save your conversations with Mitra.</div>
+      <button class="account-btn-secondary" onclick="signOutUser()">Sign out</button>
+      <hr class="account-divider">
+      <button class="account-btn-danger" onclick="confirmDeleteAccount()">Delete my account &amp; data</button>`;
+  } else {
+    const teenConsent = ageGroup==='teen'
+      ? `<label class="account-consent"><input type="checkbox" id="teenConsentCheck"> I'm comfortable creating this account, and a parent or guardian is welcome to know I use Mitra.</label>`
+      : '';
+    body.innerHTML = `
+      ${statusHtml}
+      <div class="account-title">Save your preferences</div>
+      <div class="account-sub">Sign in to keep your StyleMyway profile and settings next time. We'll email you a one-tap sign-in link — no password needed. We never save your conversations.</div>
+      <input type="email" id="accountEmailInput" class="account-input" placeholder="your@email.com" autocomplete="email">
+      ${teenConsent}
+      <button class="account-btn-primary" id="sendMagicLinkBtn" onclick="sendMagicLink()">Send me a sign-in link</button>
+      <div class="account-saved-note">By continuing, you agree we'll only store the preferences described above.</div>`;
+  }
+}
+
+async function sendMagicLink(){
+  const emailInput = document.getElementById('accountEmailInput');
+  const email = emailInput.value.trim();
+  if(!email || !email.includes('@')){
+    renderAccountModal({type:'error', msg:'Please enter a valid email address.'});
+    return;
+  }
+  if(ageGroup==='teen'){
+    const consentBox = document.getElementById('teenConsentCheck');
+    if(!consentBox || !consentBox.checked){
+      renderAccountModal({type:'error', msg:'Please check the box above to continue.'});
+      return;
+    }
+  }
+  const btn = document.getElementById('sendMagicLinkBtn');
+  btn.disabled = true; btn.textContent = 'Sending…';
+  try{
+    const { error } = await supabaseClient.auth.signInWithOtp({
+      email,
+      options: { emailRedirectTo: window.location.origin }
+    });
+    if(error) throw error;
+    renderAccountModal({type:'success', msg:`Check ${email} for your sign-in link. You can close this and keep using Mitra meanwhile.`});
+  }catch(err){
+    renderAccountModal({type:'error', msg: err.message || 'Could not send the link. Please try again.'});
+  }
+}
+
+async function signOutUser(){
+  if(supabaseClient) await supabaseClient.auth.signOut();
+  currentUser = null;
+  updateAccountBtnUI();
+  closeAccountModal();
+}
+
+function confirmDeleteAccount(){
+  if(!confirm('This permanently deletes your account and saved preferences. This can\'t be undone. Continue?')) return;
+  deleteMyAccount();
+}
+
+async function deleteMyAccount(){
+  try{
+    const { data: sessionData } = await supabaseClient.auth.getSession();
+    const token = sessionData?.session?.access_token;
+    if(!token) throw new Error('Not signed in.');
+    const res = await fetch(`${API_BASE}/api/account`, {
+      method: 'DELETE',
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    if(!res.ok){
+      const err = await res.json().catch(()=>({}));
+      throw new Error(err.error || 'Could not delete account.');
+    }
+    await supabaseClient.auth.signOut();
+    currentUser = null;
+    updateAccountBtnUI();
+    closeAccountModal();
+    alert('Your account and saved preferences have been deleted.');
+  }catch(err){
+    renderAccountModal({type:'error', msg: err.message || 'Could not delete account. Please try again.'});
+  }
+}
+
+// Saves the current StyleMyway profile + voice preference, debounced so we
+// don't hit the database on every single click while someone's browsing.
+function saveUserPreferences(){
+  if(!currentUser || !supabaseClient) return;
+  clearTimeout(accountSaveTimer);
+  accountSaveTimer = setTimeout(async () => {
+    try{
+      await supabaseClient.from('profiles').upsert({
+        id: currentUser.id,
+        age_group: ageGroup,
+        age_name: ageName,
+        sm_gender: smGender,
+        sm_face_shape: smFaceShape,
+        sm_body_shape: smBodyShape,
+        auto_read_enabled: autoReadEnabled,
+        music_mood_filter: musicMoodFilter
+      });
+    }catch(err){
+      console.error('Could not save preferences:', err.message || err);
+    }
+  }, 800);
+}
+
+async function loadUserPreferences(){
+  if(!currentUser || !supabaseClient) return;
+  try{
+    const { data, error } = await supabaseClient.from('profiles').select('*').eq('id', currentUser.id).maybeSingle();
+    if(error || !data) return;
+    if(data.sm_gender){ smGender = data.sm_gender; renderSmGenderRow(); renderSmShapeGrids(); renderSmOccasionGrid(); }
+    if(data.sm_face_shape){ smFaceShape = data.sm_face_shape; }
+    if(data.sm_body_shape){ smBodyShape = data.sm_body_shape; }
+    if(data.sm_face_shape || data.sm_body_shape){ renderSmShapeGrids(); updateSmProfileUI(); }
+    if(typeof data.auto_read_enabled === 'boolean' && data.auto_read_enabled !== autoReadEnabled){
+      toggleAutoRead();
+    }
+  }catch(err){
+    console.error('Could not load preferences:', err.message || err);
+  }
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
