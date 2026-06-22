@@ -1695,16 +1695,80 @@ async function sendMsg(){
   addMsg('user',txt,null);
   chatHistory.push({role:'user',content:txt});
   showTyping();
+
+  // Tell the backend whether we want audio — only when voice toggle is on
+  // AND the browser supports it. This avoids ElevenLabs costs for text users.
+  const wantVoice = autoReadEnabled && voiceOutputSupported;
+
   try{
     const res=await fetch(`${API_BASE}/api/mitra`,{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({message:txt,ageGroup,ageName,history:chatHistory.slice(-6)})
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        message:txt, ageGroup, ageName,
+        history:chatHistory.slice(-6),
+        voiceEnabled: wantVoice
+      })
     });
-    if(!res.ok){const err=await res.json().catch(()=>({})); throw new Error(err.error||'Something went wrong');}
-    const data=await res.json();
-    hideTyping();
-    chatHistory.push({role:'assistant',content:data.reply});
-    addMsg('mitra',data.reply,data.mood||'growth');
+
+    if(!res.ok){
+      const err=await res.json().catch(()=>({}));
+      throw new Error(err.error||'Something went wrong');
+    }
+
+    const contentType = res.headers.get('content-type') || '';
+
+    if(contentType.includes('audio/mpeg')){
+      // ── ElevenLabs audio response ─────────────────────────────────────────
+      // Extract the text reply and mood from custom headers
+      const replyEncoded = res.headers.get('X-Mitra-Reply') || '';
+      const mood = res.headers.get('X-Mitra-Mood') || 'growth';
+      const reply = replyEncoded ? decodeURIComponent(replyEncoded) : '🪔';
+
+      // Convert the audio stream to a blob and play it
+      const audioBlob = await res.blob();
+      const audioUrl  = URL.createObjectURL(audioBlob);
+
+      hideTyping();
+      chatHistory.push({role:'assistant',content:reply});
+      addMsg('mitra', reply, mood);
+
+      // Play audio automatically — user already turned the toggle on
+      const audio = new Audio(audioUrl);
+      audio.onended = () => URL.revokeObjectURL(audioUrl); // clean up memory
+      audio.onerror = () => {
+        // Audio failed to play — the text reply is still shown, nothing breaks
+        URL.revokeObjectURL(audioUrl);
+      };
+      // Mark the speak button as playing so the UI reflects it
+      const speakBtn = document.querySelector('.speak-btn:last-of-type');
+      if(speakBtn){
+        speakBtn.textContent='⏹️'; speakBtn.classList.add('speaking');
+        audio.onended = () => {
+          URL.revokeObjectURL(audioUrl);
+          speakBtn.textContent='🔊'; speakBtn.classList.remove('speaking');
+        };
+        speakBtn.onclick = () => {
+          if(!audio.paused){ audio.pause(); speakBtn.textContent='🔊'; speakBtn.classList.remove('speaking'); }
+          else { audio.play(); speakBtn.textContent='⏹️'; speakBtn.classList.add('speaking'); }
+        };
+      }
+      audio.play().catch(()=>{}); // some browsers need user gesture; fail silently
+
+    } else {
+      // ── Standard JSON text response (voice off or ElevenLabs unavailable) ─
+      const data=await res.json();
+      hideTyping();
+      chatHistory.push({role:'assistant',content:data.reply});
+      addMsg('mitra',data.reply,data.mood||'growth');
+
+      // Fall back to browser TTS if auto-read is on but audio wasn't returned
+      if(autoReadEnabled && voiceOutputSupported){
+        const spkBtn = document.querySelector('.msgs .msg.mitra:last-child .speak-btn');
+        if(spkBtn) toggleSpeak(data.reply, spkBtn);
+      }
+    }
+
   }catch(err){
     hideTyping();
     errEl.textContent=err.message||'Mitra is unavailable. Please try again.';
@@ -1803,9 +1867,16 @@ function toggleAutoRead(){
   autoReadEnabled = !autoReadEnabled;
   const btn = document.getElementById('voiceToggleBtn');
   btn.classList.toggle('active', autoReadEnabled);
-  btn.textContent = autoReadEnabled ? '🔊' : '🔇';
-  btn.title = autoReadEnabled ? 'Auto-read is on — tap to turn off' : 'Read Mitra\'s replies aloud';
-  if(!autoReadEnabled) window.speechSynthesis.cancel();
+
+  const hasElevenLabs = typeof SUPABASE_URL !== 'undefined'; // proxy check — if backend is configured
+  if(autoReadEnabled){
+    btn.textContent = '🔊';
+    btn.title = 'Voice is ON — Mitra will speak her replies. Tap to turn off.';
+  } else {
+    btn.textContent = '🔇';
+    btn.title = 'Read Mitra\'s replies aloud';
+    window.speechSynthesis && window.speechSynthesis.cancel();
+  }
   saveUserPreferences();
 }
 
